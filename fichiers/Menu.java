@@ -5,31 +5,34 @@ import java.awt.*;
 @author Kévin METRI et Bastien LEBLET
 */
 
+public class Menu extends JFrame {
 
-public class Menu extends JComponent {
+    private static final long serialVersionUID = 1L;
+    
 
-  private static final long serialVersionUID = 1L;
-    public JButton quitter=new JButton("Quitter");
-    public JButton alea=new JButton("Aléatoire");
-        public Menu(){
-            super();
-            //this.add(quitter);
-            //this.add(alea);
-            JLabel test = new JLabel("test");
-            this.setBackground(Color.YELLOW);
-            this.add(test);
-            System.out.println("Menu");
-        }
+    JPanel panneau = new JPanel();
+    Actionmenu m = new Actionmenu(panneau);
 
-// @Override
-// protected void paintComponent(Graphics pinceau) {
-//     Graphics secondPinceau = pinceau.create();
-//     if (this.isOpaque()) {
-//       secondPinceau.setColor(this.getBackground());
-//       secondPinceau.fillRect(0, 0, this.getWidth(), this.getHeight());
-//     }
-//     secondPinceau.setColor(this.getForeground());
-//     secondPinceau.setColor(new Color(0,255,0));
-//   }
+    public Menu(){
+        super("SameGame");
+        this.setSize(500,500);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        JButton aleatoire = new JButton("al\u00e9atoire");
+        aleatoire.addActionListener(m);
+        panneau.add(aleatoire);
+        JButton bouton2 = new JButton("default");
+        panneau.add(bouton2);
+        bouton2.addActionListener(m);
+
+        JButton bouton3 = new JButton("quitter");
+        panneau.add(bouton3);
+        bouton3.addActionListener(m);
+        
+        this.add(panneau);
+        this.setVisible(true);
+    }
+   
 }
