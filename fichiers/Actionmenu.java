@@ -26,12 +26,14 @@ public class Actionmenu implements ActionListener {
       
 
       if (composant == "al\u00e9atoire") {
+        new Grille();
           System.out.println(composant);
       }
       if (composant == "default") {
           System.out.println(composant);
       }
       if (composant == "quitter") {
+        System.exit(0);
           System.out.println(composant);
       }
    }
