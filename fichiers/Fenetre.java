@@ -9,15 +9,20 @@ import java.awt.*;
 
 public class Fenetre extends JFrame {
 
-    private Menu menu=new Menu();
+    private static final long serialVersionUID = 1L;
+    
+    
     
     public Fenetre(){
         super("SameGame");
-        // this.pack();
-        this.setSize(200,200);
+        this.setSize(500,500);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setBackground(Color.CYAN);
         this.setVisible(true);
 
+        System.out.println("fenetre");
     }
+    Menu menu=new Menu();
 }
