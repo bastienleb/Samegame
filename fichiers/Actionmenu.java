@@ -26,7 +26,9 @@ public class Actionmenu implements ActionListener {
       
 
       if (composant == "al\u00e9atoire") {
-        new Grille();
+       Grille grille= new Grille();
+       grille.AfficheGrille();
+
           System.out.println(composant);
       }
       if (composant == "default") {

@@ -12,6 +12,7 @@ public class Menu extends JFrame {
 
     JPanel panneau = new JPanel();
     Actionmenu m = new Actionmenu(panneau);
+    
 
     public Menu(){
         super("SameGame");
