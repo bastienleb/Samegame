@@ -17,24 +17,22 @@ public class Actionmenu implements ActionListener {
 
   }
   
-    public JButton quitter=new JButton("Quitter");
-    public JButton alea=new JButton("Aléatoire");
-
+ 
     public void actionPerformed(ActionEvent evt) {
       
       String composant = evt.getActionCommand();
       
 
-      if (composant == "al\u00e9atoire") {
+      if (composant == "Al\u00e9atoire") {
        Grille grille= new Grille();
        grille.AfficheGrille();
 
           System.out.println(composant);
       }
-      if (composant == "default") {
+      if (composant == "D\u00e9fault") {
           System.out.println(composant);
       }
-      if (composant == "quitter") {
+      if (composant == "Quitter") {
         System.exit(0);
           System.out.println(composant);
       }

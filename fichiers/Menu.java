@@ -7,7 +7,6 @@ import java.awt.*;
 
 public class Menu extends JFrame {
 
-    private static final long serialVersionUID = 1L;
     
 
     JPanel panneau = new JPanel();
@@ -16,19 +15,19 @@ public class Menu extends JFrame {
 
     public Menu(){
         super("SameGame");
-        this.setSize(500,500);
+        this.setSize(1125,750);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JButton aleatoire = new JButton("al\u00e9atoire");
+        JButton aleatoire = new JButton("Al\u00e9atoire");
         aleatoire.addActionListener(m);
         panneau.add(aleatoire);
-        JButton bouton2 = new JButton("default");
+        JButton bouton2 = new JButton("D\u00e9fault");
         panneau.add(bouton2);
         bouton2.addActionListener(m);
 
-        JButton bouton3 = new JButton("quitter");
+        JButton bouton3 = new JButton("Quitter");
         panneau.add(bouton3);
         bouton3.addActionListener(m);
         
