@@ -10,11 +10,15 @@ import java.awt.event.*;
 public class Actionmenu implements ActionListener {
   
   JPanel pagemenu;
+  public char tab[][]=new char[10][15];
   
   public Actionmenu(JPanel panel){
     this.pagemenu=panel; 
 
+  }
 
+  public Actionmenu(char tab[][]){
+    this.tab=tab;
   }
   
  
@@ -25,7 +29,10 @@ public class Actionmenu implements ActionListener {
 
       if (composant == "Al\u00e9atoire") {
        Grille grille= new Grille();
-       grille.AfficheGrille();
+      //  grille.AfficheGrille();
+       grille.ImageJeu();
+      //  AffichageGrille affiche=new AffichageGrille(tab);
+      //  affiche.ImageJeu();
 
           System.out.println(composant);
       }
