@@ -7,8 +7,6 @@ import java.awt.*;
 
 public class Menu extends JFrame {
 
-    
-
     JPanel panneau = new JPanel();
     Actionmenu m = new Actionmenu(panneau);
     
@@ -19,6 +17,8 @@ public class Menu extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        System.out.println("dans le menu");
 
         JButton aleatoire = new JButton("Al\u00e9atoire");
         aleatoire.addActionListener(m);
@@ -33,6 +33,11 @@ public class Menu extends JFrame {
         
         this.add(panneau);
         this.setVisible(true);
+    }
+
+    public void fermer(){
+        System.out.println("dans la fonction qui ferme");
+        this.dispose();
     }
    
 }

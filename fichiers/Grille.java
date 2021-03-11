@@ -35,7 +35,7 @@ public class Grille {
 
     
 
-    public void AfficheGrille(){
+    public void AfficherGrille(){
         for (int i=0;i<10;i++){
             for(int j=0;j<15;j++){
                     System.out.print(tab[i][j]+" ");      
@@ -43,41 +43,7 @@ public class Grille {
                 System.out.println("");
             }
  
-        }
-    
-        public void ImageJeu(){
-            JFrame fenetre = new JFrame();
-            fenetre.setSize(300, 300);
-            fenetre.setLayout(new GridLayout(15,10));
-
-            for (int i=0;i<10;i++){
-                for(int j=0;j<15;j++){
-                    String lettre=Character.toString(tab[i][j]);
-
-                    if(lettre.equals("R")){
-                        fenetre.add(new Image(new ImageIcon("../image/bleu.png").getImage()));
-                        System.out.println("DANS LE IF ROUGE ");
-
-                    }
-
-                    if(lettre.equals("V")){
-                        fenetre.add(new Image(new ImageIcon("../image/bleu.png").getImage()));
-                        System.out.println("DANS LE IF VERT ");
-
-                    }
-
-                    if(lettre.equals("B")){
-                        fenetre.add(new Image(new ImageIcon("../image/bleu.png").getImage()));
-                        System.out.println("DANS LE IF BLEUE");
-
-                    }
-                    
-                }
-
-            }
-        
-        }
-        
+        }      
 
 }
 

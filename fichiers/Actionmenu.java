@@ -14,27 +14,30 @@ public class Actionmenu implements ActionListener {
   
   public Actionmenu(JPanel panel){
     this.pagemenu=panel; 
-
+    //Menu m = new Menu();
   }
 
   public Actionmenu(char tab[][]){
     this.tab=tab;
   }
   
- 
+    
     public void actionPerformed(ActionEvent evt) {
       
       String composant = evt.getActionCommand();
       
 
       if (composant == "Al\u00e9atoire") {
-       Grille grille= new Grille();
-      //  grille.AfficheGrille();
-       grille.ImageJeu();
-      //  AffichageGrille affiche=new AffichageGrille(tab);
-      //  affiche.ImageJeu();
+      // Grille grille= new Grille();
+      // grille.AfficherGrille();
+      // grille.ImageJeu();
+        
 
-          System.out.println(composant);
+        new Menu().fermer();
+        AffichageGrille affiche=new AffichageGrille(tab);
+        affiche.ImageJeu();
+
+        System.out.println(composant);
       }
       if (composant == "D\u00e9fault") {
           System.out.println(composant);
@@ -44,4 +47,6 @@ public class Actionmenu implements ActionListener {
           System.out.println(composant);
       }
    }
+
+    
 }
