@@ -45,7 +45,7 @@ public class Menu extends JFrame {
             System.out.println("c fermer");
         }
         
-        
+        panneau.setBackground(new Color(0,128,128));
         this.add(panneau);
         this.setVisible(true);
     }   

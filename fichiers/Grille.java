@@ -61,7 +61,7 @@ public class Grille extends JFrame {
             fenetre.setLayout(new GridLayout(15,10));
             
             JPanel panel =new JPanel();
-            
+            panel.setBackground(Color.BLACK);
             
             panel.setLayout(new GridLayout(10,15));
             
