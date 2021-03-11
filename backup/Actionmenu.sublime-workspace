@@ -1,0 +1,236 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"st",
+				"style\tTag"
+			],
+			[
+				"s",
+				"style\tAttr"
+			],
+			[
+				"background-c",
+				"background-color\tproperty"
+			],
+			[
+				"c",
+				"copy"
+			],
+			[
+				"h",
+				"hidden\tAttr"
+			],
+			[
+				"onc",
+				"onclick\tAttr"
+			],
+			[
+				"t",
+				"timer"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Cadeau!/Desktop/liaison git/PT21_APL2020/PT21_APL2020/backup/Actionmenu.java",
+		"/C/Users/Cadeau!/Desktop/liaison git/PT21_APL2020/PT21_APL2020/backup/Menu.java",
+		"/C/Users/Cadeau!/Desktop/liaison git/PT21_APL2020/PT21_APL2020/backup/Main.java",
+		"/C/Users/Cadeau!/Desktop/liaison git/PT21_APL2020/PT21_APL2020/backup/Image.java",
+		"/C/Users/Cadeau!/Desktop/liaison git/PT21_APL2020/PT21_APL2020/backup/Grille.java",
+		"/C/Users/Cadeau!/Desktop/liaison git/PT21_APL2020/PT21_APL2020/backup/AffichageGrille.java",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/Goban/Menu.java",
+		"/C/Users/Cadeau!/Desktop/liaison git/APL/APL2.1/TP8_evenement/Action.java",
+		"/C/Users/Cadeau!/Desktop/liaison git/APL/APL2.1/TP8_evenement/Fond.java",
+		"/C/Users/Cadeau!/Desktop/liaison git/APL/APL2.1/TP7_polymorphisme/Test.java",
+		"/C/Users/Cadeau!/Desktop/liaison git/APL/APL2.1/TP7_polymorphisme/Vehicule.java",
+		"/C/Users/Cadeau!/Desktop/liaison git/APL/APL2.1/TP8_evenement/Attente.java",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/wim/matrix/matrix faux/test2.js",
+		"/C/Users/Cadeau!/Downloads/jeux.c",
+		"/C/Users/Cadeau!/Desktop/liaison git/PT11_APL2020/fichier/bibliotheque-graphique-iut-1.1/src/include/graph.h",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/projet_wim/Model/Jeu.php",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/wim/feu tricolore/feu_tricolore.css",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/wim/feu tricolore/feu_tricolore.js",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/wim/feu tricolore/feu_tricolore.html",
+		"/C/Users/Cadeau!/Desktop/liaison git/APL/APL1.1/TP18/exo1/Makefile",
+		"/C/Users/Cadeau!/Documents/cours/DUT FONTAINBLEAU/ASR/controle année derniere/kevin.sh",
+		"/C/Users/Cadeau!/Documents/cours/DUT FONTAINBLEAU/ASR/controle année derniere/test.sh",
+		"/C/Users/Cadeau!/Documents/cours/DUT FONTAINBLEAU/ASR/controle année derniere/round.sh",
+		"/C/Users/Cadeau!/Documents/cours/DUT FONTAINBLEAU/ASR/controle année derniere/TaF",
+		"/C/Users/Cadeau!/Documents/cours/DUT FONTAINBLEAU/ASR/controle année derniere/reponce.txt",
+		"/C/Users/Cadeau!/Documents/cours/DUT FONTAINBLEAU/ASR/controle année derniere/plouf.txt",
+		"/C/Users/Cadeau!/Documents/cours/DUT FONTAINBLEAU/ASR/controle année derniere/foulp.txt",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/projet_wim/public/JavaScript/Jeu.js",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/projet_wim/View/main.php",
+		"/C/Users/Cadeau!/Desktop/test.sh",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/projet_wim/View/Room.php",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/wim/windows/loading.html",
+		"/C/Users/Cadeau!/Desktop/test2.html",
+		"/C/Users/Cadeau!/Desktop/liaison git/APL/APL1.1/squellette.c",
+		"/C/Users/Cadeau!/Desktop/blc.c",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/projet_wim/public/CSS/Room.css",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/projet_wim/public/CSS/perso.css",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/projet_wim/public/CSS/new_compte.css",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/projet_wim/public/CSS/main.css",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/projet_wim/public/CSS/login.css",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/projet_wim/public/CSS/creation_salle.css",
+		"/C/Users/Cadeau!/Documents/cours/DUT SENART/projet_wim/public/CSS/creation_questions.css",
+		"/C/Users/Cadeau!/Desktop/WIM/WIM1.1/squellette.html",
+		"/C/Users/Cadeau!/Desktop/test.html"
+	],
+	"find":
+	{
+		"height": 29.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "Actionmenu.sublime-project",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

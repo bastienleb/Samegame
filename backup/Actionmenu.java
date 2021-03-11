@@ -11,10 +11,10 @@ public class Actionmenu implements ActionListener {
   
   JPanel pagemenu;
   public char tab[][]=new char[10][15];
+  int tmp;
   
   public Actionmenu(JPanel panel){
     this.pagemenu=panel; 
-    //Menu m = new Menu();
   }
 
   public Actionmenu(char tab[][]){
@@ -31,20 +31,20 @@ public class Actionmenu implements ActionListener {
       // Grille grille= new Grille();
       // grille.AfficherGrille();
       // grille.ImageJeu();
+      tmp = 1;
+      new Menu(tmp);
         
-
-        new Menu().fermer();
         AffichageGrille affiche=new AffichageGrille(tab);
         affiche.ImageJeu();
-
-        System.out.println(composant);
+        System.out.println(composant+" "+tmp);
       }
+
       if (composant == "D\u00e9fault") {
           System.out.println(composant);
       }
       if (composant == "Quitter") {
-        System.exit(0);
-          System.out.println(composant);
+        System.out.println(composant);
+          System.exit(0);
       }
    }
 

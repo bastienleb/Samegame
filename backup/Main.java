@@ -5,6 +5,7 @@
 
 public class Main {
     public static void main(String[] args) {
-        new Menu();
+        int valeur=0;
+        new Menu(valeur);
     }
 }
