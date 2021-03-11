@@ -20,6 +20,8 @@ public class Actionmenu implements ActionListener {
   public Actionmenu(char tab[][]){
     this.tab=tab;
   }
+
+  
   
     
     public void actionPerformed(ActionEvent evt) {
@@ -28,10 +30,12 @@ public class Actionmenu implements ActionListener {
       
 
       if (composant == "Al\u00e9atoire") {
-      Grille grille= new Grille();
-     grille.ImageJeu();
+        Grille grille=new Grille();
+        grille.AfficheGrille();
+        grille.ImageJeu();
+     
       tmp = 1;
-      new Menu(tmp);
+      // new Menu(tmp);
         
         // AffichageGrille affiche=new AffichageGrille(tab);
         // affiche.ImageJeu();

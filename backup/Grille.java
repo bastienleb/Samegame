@@ -63,7 +63,7 @@ public class Grille extends JFrame {
             JPanel panel =new JPanel();
             
             
-            panel.setLayout(new GridLayout(15,10));
+            panel.setLayout(new GridLayout(10,15));
             
             for (int i=0;i<10;i++){
                 for(int j=0;j<15;j++){

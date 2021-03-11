@@ -6,10 +6,9 @@
 public class Main {
     public static void main(String[] args) {
         int valeur=0;
-        // new Menu(valeur);
+        new Menu(valeur);
 
-        Grille grille=new Grille();
-        grille.AfficheGrille();
-        grille.ImageJeu();
+      
+
     }
 }
