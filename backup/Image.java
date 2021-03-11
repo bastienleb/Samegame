@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
-
+/*
+@author Kévin METRI et Bastien LEBLET
+*/
 public class Image extends JComponent{
   
 

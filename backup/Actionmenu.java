@@ -28,8 +28,8 @@ public class Actionmenu implements ActionListener {
       
       String composant = evt.getActionCommand();
       
-
-      if (composant == "Al\u00e9atoire") {
+/*
+      if (composant.equals("Al\u00e9atoire")) {
         Grille grille=new Grille();
         grille.AfficheGrille();
         grille.ImageJeu();
@@ -41,11 +41,11 @@ public class Actionmenu implements ActionListener {
         // affiche.ImageJeu();
         // System.out.println(composant+" "+tmp);
       }
-
-      if (composant == "D\u00e9fault") {
+*/
+      if (composant.equals("D\u00e9fault")) {
           System.out.println(composant);
       }
-      if (composant == "Quitter") {
+      if (composant.equals("Quitter")) {
         System.out.println(composant);
           System.exit(0);
       }

@@ -22,7 +22,12 @@ public class Menu extends JFrame {
         System.out.println("dans le menu "+valeur);
 
         JButton aleatoire = new JButton("Al\u00e9atoire");
-        aleatoire.addActionListener(m);
+        aleatoire.addActionListener(m -> {
+            Grille grille=new Grille();
+            grille.AfficheGrille();
+            grille.ImageJeu();
+            this.dispose();
+        });
         panneau.add(aleatoire);
 
         JButton bouton2 = new JButton("D\u00e9fault");
