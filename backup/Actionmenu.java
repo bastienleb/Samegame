@@ -28,15 +28,14 @@ public class Actionmenu implements ActionListener {
       
 
       if (composant == "Al\u00e9atoire") {
-      // Grille grille= new Grille();
-      // grille.AfficherGrille();
-      // grille.ImageJeu();
+      Grille grille= new Grille();
+     grille.ImageJeu();
       tmp = 1;
       new Menu(tmp);
         
-        AffichageGrille affiche=new AffichageGrille(tab);
-        affiche.ImageJeu();
-        System.out.println(composant+" "+tmp);
+        // AffichageGrille affiche=new AffichageGrille(tab);
+        // affiche.ImageJeu();
+        // System.out.println(composant+" "+tmp);
       }
 
       if (composant == "D\u00e9fault") {
