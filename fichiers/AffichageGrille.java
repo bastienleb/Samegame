@@ -10,6 +10,7 @@ public class AffichageGrille{
         
     }
         public void ImageJeu(){
+            
             System.out.println("dans affichage ImageJeu");
             JFrame fenetre = new JFrame();
             fenetre.setLocationRelativeTo(null);
@@ -54,6 +55,8 @@ public class AffichageGrille{
                 }
 
             }
+            
+        fenetre.setVisible(true);
         
         }
     }
