@@ -23,6 +23,7 @@ Grille.class : Grille.java Actionmenu.class
 Image.class : Image.java
 	${JC} ${JCFLAGS} Image.java
 
+
 ### REGLES OPTIONNELLES ###
 
 run : Main.class
