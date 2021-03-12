@@ -59,7 +59,6 @@ public class Grille extends JFrame implements MouseMotionListener {
             fenetre.setLocationRelativeTo(null);
             fenetre.setResizable(false);
             fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            fenetre.setSize(300, 300);
             fenetre.setLayout(new GridLayout(15,10));
             
             JPanel panel =new JPanel();
@@ -108,15 +107,21 @@ public class Grille extends JFrame implements MouseMotionListener {
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        //System.out.println("x="+e.getX()+" y="+e.getY());
-        if((e.getX()>=0 && e.getX()<=100)&&(e.getY()>=0 && e.getY()<=100)){
-            System.out.println("patate");
-        }
-        //Graphics g=getGraphics();  
-        //g.setColor(Color.BLUE);  
-        //g.fillOval(e.getX(),e.getY(),20,20);
-    }
         
+        int x=e.getX();
+        int y=e.getY();
+         
+        //System.out.println("x="+x+" y="+y);
+        for (int i = 0; i < 15; ++i){
+            if((x>=8+(75*i) && x<=9+(75*i))&&(y>=31 && y<=5+(75*10))){
+                //System.out.println("DANS LE IF I : "+i);
+                for(int j=0;j<10;j++){
+                    if((x>=8 && x<=9+(75*15))&&(y>=31+(75*j) && y>=5+(75*j))){
+                        System.out.println(/*"I:"+i+*/" J:"+j);
+                    }
+                }
+            }   
+        }
     }
-    
+}
     

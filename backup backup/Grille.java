@@ -108,30 +108,20 @@ public class Grille extends JFrame implements MouseMotionListener {
     @Override
     public void mouseMoved(MouseEvent e) {
         
-        // System.out.println("x="+x+" y="+y);
+        int x=e.getX();
+        int y=e.getY();
+         
+        //System.out.println("x="+x+" y="+y);
         for (int i = 0; i < 15; ++i){
-            int x=e.getX();
-            int y=e.getY();
-            if((x>=8 && x<=1116)&&(y>=31 && y<=747)){
-                if((x>=8+(75*i) && x<=9+(75*i))&&(y>=31 && y<=5+(75*10))){
-                    System.out.println("DANS LE IF I : "+i);
-                    for(int j=0;i<10;i++){
-                        if((x>=8 && x<=8+(75*15))&&(y>=31+(75*j) && y<=5+(75*j))){
-                            // System.out.println(" i : "+i+"j : "+j);
-                        }
+            if((x>=8+(75*i) && x<=9+(75*i))&&(y>=31 && y<=5+(75*10))){
+                //System.out.println("DANS LE IF I : "+i);
+                for(int j=0;j<10;j++){
+                    if((x>=8 && x<=9+(75*15))&&(y>=31+(75*j) && y>=5+(75*j))){
+                        System.out.println(/*"I:"+i+*/" J:"+j);
                     }
+                }
+            }   
         }
-
-
-        //Graphics g=getGraphics();  
-        //g.setColor(Color.BLUE);  
-        //g.fillOval(e.getX(),e.getY(),20,20);
     }
-        
-    }
-    
-
-}
-
 }
     
