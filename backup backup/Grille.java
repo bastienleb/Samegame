@@ -117,7 +117,26 @@ public class Grille extends JFrame implements MouseMotionListener {
                 //System.out.println("DANS LE IF I : "+i);
                 for(int j=0;j<10;j++){
                     if((x>=8 && x<=9+(75*15))&&(y>=31+(75*j) && y>=5+(75*j))){
-                        System.out.println(/*"I:"+i+*/" J:"+j);
+                        // System.out.println("I:"+i+" J:"+j);
+                        String lettre=Character.toString(tab[j][i]);
+                        if(lettre.equals("R")){
+                            System.out.println("dans le r ");
+                            add(new Image(new ImageIcon("../image/rouge_j.png").getImage()));
+                            this.repaint();
+                        }
+    
+                        if(lettre.equals("V")){
+                            System.out.println("dans le v  ");
+                            add(new Image(new ImageIcon("../image/vert_j.png").getImage()));
+                            this.repaint();
+                        }
+    
+                        if(lettre.equals("B")){
+                            System.out.println("dans le b ");
+                            add(new Image(new ImageIcon("../image/bleu_j.png").getImage()));
+                            this.repaint();
+                        }
+                        
                     }
                 }
             }   
