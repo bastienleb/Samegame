@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class TabChoix {
-    char[][] tab=new char[15][10];
+    char[][] tab=new char[10][15];
 
     public char[][] choix() {
         System.out.println("dans TabChoix");

@@ -108,21 +108,21 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                         
                         if(lettre.equals("R")){
                             panel.add(new Image(new ImageIcon("../image/rouge_j.png").getImage()));
-                            this.repaint();
+                            //this.repaint();
                            System.out.println("R");
 
                         }
                         
                         if(lettre.equals("V")){
                             panel.add(new Image(new ImageIcon("../image/vert_j.png").getImage()));
-                            this.repaint();
+                           //this.repaint();
                             System.out.println("V");
                             
                         }
                         
                         if(lettre.equals("B")){
                             panel.add(new Image(new ImageIcon("../image/bleu_j.png").getImage()));
-                            this.repaint();
+                           // this.repaint();
                             System.out.println("B");
 
                         }
