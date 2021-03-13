@@ -8,7 +8,7 @@ JVMFLAGS =
 
 ### REGLES ESSENTIELLES ###
 
-Main.class : Main.java Menu.class
+Main.class : Main.java Menu.class Actionmenu.class Grille.class Image.class
 	${JC} ${JCFLAGS} Main.java
 
 Menu.class : Menu.java Actionmenu.class

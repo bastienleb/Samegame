@@ -48,7 +48,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
 
         }
         System.out.println("");
-        new Actionmenu(tab);
+        
         
     }
         
@@ -96,18 +96,61 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         }
 
 
+        public void ImageJeu(int x,int y){
+        
+            // System.out.println("dans affichage ImageJeu AVEC ARG");
+  
+            
+            JPanel panel =new JPanel();
+            
+            panel.setLayout(new GridLayout(10,15));
+            
+            
+                    
+                      
+                        this.add(panel);
+                        String lettre=Character.toString(tab[y][x]);
+                        // System.out.println("x : "+x+"y : "+y);
+                        
+                        if(lettre.equals("R")){
+                            panel.add(new Image(new ImageIcon("../image/rouge_j.png").getImage()));
+                            this.repaint();
+                           System.out.println("R");
+
+                        }
+                        
+                        if(lettre.equals("V")){
+                            panel.add(new Image(new ImageIcon("../image/vert_j.png").getImage()));
+                            this.repaint();
+                            System.out.println("V");
+                            
+                        }
+                        
+                        if(lettre.equals("B")){
+                            panel.add(new Image(new ImageIcon("../image/bleu_j.png").getImage()));
+                            this.repaint();
+                            System.out.println("B");
+
+                        }
+                    
+                        
+                
+                //System.out.println("");
+            
+            
+            this.setVisible(true);
+        }
+
     @Override
     public void mouseClicked(MouseEvent e)  {
-        int x=e.getX();
-        int y=e.getY();
+        int x=(e.getX()/75);
+        int y=(e.getY()/75);  
          
         //System.out.println("x="+x+" y="+y);
 
-            
-        
+    // System.out.println(" x: "+(x/75)+" y :"+(y/75));  
     
-    System.out.println(" x: "+(x/75)+" y :"+(y/75));  
-    
+            ImageJeu(x, y);
     }
 
 
@@ -118,7 +161,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         int y=(e.getY()/75);   
         
 
-            System.out.println(" x: "+x+" y :"+y);
+            // System.out.println(" x: "+x+" y :"+y);
     }
 public void mousePressed(MouseEvent e){}
 public void mouseDragged(MouseEvent e) {}
