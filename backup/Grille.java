@@ -7,14 +7,14 @@ import java.awt.*;
 @author Kévin METRI et Bastien LEBLET
 */
 
-public class Grille extends JFrame implements MouseMotionListener {
+public class Grille extends JFrame implements MouseMotionListener,MouseListener {
     private char tab[][]=new char[10][15];
     private Random choix=new Random();
     
     public Grille(){
         super("Grille");
         this.addMouseMotionListener(this);
-
+        this.addMouseListener(this);
         this.setSize(1125,750);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -97,31 +97,34 @@ public class Grille extends JFrame implements MouseMotionListener {
 
 
     @Override
-    public void mouseDragged(MouseEvent e) {
-        // TODO Auto-generated method stub
+    public void mouseClicked(MouseEvent e)  {
+        int x=e.getX();
+        int y=e.getY();
+         
+        //System.out.println("x="+x+" y="+y);
+
+            
         
-        //this.repaint();
-        
+    
+    System.out.println(" x: "+(x/75)+" y :"+(y/75));  
+    
     }
 
 
     @Override
     public void mouseMoved(MouseEvent e) {
         
-        int x=e.getX();
-        int y=e.getY();
-         
-        //System.out.println("x="+x+" y="+y);
-        for (int i = 0; i < 15; ++i){
-            if((x>=8+(75*i) && x<=9+(75*i))&&(y>=31 && y<=5+(75*10))){
-                //System.out.println("DANS LE IF I : "+i);
-                for(int j=0;j<10;j++){
-                    if((x>=8 && x<=9+(75*15))&&(y>=31+(75*j) && y>=5+(75*j))){
-                        System.out.println(/*"I:"+i+*/" J:"+j);
-                    }
-                }
-            }   
-        }
+        int x=(e.getX()/75);
+        int y=(e.getY()/75);   
+        
+
+            System.out.println(" x: "+x+" y :"+y);
     }
+public void mousePressed(MouseEvent e){}
+public void mouseDragged(MouseEvent e) {}
+public void mouseExited(MouseEvent e) {}
+public void mouseEntered(MouseEvent e){}
+public void mouseReleased(MouseEvent e){}
+
 }
     
