@@ -9,7 +9,6 @@ import java.awt.*;
 
 public class Grille extends JFrame implements MouseMotionListener,MouseListener {
     private char tab[][]=new char[10][15];
-    private Random choix=new Random();
     
     public Grille(){
         super("Grille");
@@ -21,36 +20,31 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
+    public void RecupTabAlea(){
+        TabAlea ta = new TabAlea();
+        tab=ta.alea();
 
-    public void AfficheGrille(){
-        
-        
-        for (int i=0;i<10;i++){
-            for(int j=0;j<15;j++){
-                int hasard=choix.nextInt(3);
-
-                if(hasard==0){
-                    tab[i][j]='R';
-                    
-                }
-
-                if(hasard==1){
-                    tab[i][j]='B';
-                    
-                }
-                
-                if(hasard==2){
-                    tab[i][j]='V';
-                    
-                }
-                
+        for(int a=0; a<10;a++){  
+            for(int b=0; b<15;b++){  
+                System.out.print(tab[a][b]);
             }
-
+            System.out.println("");
         }
-        System.out.println("");
-        
-        
     }
+
+    public void RecupTabChoix(){
+        TabChoix t=new TabChoix();
+        tab=t.choix();
+
+        for(int a=0; a<10;a++){  
+            for(int b=0; b<15;b++){  
+                System.out.print(tab[a][b]);
+            }
+            System.out.println("");
+          }
+
+    }
+    
         
     public void ImageJeu(){
         

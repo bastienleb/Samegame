@@ -27,7 +27,7 @@ public class Menu extends JFrame {
         JButton aleatoire = new JButton("Al\u00e9atoire");
         aleatoire.addActionListener(m -> {
             Grille grille=new Grille();
-            grille.AfficheGrille();
+            grille.RecupTabAlea();
             grille.ImageJeu();
             this.dispose();
         });
@@ -35,7 +35,13 @@ public class Menu extends JFrame {
         panneau.add(aleatoire);
 
 
-        JButton bouton2 = new JButton("D\u00e9fault");
+        JButton bouton2 = new JButton("Choix fichier");
+        bouton2.addActionListener(m -> {
+            Grille grille=new Grille();
+            grille.RecupTabChoix();
+            grille.ImageJeu();
+            this.dispose();
+        });
         bouton2.setFont(new Font("Sérif",Font.BOLD,15));
         panneau.add(bouton2);
         bouton2.addActionListener(m);

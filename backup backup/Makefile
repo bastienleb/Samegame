@@ -8,20 +8,29 @@ JVMFLAGS =
 
 ### REGLES ESSENTIELLES ###
 
-Main.class : Main.java Menu.class Actionmenu.class Grille.class Image.class
+Main.class : Main.java Menu.class Actionmenu.class Grille.class Image.class TabAlea.class RecupFichier.class TabChoix.class
 	${JC} ${JCFLAGS} Main.java
 
-Menu.class : Menu.java Actionmenu.class
+Menu.class : Menu.java Actionmenu.class TabAlea.class
 	${JC} ${JCFLAGS} Menu.java
 
 Actionmenu.class : Actionmenu.java
 	${JC} ${JCFLAGS} Actionmenu.java
 
-Grille.class : Grille.java Actionmenu.class
+TabAlea.class : TabAlea.java
+	${JC} ${JCFLAGS} TabAlea.java
+
+Grille.class : Grille.java Actionmenu.class 
 	${JC} ${JCFLAGS} Grille.java
 
 Image.class : Image.java
 	${JC} ${JCFLAGS} Image.java
+
+RecupFichier.class : RecupFichier.java
+	${JC} ${JCFLAGS} RecupFichier.java
+
+TabChoix.class : TabChoix.java
+	${JC} ${JCFLAGS} TabChoix.java
 
 
 ### REGLES OPTIONNELLES ###
