@@ -1,7 +1,3 @@
-/*
-@author Kévin METRI et Bastien LEBLET
-*/
-
 import java.io.*;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileSystemView;

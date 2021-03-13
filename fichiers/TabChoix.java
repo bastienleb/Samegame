@@ -1,7 +1,3 @@
-/*
-@author Kévin METRI et Bastien LEBLET
-*/
-
 import java.io.*;
 import java.util.*;
 
@@ -18,19 +14,24 @@ public class TabChoix {
         int j=0;
         try
         {
+        // Le fichier d'entrée
         FileInputStream file = new FileInputStream(chemin);   
         Scanner scanner = new Scanner(file);  
         
         
+        //renvoie true s'il y a une autre ligne à lire
         while(scanner.hasNext())
         {
+            //System.out.println(scanner.next());
             String s=scanner.next();
             
             for(i=0; i<15;i++){  
                 char c = s.charAt(i);  
+                System.out.print(c);
                 tab[j][i]=c;  
             }
             j++;
+            //System.out.println(" j="+j);
             
         }
         

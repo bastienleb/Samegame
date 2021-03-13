@@ -1,7 +1,3 @@
-/*
-@author Kévin METRI et Bastien LEBLET
-*/
-
 import java.util.*;
 
 public class TabAlea {
