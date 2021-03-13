@@ -49,11 +49,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     public void ImageJeu(){
         
             System.out.println("dans affichage ImageJeu");
-            JFrame fenetre = new JFrame();
-            fenetre.setLocationRelativeTo(null);
-            fenetre.setResizable(false);
-            fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            fenetre.setLayout(new GridLayout(15,10));
+       
             
             JPanel panel =new JPanel();
             
