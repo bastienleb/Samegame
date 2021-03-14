@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class Grille extends JFrame implements MouseMotionListener,MouseListener {
     private char tab[][]=new char[10][15];
+
     
     public Grille(){
         super("Grille");
@@ -18,6 +19,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
     }
     
     public void RecupTabAlea(){
@@ -67,6 +69,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                     if(lettre.equals("R")){
                         panel.add(new Image(new ImageIcon("../image/rouge.png").getImage()));
                         //System.out.print("R");
+                        
 
                     }
                     
@@ -74,11 +77,13 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                         panel.add(new Image(new ImageIcon("../image/vert.png").getImage()));
                         //System.out.print("V");
                         
+                        
                     }
                     
                     if(lettre.equals("B")){
                         panel.add(new Image(new ImageIcon("../image/bleu.png").getImage()));
                         //System.out.print("B");
+                        
 
                     }
                     
@@ -101,37 +106,39 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             
             
                     
-                      
-                        this.add(panel);
-                        String lettre=Character.toString(tab[y][x]);
-                        // System.out.println("x : "+x+"y : "+y);
+            this.add(panel);
+            for (int i=0;i<10;i++){
+                String lettre=Character.toString(tab[y][x]);
+                for(int j=0;j<15;j++){
+                         System.out.println("x :"+x+" y :"+y);
                         
                         if(lettre.equals("R")){
-                            panel.add(new Image(new ImageIcon("../image/rouge_j.png").getImage()));
-                            //this.repaint();
+                             panel.add(new Image(new ImageIcon("../image/rouge_j.png").getImage()));
+                            panel.repaint();
                            System.out.println("R");
 
                         }
                         
                         if(lettre.equals("V")){
                             panel.add(new Image(new ImageIcon("../image/vert_j.png").getImage()));
-                           //this.repaint();
+                           panel.repaint();
                             System.out.println("V");
                             
                         }
                         
                         if(lettre.equals("B")){
-                            panel.add(new Image(new ImageIcon("../image/bleu_j.png").getImage()));
-                           // this.repaint();
+                             panel.add(new Image(new ImageIcon("../image/bleu_j.png").getImage()));
+                           panel.repaint();
                             System.out.println("B");
 
                         }
                     
-                        
+                    }
+                }
                 
                 //System.out.println("");
             
-            
+               
             this.setVisible(true);
         }
 
