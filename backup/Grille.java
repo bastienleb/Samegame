@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
@@ -8,7 +9,7 @@ import javax.imageio.ImageIO;
 @author Kévin METRI et Bastien LEBLET
 */
 
-public class Grille extends JFrame {
+public class Grille extends JFrame implements MouseMotionListener {
     private char tab[][]=new char[10][15];
     
     public Grille(){
@@ -57,6 +58,8 @@ public class Grille extends JFrame {
 
         JLabel score = new JLabel("score");
         
+        panel.addMouseMotionListener(this);
+        
         JPanel all= new JPanel();
         all.setLayout(null);
         panel.setBounds(0, 0, 1112, 717);
@@ -81,6 +84,8 @@ public class Grille extends JFrame {
                         Superposition listener = new Superposition(pic);
                         pic.addMouseListener(listener);
 
+                        panel.add(pic);
+
                         //System.out.print("R");
 
                     }
@@ -89,10 +94,12 @@ public class Grille extends JFrame {
                         BufferedImage img = ImageIO.read(new File("../image/vert.png"));
                         JLabel pic = new JLabel(new ImageIcon(img));
                         pic.setBackground(Color.WHITE);
-                        panel.add(pic);
+                        
 
                         Superposition listener = new Superposition(pic);
                         pic.addMouseListener(listener);
+
+                        panel.add(pic);
                     
                         //System.out.print("V");
                         
@@ -102,10 +109,12 @@ public class Grille extends JFrame {
                         BufferedImage img = ImageIO.read(new File("../image/bleu.png"));
                         JLabel pic = new JLabel(new ImageIcon(img));
                         pic.setBackground(Color.WHITE);
-                        panel.add(pic);
+                        
 
                         Superposition listener = new Superposition(pic);
                         pic.addMouseListener(listener);
+
+                        panel.add(pic);
         
                         //System.out.print("B");
 
@@ -124,5 +133,18 @@ public class Grille extends JFrame {
         this.add(all);
         this.setVisible(true);
         
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent evenement) {}     // bouton rester cliqué
+
+    @Override
+    public void mouseMoved(MouseEvent evenement) {          // mouvement souris 
+    
+        int x=(evenement.getX()/75);
+        int y=(evenement.getY()/75);   
+        System.out.println(tab[y][x]);
+ 
+        //System.out.println(" x: "+x+" y :"+y);
     }
 }

@@ -2,8 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Superposition implements MouseListener
-{
+public class Superposition implements MouseMotionListener,MouseListener {
     private JLabel label;
 
     public Superposition(JLabel label)
@@ -16,6 +15,7 @@ public class Superposition implements MouseListener
     public void mouseClicked(MouseEvent evenement)          // un bouton cliqué
     {
         label.setBackground(Color.WHITE);
+        
     }
 
     @Override
@@ -34,12 +34,29 @@ public class Superposition implements MouseListener
     @Override
     public void mousePressed(MouseEvent evenement)          // un bouton appuyé
     {
-        // Rien
+        
+        System.out.println(evenement.getX() + "," + evenement.getY());
+       
     }
 
     @Override
     public void mouseReleased(MouseEvent evenement)         // un bouton relâché
     {
-        // Rien
+        // rien
     }
+
+    @Override
+    public void mouseDragged(MouseEvent evenement) {        // bouton rester cliqué
+
+        //rien
+
+    }     
+
+    @Override
+    public void mouseMoved(MouseEvent evenement) {          // mouvement souris 
+    
+        //rien
+    }
+
+
 }
