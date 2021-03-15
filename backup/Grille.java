@@ -53,6 +53,7 @@ public class Grille extends JFrame {
   
         JPanel panel =new JPanel();
         JPanel panscore = new JPanel();
+        
 
         JLabel score = new JLabel("score");
         
@@ -74,6 +75,7 @@ public class Grille extends JFrame {
                     if(lettre.equals("R")){
                         BufferedImage img = ImageIO.read(new File("../image/rouge.png"));
                         JLabel pic = new JLabel(new ImageIcon(img));
+                        pic.setBackground(Color.WHITE);
                         panel.add(pic);
 
                         Superposition listener = new Superposition(pic);
@@ -86,6 +88,7 @@ public class Grille extends JFrame {
                     if(lettre.equals("V")){
                         BufferedImage img = ImageIO.read(new File("../image/vert.png"));
                         JLabel pic = new JLabel(new ImageIcon(img));
+                        pic.setBackground(Color.WHITE);
                         panel.add(pic);
 
                         Superposition listener = new Superposition(pic);
@@ -98,6 +101,7 @@ public class Grille extends JFrame {
                     if(lettre.equals("B")){
                         BufferedImage img = ImageIO.read(new File("../image/bleu.png"));
                         JLabel pic = new JLabel(new ImageIcon(img));
+                        pic.setBackground(Color.WHITE);
                         panel.add(pic);
 
                         Superposition listener = new Superposition(pic);
