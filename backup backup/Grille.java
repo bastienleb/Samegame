@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.io.*;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
@@ -11,9 +12,10 @@ import javax.imageio.ImageIO;
 public class Grille extends JFrame {
     private char tab[][]=new char[10][15];
     
+    
     public Grille(){
         super("Grille");
-        this.setSize(1125,790);
+        this.setSize(1230,885);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,17 +56,20 @@ public class Grille extends JFrame {
         JPanel panel =new JPanel();
         JPanel panscore = new JPanel();
         
-
-        JLabel score = new JLabel("score");
+        int score=0;
+        JLabel labscore = new JLabel("score = "+ score);
+        
+        
         
         JPanel all= new JPanel();
         all.setLayout(null);
-        panel.setBounds(0, 0, 1112, 717);
-        panscore.setBounds(0,715,1125,40);
-        score.setFont(new Font("Sérif",Font.BOLD,15));
+        panel.setBounds(0, 0, 1221, 815);
+        panscore.setBounds(0,810,1221,40);
+        labscore.setFont(new Font("Sérif",Font.BOLD,15));
         panscore.setBackground(Color.RED);
         
-        panel.setLayout(new GridLayout(10,15));
+        panel.setLayout(new FlowLayout());
+        
         try 
         {
             for (int i=0;i<10;i++){
@@ -81,6 +86,11 @@ public class Grille extends JFrame {
                         Superposition listener = new Superposition(pic);
                         pic.addMouseListener(listener);
 
+                        PanelListener list = new PanelListener(panel);
+                        panel.addMouseListener(list);
+
+                        panel.add(pic);
+
                         //System.out.print("R");
 
                     }
@@ -89,10 +99,15 @@ public class Grille extends JFrame {
                         BufferedImage img = ImageIO.read(new File("../image/vert.png"));
                         JLabel pic = new JLabel(new ImageIcon(img));
                         pic.setBackground(Color.WHITE);
-                        panel.add(pic);
+                        
 
                         Superposition listener = new Superposition(pic);
                         pic.addMouseListener(listener);
+
+                        PanelListener list = new PanelListener(panel);
+                        panel.addMouseListener(list);
+
+                        panel.add(pic);
                     
                         //System.out.print("V");
                         
@@ -102,10 +117,15 @@ public class Grille extends JFrame {
                         BufferedImage img = ImageIO.read(new File("../image/bleu.png"));
                         JLabel pic = new JLabel(new ImageIcon(img));
                         pic.setBackground(Color.WHITE);
-                        panel.add(pic);
+                        
 
                         Superposition listener = new Superposition(pic);
                         pic.addMouseListener(listener);
+
+                        PanelListener list = new PanelListener(panel);
+                        panel.addMouseListener(list);
+
+                        panel.add(pic);
         
                         //System.out.print("B");
 
@@ -114,15 +134,13 @@ public class Grille extends JFrame {
                 }
                 //System.out.println("");
             }
-        
-        }
-        catch (IOException e) {} 
-        
-        panscore.add(score);
+        panscore.add(labscore);
         all.add(panel);
         all.add(panscore);
         this.add(all);
         this.setVisible(true);
         
+        }
+        catch (IOException e) {}         
     }
 }
