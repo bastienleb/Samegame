@@ -2,56 +2,44 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Superposition implements MouseMotionListener,MouseListener {
-    private JLabel label;
+public class PanelListener implements MouseListener
+{
+    private JPanel label;
 
-    public Superposition(JLabel label)
+    public PanelListener(JPanel label)
     {
         this.label = label;
-        label.setOpaque(true);
     }
 
     @Override
     public void mouseClicked(MouseEvent evenement)          // un bouton cliqué
     {
-        label.setBackground(Color.WHITE);
-        System.out.println(evenement.getX() + "," + evenement.getY());
     }
 
     @Override
     public void mouseEntered(MouseEvent evenement)          // debut du survol
     {
-        label.setBackground(Color.YELLOW);
+        
+        System.out.println((evenement.getX()-14) + "," + evenement.getY());
+        System.out.println("x="+((evenement.getX()-14)/75)+" y="+(evenement.getY()/75));
     }
 
     @Override
     public void mouseExited(MouseEvent evenement)           // fin du survol
     {
-       
-        label.setBackground(Color.WHITE);
+
     }
 
     @Override
     public void mousePressed(MouseEvent evenement)          // un bouton appuyé
     {
-        //rien
+        // Rien
     }
 
     @Override
     public void mouseReleased(MouseEvent evenement)         // un bouton relâché
     {
-        // rien
+        // Rien
     }
-
-    @Override
-    public void mouseDragged(MouseEvent evenement) {        // bouton rester cliqué
-        //rien
-    }     
-
-    @Override
-    public void mouseMoved(MouseEvent evenement) {          // mouvement souris 
-        //rien
-    }
-
-
 }
+

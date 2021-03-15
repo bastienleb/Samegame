@@ -15,7 +15,7 @@ public class Superposition implements MouseMotionListener,MouseListener {
     public void mouseClicked(MouseEvent evenement)          // un bouton cliqué
     {
         label.setBackground(Color.WHITE);
-        
+        System.out.println(evenement.getX() + "," + evenement.getY());
     }
 
     @Override
@@ -34,9 +34,7 @@ public class Superposition implements MouseMotionListener,MouseListener {
     @Override
     public void mousePressed(MouseEvent evenement)          // un bouton appuyé
     {
-        
-        System.out.println(evenement.getX() + "," + evenement.getY());
-       
+        //rien
     }
 
     @Override
@@ -47,14 +45,11 @@ public class Superposition implements MouseMotionListener,MouseListener {
 
     @Override
     public void mouseDragged(MouseEvent evenement) {        // bouton rester cliqué
-
         //rien
-
     }     
 
     @Override
     public void mouseMoved(MouseEvent evenement) {          // mouvement souris 
-    
         //rien
     }
 
