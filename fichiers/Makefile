@@ -8,7 +8,7 @@ JVMFLAGS =
 
 ### REGLES ESSENTIELLES ###
 
-Main.class : Main.java Menu.class Actionmenu.class Grille.class Image.class TabAlea.class RecupFichier.class TabChoix.class Superposition.class
+Main.class : Main.java Menu.class Actionmenu.class Grille.class TabAlea.class RecupFichier.class TabChoix.class Superposition.class
 	${JC} ${JCFLAGS} Main.java
 
 Menu.class : Menu.java Actionmenu.class TabAlea.class
@@ -22,9 +22,6 @@ TabAlea.class : TabAlea.java
 
 Grille.class : Grille.java Actionmenu.class Superposition.class
 	${JC} ${JCFLAGS} Grille.java
-
-Image.class : Image.java
-	${JC} ${JCFLAGS} Image.java
 
 RecupFichier.class : RecupFichier.java
 	${JC} ${JCFLAGS} RecupFichier.java

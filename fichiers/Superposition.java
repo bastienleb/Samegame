@@ -21,7 +21,7 @@ public class Superposition implements MouseListener
     @Override
     public void mouseEntered(MouseEvent evenement)          // debut du survol
     {
-        label.setBackground(Color.MAGENTA);
+        label.setBackground(Color.YELLOW);
     }
 
     @Override
