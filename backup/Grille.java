@@ -57,6 +57,41 @@ public class Grille extends JFrame {
         //   }
 
     }
+
+   
+    public void ImageJ(){
+        
+        System.out.println("dans affichage ImageJeu AVEC ARG");
+
+        
+       
+        for (int i=0;i<10;i++){
+            String lettre=Character.toString(tab[posy][posx]);
+            for(int j=0;j<15;j++){
+                     System.out.println("x :"+posx+" y :"+posy);
+                    
+                    if(lettre.equals("R")){
+                       System.out.println("R");
+
+                    }
+                    
+                    if(lettre.equals("V")){
+                        System.out.println("V");
+                        
+                    }
+                    
+                    if(lettre.equals("B")){
+                        System.out.println("B");
+
+                    }
+                
+                }
+            }
+            
+            //System.out.println("");
+        
+           
+    }
     
         
     public void ImageJeu(){
@@ -77,7 +112,7 @@ public class Grille extends JFrame {
         panscore.setBounds(0,810,1221,40);
         labscore.setFont(new Font("Sérif",Font.BOLD,15));
         panscore.setBackground(Color.RED);
-        
+        panel.setBackground(Color.WHITE);
         panel.setLayout(new FlowLayout());
         
         try 

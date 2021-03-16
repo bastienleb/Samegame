@@ -5,6 +5,7 @@ import java.awt.event.*;
 public class PanelListener implements MouseListener
 {
     private JPanel label;
+    // public Grille grille;
     private int posx=0;
     private int posy=0;
 
@@ -40,12 +41,14 @@ public class PanelListener implements MouseListener
                     posx=0;
                 }
 
-                new Grille(posx,posy);
             }
+            
         }
         
+        Grille grille=new Grille(posx,posy);
+        grille.ImageJ();
         //System.out.println((evenement.getX()-14) + "," + evenement.getY());
-        System.out.println("x="+posx+" y="+posy);
+        // System.out.println("x="+posx+" y="+posy);
     }
 
     @Override
