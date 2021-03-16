@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 @author Kévin METRI et Bastien LEBLET
 */
 
-public class Grille extends JFrame {
+public class Grille extends JFrame implements MouseMotionListener,MouseListener{
     private char tab[][]=new char[10][15];
     private int posx=0;
     private int posy=0;
@@ -21,6 +21,8 @@ public class Grille extends JFrame {
         super("Grille");
         this.setSize(1230,885);
         this.setLocationRelativeTo(null);
+        this.addMouseMotionListener(this);
+        this.addMouseListener(this);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -59,28 +61,37 @@ public class Grille extends JFrame {
     }
 
    
-    public void ImageJ(){
+    public void ImageJ(int x,int y){
         
-        System.out.println("dans affichage ImageJeu AVEC ARG");
-
+            if((x==0)&&(y==0)){
+                System.out.println("erreur ");
+            }
         
-       
+             System.out.println("x :"+x+" y :"+y);
+        
+                
+        // this.add(panel);
+        String lettre=Character.toString(tab[y][x]);
         for (int i=0;i<10;i++){
-            String lettre=Character.toString(tab[posy][posx]);
             for(int j=0;j<15;j++){
-                     System.out.println("x :"+posx+" y :"+posy);
                     
                     if(lettre.equals("R")){
+                        //  panel.add(new Image(new ImageIcon("../image/rouge_j.png").getImage()));
+                        // panel.repaint();
                        System.out.println("R");
 
                     }
                     
                     if(lettre.equals("V")){
+                        // panel.add(new Image(new ImageIcon("../image/vert_j.png").getImage()));
+                    //    panel.repaint();
                         System.out.println("V");
                         
                     }
                     
                     if(lettre.equals("B")){
+                        //  panel.add(new Image(new ImageIcon("../image/bleu_j.png").getImage()));
+                    //    panel.repaint();
                         System.out.println("B");
 
                     }
@@ -91,8 +102,9 @@ public class Grille extends JFrame {
             //System.out.println("");
         
            
+        this.setVisible(true);
     }
-    
+
         
     public void ImageJeu(){
     
@@ -104,7 +116,7 @@ public class Grille extends JFrame {
         int score=0;
         JLabel labscore = new JLabel("score = "+ score);
         
-        
+     
         
         JPanel all= new JPanel();
         all.setLayout(null);
@@ -114,10 +126,20 @@ public class Grille extends JFrame {
         panscore.setBackground(Color.RED);
         panel.setBackground(Color.WHITE);
         panel.setLayout(new FlowLayout());
+
+   
         
         try 
         {
+            panel.addMouseListener(new MouseAdapter() {
+                @Override 
+                public void mousePressed(MouseEvent e) {
+                    System.out.println(e.getX() + "," + e.getY());
+                    ImageJ((e.getX()/75), (e.getY()/75));
+        }
+      });
             for (int i=0;i<10;i++){
+        
                 for(int j=0;j<15;j++){
                     String lettre=Character.toString(tab[i][j]);
                     
@@ -129,6 +151,8 @@ public class Grille extends JFrame {
                         panel.add(pic);
 
                         Superposition listener = new Superposition(pic);
+                        pic.addMouseMotionListener(this);
+                        pic.addMouseListener(this);
                         pic.addMouseListener(listener);
 
                         PanelListener list = new PanelListener(panel);
@@ -147,6 +171,8 @@ public class Grille extends JFrame {
                         
 
                         Superposition listener = new Superposition(pic);
+                        pic.addMouseMotionListener(this);
+                        pic.addMouseListener(this);
                         pic.addMouseListener(listener);
 
                         PanelListener list = new PanelListener(panel);
@@ -165,6 +191,8 @@ public class Grille extends JFrame {
                         
 
                         Superposition listener = new Superposition(pic);
+                        pic.addMouseMotionListener(this);
+                        pic.addMouseListener(this);
                         pic.addMouseListener(listener);
 
                         PanelListener list = new PanelListener(panel);
@@ -188,4 +216,34 @@ public class Grille extends JFrame {
         }
         catch (IOException e) {}         
     }
+
+    @Override
+    public void mouseClicked(MouseEvent e)  {
+        
+        
+        // System.out.println(" x: "+(x/75)+" y :"+(y/75));  
+        
+        int x=(e.getX()/75);
+        int y=(e.getY()/75);  
+        
+        //  System.out.println("x="+x+" y="+y);
+        
+        // ImageJ(x, y);
+        
+    }
+    
+    
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        
+        
+        
+        // System.out.println(" x: "+x+" y :"+y);
+    }
+    public void mousePressed(MouseEvent e){}
+    public void mouseDragged(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e){}
+    public void mouseReleased(MouseEvent e){}
+    
 }

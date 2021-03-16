@@ -45,8 +45,10 @@ public class PanelListener implements MouseListener
             
         }
         
-        Grille grille=new Grille(posx,posy);
-        grille.ImageJ();
+        // Grille grille=new Grille(posx,posy);
+        // System.out.println("x="+posx+" y="+posy);
+        
+        // grille.ImageJ(posx, posy);
         //System.out.println((evenement.getX()-14) + "," + evenement.getY());
         // System.out.println("x="+posx+" y="+posy);
     }
