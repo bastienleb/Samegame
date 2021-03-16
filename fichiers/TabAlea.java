@@ -5,9 +5,7 @@ public class TabAlea {
     private Random choix=new Random();
 
     public char[][] alea(){
-       // System.out.println("dans alea");
-        
-        
+        System.out.println("dans alea");
         for (int i=0;i<10;i++){
             for(int j=0;j<15;j++){
                 int hasard=choix.nextInt(3);
@@ -30,6 +28,7 @@ public class TabAlea {
             }
 
         }
+    
         
         return tab;
 

@@ -5,6 +5,11 @@ import java.awt.event.*;
 public class PanelListener implements MouseListener
 {
     private JPanel label;
+    private int posx=0;
+    private int posy=0;
+
+    
+
 
     public PanelListener(JPanel label)
     {
@@ -14,14 +19,33 @@ public class PanelListener implements MouseListener
     @Override
     public void mouseClicked(MouseEvent evenement)          // un bouton cliqué
     {
+        posx=((evenement.getX()-14)/75);
+        posy=(evenement.getY()/75);
+        
+        
     }
 
     @Override
     public void mouseEntered(MouseEvent evenement)          // debut du survol
     {
+        if(evenement.getX()<(12+(75*15)) && evenement.getX()>12){
+            if(evenement.getY()<(50+(75*10)) && evenement.getY()>31){
+                posx=((evenement.getX()-16)/75);
+                posy=((evenement.getY()-31)/75);
+
+                if(posy >9){
+                    posy=9;
+                }
+                if(posx <0){
+                    posx=0;
+                }
+
+                new Grille(posx,posy);
+            }
+        }
         
-        System.out.println((evenement.getX()-14) + "," + evenement.getY());
-        System.out.println("x="+((evenement.getX()-14)/75)+" y="+(evenement.getY()/75));
+        //System.out.println((evenement.getX()-14) + "," + evenement.getY());
+        System.out.println("x="+posx+" y="+posy);
     }
 
     @Override
