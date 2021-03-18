@@ -4,16 +4,14 @@ import java.awt.event.*;
 
 public class PanelListener implements MouseListener
 {
-    private JPanel label;
+    private JPanel panel;
     private int posx=0;
     private int posy=0;
 
-    
 
-
-    public PanelListener(JPanel label)
+    public PanelListener(JPanel panel)
     {
-        this.label = label;
+        this.panel = panel;
     }
 
     @Override
@@ -30,22 +28,24 @@ public class PanelListener implements MouseListener
     {
         if(evenement.getX()<(12+(75*15)) && evenement.getX()>12){
             if(evenement.getY()<(50+(75*10)) && evenement.getY()>31){
-                posx=((evenement.getX()-16)/75);
-                posy=((evenement.getY()-31)/75);
+                posx=((evenement.getX()/*-16)/75*/));
+                posy=((evenement.getY()/*-31)/75*/));
 
-                if(posy >9){
+                /*if(posy >9){
                     posy=9;
                 }
                 if(posx <0){
                     posx=0;
-                }
+                }*/
 
-                new Grille(posx,posy);
+                
             }
         }
+
         
+        new Grille(posx,posy);
         //System.out.println((evenement.getX()-14) + "," + evenement.getY());
-        System.out.println("x="+posx+" y="+posy);
+        System.out.println("x="+posx+" y="+posy+"////DANS PANEL");
     }
 
     @Override

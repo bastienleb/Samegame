@@ -23,15 +23,27 @@ public class Grille extends JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setVisible(true);
-        
+        this.setVisible(true); 
     }
 
     public Grille(int x,int y){
         this.posx=x;
         this.posy=y;
-        //System.out.println(tab[posy][posx]);
     }
+
+
+    public int RecupX(){
+        
+        System.out.println("dans RecupX = "+posx);
+        return posx;
+    }
+
+    public int RecupY(){
+        System.out.println("dans RecupY = "+posy);
+        return posy;
+    }
+
+    
 
     
     public void RecupTabAlea(){
@@ -69,8 +81,6 @@ public class Grille extends JFrame {
         int score=0;
         JLabel labscore = new JLabel("score = "+ score);
         
-        
-        
         JPanel all= new JPanel();
         all.setLayout(null);
         panel.setBounds(0, 0, 1221, 815);
@@ -93,11 +103,11 @@ public class Grille extends JFrame {
                         pic.setBackground(Color.WHITE);
                         panel.add(pic);
 
-                        Superposition listener = new Superposition(pic);
-                        pic.addMouseListener(listener);
-
                         PanelListener list = new PanelListener(panel);
                         panel.addMouseListener(list);
+
+                        Superposition listener = new Superposition(pic,RecupX(),RecupY());
+                        pic.addMouseListener(listener);
 
                         panel.add(pic);
 
@@ -111,11 +121,11 @@ public class Grille extends JFrame {
                         pic.setBackground(Color.WHITE);
                         
 
-                        Superposition listener = new Superposition(pic);
-                        pic.addMouseListener(listener);
-
                         PanelListener list = new PanelListener(panel);
                         panel.addMouseListener(list);
+
+                        Superposition listener = new Superposition(pic,RecupX(),RecupY());
+                        pic.addMouseListener(listener);
 
                         panel.add(pic);
                     
@@ -128,12 +138,11 @@ public class Grille extends JFrame {
                         JLabel pic = new JLabel(new ImageIcon(img));
                         pic.setBackground(Color.WHITE);
                         
-
-                        Superposition listener = new Superposition(pic);
-                        pic.addMouseListener(listener);
-
                         PanelListener list = new PanelListener(panel);
                         panel.addMouseListener(list);
+
+                        Superposition listener = new Superposition(pic,RecupX(),RecupY());
+                        pic.addMouseListener(listener);                       
 
                         panel.add(pic);
         
