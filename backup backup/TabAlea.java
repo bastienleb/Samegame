@@ -30,15 +30,9 @@ public class TabAlea {
             }
 
         }
+        System.out.println("");
         
         return tab;
 
     }
-
-    
-
-    
-
-
-
 }

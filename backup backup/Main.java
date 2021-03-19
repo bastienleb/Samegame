@@ -1,4 +1,3 @@
-
 /*
 @author Kévin METRI et Bastien LEBLET
 */
