@@ -17,7 +17,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     int posy;
     int tmpx;
     int tmpy;
-
+    char tmplettre;
     
     public Grille(){
         super("Grille");
@@ -129,21 +129,35 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         public void ModifTAb(){ 
             //System.out.println("Dans la fonction ");
 
-            if(posx==tmpx && posy==tmpy){
+            
                 
-                posx=RecupX();
-                posy=RecupY();
-                if(tab[posy][posx]=='R'){
-                    tab[posy][posx]='r';
-                    
-                }
-                if(tab[posy][posx]=='V'){
-                    tab[posy][posx]='v';
-                }
-                if(tab[posy][posx]=='B'){
-                    tab[posy][posx]='b';
-                }
+            posx=RecupX();
+            posy=RecupY();
+            if(tab[posy][posx]=='R'){
+                tab[posy][posx]='r';
+                tmplettre=tab[tmpy][tmpx];
+                tmplettre=Character.toUpperCase(tmplettre);
+                tab[tmpy][tmpx]=tmplettre;
+                tmpx=posx;
+                tmpy=posy;
             }
+            if(tab[posy][posx]=='V'){
+                tab[posy][posx]='v';
+                tmplettre=tab[tmpy][tmpx];
+                tmplettre=Character.toUpperCase(tmplettre);
+                tab[tmpy][tmpx]=tmplettre;
+                tmpx=posx;
+                tmpy=posy;
+            }
+            if(tab[posy][posx]=='B'){
+                tab[posy][posx]='b';
+                tmplettre=tab[tmpy][tmpx];
+                tmplettre=Character.toUpperCase(tmplettre);
+                tab[tmpy][tmpx]=tmplettre;
+                tmpx=posx;
+                tmpy=posy;
+            }
+            
         }
        
 
