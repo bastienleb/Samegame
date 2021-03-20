@@ -33,24 +33,24 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         TabAlea ta = new TabAlea();
         tab=ta.alea();
 
-        for(int a=0; a<10;a++){  
-            for(int b=0; b<15;b++){  
-                System.out.print(tab[a][b]);
-            }
-            System.out.println("");
-        }
+        // for(int a=0; a<10;a++){  
+        //     for(int b=0; b<15;b++){  
+        //         System.out.print(tab[a][b]);
+        //     }
+        //     System.out.println("");
+        // }
     }
 
     public void RecupTabChoix(){
         TabChoix t=new TabChoix();
         tab=t.choix();
 
-        for(int a=0; a<10;a++){  
-            for(int b=0; b<15;b++){  
-                System.out.print(tab[a][b]);
-            }
-            System.out.println("");
-        }
+        // for(int a=0; a<10;a++){  
+        //     for(int b=0; b<15;b++){  
+        //         System.out.print(tab[a][b]);
+        //     }
+        //     System.out.println("");
+        // }
 
     }
     
@@ -138,6 +138,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tmplettre=tab[tmpy][tmpx];
                 tmplettre=Character.toUpperCase(tmplettre);
                 tab[tmpy][tmpx]=tmplettre;
+                AutourCase(posx,posy);
                 tmpx=posx;
                 tmpy=posy;
             }
@@ -146,6 +147,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tmplettre=tab[tmpy][tmpx];
                 tmplettre=Character.toUpperCase(tmplettre);
                 tab[tmpy][tmpx]=tmplettre;
+                AutourCase(posx,posy);
                 tmpx=posx;
                 tmpy=posy;
             }
@@ -154,21 +156,98 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tmplettre=tab[tmpy][tmpx];
                 tmplettre=Character.toUpperCase(tmplettre);
                 tab[tmpy][tmpx]=tmplettre;
+                AutourCase(posx,posy);
                 tmpx=posx;
                 tmpy=posy;
             }
             
         }
+
+
+    public void AutourCase(int x,int y){
+
+        // System.out.println("Case ou je suis : "+tab[y][x]);
+        // System.out.println("Case a droite : "+tab[y][x+1]);
+        // System.out.println("Case a gauche : "+tab[y][x-1]);
+        // System.out.println("Case a en bas : "+tab[y+1][x]);
+        // System.out.println("Case en haut : "+tab[y-1][x]);
+
+
+        // System.out.println("DANS AUTOURCASE  x: " +x+" y: "+y);
+
+        // if((x>=0)&&(x<14)&&(y>=0)&&(y<9)){
+
+            if(x<14){
+                if (tab[y][x]==tab[y][x+1]){
+                    System.out.println("A DROITE IL Y A UNE CASE :" + tab[y][x+1]+" aux coordonnées x:"+x+" y:"+y);
+                   AutourCase((x+1), y);
+                    ImageJeu();
+            }
+        }
+
+        if(x>0){
+             if (tab[y][x]==tab[y][x-1]){
+                System.out.println("A GAUCHE IL Y A UNE CASE :" + tab[y][x-1]+" aux coordonnées x:"+x+" y:"+y);
+               AutourCase((x-1),y);
+                ImageJeu();
+            }      
+         }
+
+         if(y>9){
+
+            if (tab[y][x]==tab[y+1][x]){
+                System.out.println("EN BAS IL Y A UNE CASE :" + tab[y-1][x]+" aux coordonnées x:"+x+" y:"+y);
+               AutourCase(x, (y+1));
+                ImageJeu();
+            }
+
+        }
+
+
+        if(y>0){
+            if (tab[y][x]==tab[y-1][x]){
+                System.out.println("EN HAUT IL Y A UNE CASE :" + tab[y-1][x]+" aux coordonnées x:"+x+" y:"+y);
+               AutourCase(x, (y-1));
+                ImageJeu();
+            }
+
+        }
+
+    }
+    
        
 
     @Override
     public void mouseClicked(MouseEvent e)  {
         //System.out.println("TA cliquer");
-    }
 
+    //     if((e.getX()/75>=0)&&(e.getX()/75<15)&&(e.getY()/75>=0)&&(e.getY()/75<10)){
+        
+    //         if(x==ancienx && y==ancieny){
+    //             //System.out.println("c'est le meme pelo x="+x+" y="+y+" ancienx="+ancienx+" ancieny="+ancieny);
+    //             x=(e.getX()/75);
+    //             y=(e.getY()/75);
+    //         } 
+    //         else{  
+    //             ancienx=x;
+    //             ancieny=y;
+    //             RecupX();
+    //             RecupY();
+    
+    //             ModifTAb();
+    //             ImageJeu();
+                
+    //             // System.out.println(" x: "+x+" y :"+y);
+    //         }
+    // }
+
+    // AutourCase(x, y);
+    }
 
     @Override
     public void mouseMoved(MouseEvent e) {
+
+        if((e.getX()/75>=0)&&(e.getX()/75<15)&&(e.getY()/75>=0)&&(e.getY()/75<10)){
         
         if(x==ancienx && y==ancieny){
             //System.out.println("c'est le meme pelo x="+x+" y="+y+" ancienx="+ancienx+" ancieny="+ancieny);
@@ -180,12 +259,14 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             ancieny=y;
             RecupX();
             RecupY();
-
+            
             ModifTAb();
+            // AutourCase(x, y);
             ImageJeu();
             
-            //System.out.println(" x: "+x+" y :"+y);
+            // System.out.println(" x: "+x+" y :"+y);
         }
+    }
         
     }
 public void mousePressed(MouseEvent e){}
