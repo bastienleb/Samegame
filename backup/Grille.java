@@ -134,29 +134,29 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             posx=RecupX();
             posy=RecupY();
             if(tab[posy][posx]=='R'){
+                AutourCase(posx,posy);
                 tab[posy][posx]='r';
                 tmplettre=tab[tmpy][tmpx];
                 tmplettre=Character.toUpperCase(tmplettre);
                 tab[tmpy][tmpx]=tmplettre;
-                AutourCase(posx,posy);
                 tmpx=posx;
                 tmpy=posy;
             }
             if(tab[posy][posx]=='V'){
+                AutourCase(posx,posy);
                 tab[posy][posx]='v';
                 tmplettre=tab[tmpy][tmpx];
                 tmplettre=Character.toUpperCase(tmplettre);
                 tab[tmpy][tmpx]=tmplettre;
-                AutourCase(posx,posy);
                 tmpx=posx;
                 tmpy=posy;
             }
             if(tab[posy][posx]=='B'){
+                AutourCase(posx,posy);
                 tab[posy][posx]='b';
                 tmplettre=tab[tmpy][tmpx];
                 tmplettre=Character.toUpperCase(tmplettre);
                 tab[tmpy][tmpx]=tmplettre;
-                AutourCase(posx,posy);
                 tmpx=posx;
                 tmpy=posy;
             }
@@ -165,7 +165,9 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
 
 
     public void AutourCase(int x,int y){
-
+        char tempL;
+        tempL=tab[y][x];
+        boolean tmp;
         // System.out.println("Case ou je suis : "+tab[y][x]);
         // System.out.println("Case a droite : "+tab[y][x+1]);
         // System.out.println("Case a gauche : "+tab[y][x-1]);
@@ -177,44 +179,60 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
 
         // if((x>=0)&&(x<14)&&(y>=0)&&(y<9)){
 
-            if(x<14){
-                if (tab[y][x]==tab[y][x+1]){
-                    System.out.println("A DROITE IL Y A UNE CASE :" + tab[y][x+1]+" aux coordonnées x:"+x+" y:"+y);
-                   AutourCase((x+1), y);
-                    ImageJeu();
-            }
-        }
+        tmp=Character.isUpperCase(tempL);
 
         if(x>0){
-             if (tab[y][x]==tab[y][x-1]){
-                System.out.println("A GAUCHE IL Y A UNE CASE :" + tab[y][x-1]+" aux coordonnées x:"+x+" y:"+y);
-               AutourCase((x-1),y);
+             if (tab[y][x]==tab[y][x-1] && tmp==true){
+                System.out.println("A GAUCHE IL Y A UNE CASE :" + tab[y][x-1]+" aux coordonnées x:"+(x-1)+" y:"+y);
+                tab[y][x-1]=Character.toLowerCase(tempL);
                 ImageJeu();
+                AutourCase((x-1),y);
             }      
-         }
-
-         if(y>9){
-
-            if (tab[y][x]==tab[y+1][x]){
-                System.out.println("EN BAS IL Y A UNE CASE :" + tab[y-1][x]+" aux coordonnées x:"+x+" y:"+y);
-               AutourCase(x, (y+1));
-                ImageJeu();
-            }
-
         }
-
 
         if(y>0){
-            if (tab[y][x]==tab[y-1][x]){
-                System.out.println("EN HAUT IL Y A UNE CASE :" + tab[y-1][x]+" aux coordonnées x:"+x+" y:"+y);
-               AutourCase(x, (y-1));
+            if (tab[y][x]==tab[y-1][x] && tmp==true){
+                System.out.println("EN HAUT IL Y A UNE CASE :" + tab[y-1][x]+" aux coordonnées x:"+x+" y:"+(y-1));
+                tab[y-1][x]=Character.toLowerCase(tempL);
                 ImageJeu();
+                AutourCase(x, (y-1));
             }
 
         }
+
+        if(y>9){
+
+            if (tab[y][x]==tab[y+1][x] && tmp==true){
+                System.out.println("EN BAS IL Y A UNE CASE :" + tab[y+1][x]+" aux coordonnées x:"+x+" y:"+(y+1));
+                tab[y+1][x]=Character.toLowerCase(tempL);
+                ImageJeu();
+                AutourCase(x, (y+1));
+            }
+
+        }
+
+        if(x<14){
+            if (tab[y][x]==tab[y][x+1] && tmp==true){
+                System.out.println("A DROITE IL Y A UNE CASE :" + tab[y][x+1]+" aux coordonnées x:"+(x+1)+" y:"+y);
+                tab[y][x+1]=Character.toLowerCase(tempL);
+                ImageJeu();
+                AutourCase((x+1), y);
+            }
+        }
+
+        System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////");
 
     }
     
+
+    public void RefreshTab(){
+        for (int i=0;i<10;i++){
+            for(int j=0;j<15;j++){
+                char lettre_en_cours=tab[i][j];
+                tab[i][j]=Character.toUpperCase(lettre_en_cours);
+            }
+        }
+    }
        
 
     @Override
