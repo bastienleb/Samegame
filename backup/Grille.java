@@ -133,36 +133,117 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 
             posx=RecupX();
             posy=RecupY();
+            VerifC(posx,posy);
+            
             if(tab[posy][posx]=='R'){
-                AutourCase(posx,posy);
                 tab[posy][posx]='r';
                 tmplettre=tab[tmpy][tmpx];
                 tmplettre=Character.toUpperCase(tmplettre);
                 tab[tmpy][tmpx]=tmplettre;
+                // VerifC(posx,posy);
                 tmpx=posx;
                 tmpy=posy;
             }
             if(tab[posy][posx]=='V'){
-                AutourCase(posx,posy);
                 tab[posy][posx]='v';
                 tmplettre=tab[tmpy][tmpx];
                 tmplettre=Character.toUpperCase(tmplettre);
                 tab[tmpy][tmpx]=tmplettre;
+                // VerifC(posx,posy);
                 tmpx=posx;
                 tmpy=posy;
             }
             if(tab[posy][posx]=='B'){
-                AutourCase(posx,posy);
                 tab[posy][posx]='b';
                 tmplettre=tab[tmpy][tmpx];
                 tmplettre=Character.toUpperCase(tmplettre);
                 tab[tmpy][tmpx]=tmplettre;
+                // VerifC(posx,posy);
                 tmpx=posx;
                 tmpy=posy;
             }
             
         }
 
+
+    public void VerifC(int x,int y){
+        Gauche(x,y);
+        Droite(x,y);
+        Bas(x,y);
+        Haut(x,y);
+    }
+
+    public void Haut(int x, int y) {
+        char tempL=tab[y][x];
+        boolean tmp=Character.isUpperCase(tempL);
+
+         if(y>0){
+            if (tab[y][x]==tab[y-1][x] && tmp==true){
+                System.out.println("EN HAUT IL Y A UNE CASE :" + tab[y-1][x]+" aux coordonnées x:"+x+" y:"+(y-1));
+                tab[y-1][x]=Character.toLowerCase(tempL);
+                ImageJeu();
+                VerifC(x, (y-1));
+            }else 
+                System.out.println("/////////////////////////////////////// HAUT ///////////////////////////////////////////////////////////////");
+
+    }
+    
+   }
+
+    public void Bas(int x, int y) {
+        char tempL=tab[y][x];
+        boolean tmp=Character.isUpperCase(tempL);
+
+         if(y>9){
+
+            if (tab[y][x]==tab[y+1][x] && tmp==true){
+                System.out.println("EN BAS IL Y A UNE CASE :" + tab[y+1][x]+" aux coordonnées x:"+x+" y:"+(y+1));
+                tab[y+1][x]=Character.toLowerCase(tempL);
+                ImageJeu();
+                VerifC(x, (y+1));
+            }else
+            System.out.println("////////////////////////////////////////// BAAAAS ////////////////////////////////////////////////////////////");
+
+
+        }
+        
+    }
+
+    public void Droite(int x, int y) {
+
+        char tempL=tab[y][x];
+        boolean tmp=Character.isUpperCase(tempL);
+
+         if(x<14){
+            if (tab[y][x]==tab[y][x+1] && tmp==true){
+                System.out.println("A DROITE IL Y A UNE CASE :" + tab[y][x+1]+" aux coordonnées x:"+(x+1)+" y:"+y);
+                tab[y][x+1]=Character.toLowerCase(tempL);
+                ImageJeu();
+                VerifC(y, y);
+            }else 
+                 System.out.println("/////////////////////////////////////////// DROIIITE ///////////////////////////////////////////////////////////");
+
+        }
+        
+    }
+
+    public void Gauche(int x, int y) {
+        char tempL=tab[y][x];
+        boolean tmp=Character.isUpperCase(tempL);
+
+
+
+        if(x>0){
+            if (tab[y][x]==tab[y][x-1] && tmp==true){
+               System.out.println("A GAUCHE IL Y A UNE CASE :" + tab[y][x-1]+" aux coordonnées x:"+(x-1)+" y:"+y);
+               tab[y][x-1]=Character.toLowerCase(tempL);
+               ImageJeu();
+               VerifC((x-1),y);
+           } else 
+           System.out.println("////////////////////////////////////////////GAUCHE //////////////////////////////////////////////////////////");
+       }
+       
+    }
 
     public void AutourCase(int x,int y){
         char tempL;
@@ -175,52 +256,104 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         // System.out.println("Case en haut : "+tab[y-1][x]);
 
 
-        // System.out.println("DANS AUTOURCASE  x: " +x+" y: "+y);
+        System.out.println("DANS AUTOURCASE  x: " +x+" y: "+y);
 
         // if((x>=0)&&(x<14)&&(y>=0)&&(y<9)){
 
         tmp=Character.isUpperCase(tempL);
 
-        if(x>0){
-             if (tab[y][x]==tab[y][x-1] && tmp==true){
-                System.out.println("A GAUCHE IL Y A UNE CASE :" + tab[y][x-1]+" aux coordonnées x:"+(x-1)+" y:"+y);
-                tab[y][x-1]=Character.toLowerCase(tempL);
-                ImageJeu();
-                AutourCase((x-1),y);
-            }      
-        }
+        // for(int i=0;i<10;i++){
+        //     for(int j=0;j<15;j++){
+            System.out.println(" AUTOUR CASE");
 
-        if(y>0){
-            if (tab[y][x]==tab[y-1][x] && tmp==true){
-                System.out.println("EN HAUT IL Y A UNE CASE :" + tab[y-1][x]+" aux coordonnées x:"+x+" y:"+(y-1));
-                tab[y-1][x]=Character.toLowerCase(tempL);
-                ImageJeu();
-                AutourCase(x, (y-1));
-            }
+            // if ((x+1>=1)&(y+1>=1)&&(y<10)&&(x<15)){
+            //     System.out.println(" if");
+            //     if ((tab[y][x]==tab[y][x-1]) && (tmp==true) && (tab[y][x]==tab[y-1][x]) && (tab[y][x]==tab[y+1][x]) && (tab[y][x]==tab[y][x+1])){
+            //         System.out.println(" CARRE PARFAIT COMME AU POKER");
+            //         tab[y][x]=Character.toLowerCase(tempL);
+            //         tab[y][x-1]=Character.toLowerCase(tempL);
+            //         tab[y][x+1]=Character.toLowerCase(tempL);
+            //         tab[y+1][x]=Character.toLowerCase(tempL);
+            //         tab[y-1][x-1]=Character.toLowerCase(tempL);
+            //         ImageJeu();
+            //         AutourCase((x-1),y);
+            //         AutourCase(x, (y-1));
+            //         AutourCase(x+1, y);
+            //         AutourCase(x, y+1);
+            //     }      
+            // }
 
-        }
+        //     if ((x>0)&(y>0)&&(y<9)&&(x<14)){
+        //         if (tab[y][x]==tab[y][x-1] && tmp==true && tab[y][x]==tab[y-1][x]){
+        //             System.out.println(" BRELAN HAUT GAUCHE DROTE");
+        //             tab[y][x]=Character.toLowerCase(tempL);
+        //             tab[y][x-1]=Character.toLowerCase(tempL);
+        //             ImageJeu();
+        //             AutourCase((x-1),y);
+        //             AutourCase(x, (y-1));
+        //         }      
+        //     }
 
-        if(y>9){
 
-            if (tab[y][x]==tab[y+1][x] && tmp==true){
-                System.out.println("EN BAS IL Y A UNE CASE :" + tab[y+1][x]+" aux coordonnées x:"+x+" y:"+(y+1));
-                tab[y+1][x]=Character.toLowerCase(tempL);
-                ImageJeu();
-                AutourCase(x, (y+1));
-            }
+        // if ((x>0)&(y>0)){
+        //     if (tab[y][x]==tab[y][x-1] && tmp==true && tab[y][x]==tab[y-1][x]){
+        //         System.out.println(" A GAUCHE ET EN HAUT IL Y A UNE CASE DE LA MEME COULEUR");
+        //         tab[y][x-1]=Character.toLowerCase(tempL);
+        //         ImageJeu();
+        //         AutourCase((x-1),y);
+        //         AutourCase(x, (y-1));
+        //     }      
+        // }
 
-        }
 
-        if(x<14){
-            if (tab[y][x]==tab[y][x+1] && tmp==true){
-                System.out.println("A DROITE IL Y A UNE CASE :" + tab[y][x+1]+" aux coordonnées x:"+(x+1)+" y:"+y);
-                tab[y][x+1]=Character.toLowerCase(tempL);
-                ImageJeu();
-                AutourCase((x+1), y);
-            }
-        }
+        //   if(x>0){
+        //      if (tab[y][x]==tab[y][x-1] && tmp==true){
+        //         System.out.println("A GAUCHE IL Y A UNE CASE :" + tab[y][x-1]+" aux coordonnées x:"+(x-1)+" y:"+y);
+        //         tab[y][x-1]=Character.toLowerCase(tempL);
+        //         ImageJeu();
+        //         AutourCase((x-1),y);
+        //     }      
+        // }
+        
 
-        System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////");
+        // else if(y>0){
+        //     if (tab[y][x]==tab[y-1][x] && tmp==true){
+        //         System.out.println("EN HAUT IL Y A UNE CASE :" + tab[y-1][x]+" aux coordonnées x:"+x+" y:"+(y-1));
+        //         tab[y-1][x]=Character.toLowerCase(tempL);
+        //         ImageJeu();
+        //         AutourCase(x, (y-1));
+        //     }
+
+        // }
+
+        // else if(y>9){
+
+        //     if (tab[y][x]==tab[y+1][x] && tmp==true){
+        //         System.out.println("EN BAS IL Y A UNE CASE :" + tab[y+1][x]+" aux coordonnées x:"+x+" y:"+(y+1));
+        //         tab[y+1][x]=Character.toLowerCase(tempL);
+        //         ImageJeu();
+        //         AutourCase(x, (y+1));
+        //     }
+
+        // }
+
+        // else if(x<14){
+        //     if (tab[y][x]==tab[y][x+1] && tmp==true){
+        //         System.out.println("A DROITE IL Y A UNE CASE :" + tab[y][x+1]+" aux coordonnées x:"+(x+1)+" y:"+y);
+        //         tab[y][x+1]=Character.toLowerCase(tempL);
+        //         ImageJeu();
+        //         AutourCase(y, y);
+        //     }
+        // }
+
+
+
+  
+
+    
+
+
+        // System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////");
 
     }
     
