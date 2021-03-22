@@ -19,11 +19,12 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     int tmpx;
     int tmpy;
     char tmplettre;
+    int score=0;
     
     public Grille(){
         super("Grille");
         
-        this.setSize(1125,750);
+        this.setSize(1230,885);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,13 +65,22 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     public void ImageJeu(){
             
             JPanel panel =new JPanel();
+            JPanel panscore = new JPanel();
+            JLabel labscore = new JLabel("score = "+ score);
+
+            JPanel all= new JPanel();
+            all.setLayout(null);
+            panel.setBounds(0, 0, 1221, 815);
+            panscore.setBounds(0,810,1221,40);
+            panscore.setBackground(Color.RED);
+            labscore.setFont(new Font("Sérif",Font.BOLD,15));
             
             panel.setLayout(new GridLayout(10,15));
             
             
             for (int i=0;i<10;i++){
                 for(int j=0;j<15;j++){
-                    this.add(panel);
+                    // this.add(panel);
                     String lettre=Character.toString(tab[i][j]);
                     
                     if(lettre.equals("R")){
@@ -120,6 +130,10 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 }
                 //System.out.println("");
             }
+            all.add(panel);
+            all.add(panscore);
+
+            this.add(all);
             panel.addMouseMotionListener(this);
             panel.addMouseListener(this);
             this.setVisible(true);
