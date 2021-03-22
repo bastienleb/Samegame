@@ -3,9 +3,10 @@ import java.util.*;
 
 public class TabChoix {
     char[][] tab=new char[10][15];
+    int valider=0;
 
     public char[][] choix() {
-        System.out.println("dans TabChoix");
+        // System.out.println("dans TabChoix");
         String chemin;
         RecupFichier t=new RecupFichier();
         chemin=t.recuperation();
@@ -39,8 +40,13 @@ public class TabChoix {
         }
         catch(IOException e)
         {
-        e.printStackTrace();
+            System.err.println("Fichier introuvable");
+            valider=1;
         }
         return tab;
-  }
+    }
+
+    public int verif(){
+        return valider;
+    }
 }

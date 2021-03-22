@@ -13,7 +13,7 @@ public class RecupFichier {
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             File selectedFile = jfc.getSelectedFile();
             chemin=selectedFile.getPath();
-            System.out.println(chemin);
+            // System.out.println(chemin);
         }
         return chemin;
     }

@@ -40,7 +40,6 @@ public class Menu extends JFrame {
         bouton2.addActionListener(m -> {
             Grille grille=new Grille();
             validation = grille.RecupTabChoix();
-            System.out.println(validation+" dans menu");
             if(validation==0){
                 grille.ImageJeu();
             }
