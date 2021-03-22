@@ -20,6 +20,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     int tmpy;
     char tmplettre;
     int score=0;
+    int boules=1;
     
     public Grille(){
         super("Grille");
@@ -72,8 +73,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             all.setLayout(null);
             panel.setBounds(0, 0, 1221, 815);
             panscore.setBounds(0,810,1221,40);
-            panscore.setBackground(Color.RED);
             labscore.setFont(new Font("Sérif",Font.BOLD,15));
+            panscore.setBackground(Color.RED);
             
             panel.setLayout(new GridLayout(10,15));
             
@@ -130,6 +131,9 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 }
                 //System.out.println("");
             }
+
+
+            panscore.add(labscore);
             all.add(panel);
             all.add(panscore);
 
@@ -235,6 +239,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tabsurvol[y][x-1]=1;
                 AutourCase((x-1),y);
                 ImageJeu();
+                boules++;
             }      
         }
         
@@ -247,6 +252,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tabsurvol[y-1][x]=1;
                 AutourCase(x, (y-1));
                 ImageJeu();
+                boules++;
+
             }
 
         }
@@ -259,6 +266,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tabsurvol[y+1][x]=1;
                 AutourCase(x, (y+1));
                 ImageJeu();
+                boules++;
+
             }
         }
 
@@ -270,10 +279,11 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tabsurvol[y][x+1]=1;
                 AutourCase(x+1, y);
                 ImageJeu();
+                boules++;
+
             }
         } 
         // System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////");
-
     }
     
 
@@ -308,6 +318,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     public void mouseClicked(MouseEvent e)  {
         //System.out.println("TA cliquer");
         changerfond();
+        score+=(boules-2)^2;
+        boules=1;
     }
 
     @Override
