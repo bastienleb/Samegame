@@ -12,6 +12,7 @@ public class Menu extends JFrame {
     JPanel logo = new JPanel();
     JLabel nomjeu = new JLabel("SameGame");
     Actionmenu m = new Actionmenu(panneau);
+    int validation=0;
     
     
     public Menu(){
@@ -38,8 +39,10 @@ public class Menu extends JFrame {
         JButton bouton2 = new JButton("Choix fichier");
         bouton2.addActionListener(m -> {
             Grille grille=new Grille();
-            grille.RecupTabChoix();
-            grille.ImageJeu();
+            validation= grille.RecupTabChoix();
+            if(validation!=1){
+                grille.ImageJeu();
+            }
             this.dispose();
         });
         bouton2.setFont(new Font("Sérif",Font.BOLD,15));
