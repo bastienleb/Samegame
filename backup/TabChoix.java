@@ -3,6 +3,7 @@ import java.util.*;
 
 public class TabChoix {
     char[][] tab=new char[10][15];
+    int valider=0;
 
     public char[][] choix() {
         // System.out.println("dans TabChoix");
@@ -40,8 +41,12 @@ public class TabChoix {
         catch(IOException e)
         {
             System.err.println("Fichier introuvable");
-            new Menu();
+            valider=1;
         }
         return tab;
-  }
+    }
+
+    public int verif(){
+        return valider;
+    }
 }

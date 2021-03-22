@@ -44,11 +44,10 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     public int RecupTabChoix(){
         TabChoix t=new TabChoix();
         tab=t.choix();
-        int validation=0;
-
-        if(tab[0][0]==' '||tab[0][0]!='V'||tab[0][0]!='B'){
-            validation=1;
+        int validation=t.verif();
+        if(validation==1){
             this.dispose();
+            new Menu();
         }
 
         // for(int a=0; a<10;a++){  
@@ -410,29 +409,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     @Override
     public void mouseClicked(MouseEvent e)  {
         //System.out.println("TA cliquer");
-
-    //     if((e.getX()/75>=0)&&(e.getX()/75<15)&&(e.getY()/75>=0)&&(e.getY()/75<10)){
-        
-    //         if(x==ancienx && y==ancieny){
-    //             //System.out.println("c'est le meme pelo x="+x+" y="+y+" ancienx="+ancienx+" ancieny="+ancieny);
-    //             x=(e.getX()/75);
-    //             y=(e.getY()/75);
-    //         } 
-    //         else{  
-    //             ancienx=x;
-    //             ancieny=y;
-    //             RecupX();
-    //             RecupY();
-    
-    //             ModifTAb();
-    //             ImageJeu();
-                
-    //             // System.out.println(" x: "+x+" y :"+y);
-    //         }
-    // }
-
-    // AutourCase(x, y);
-    changerfond();
+        changerfond();
     }
 
     @Override
