@@ -215,7 +215,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
 
         if(x>0){
             System.out.println("Dans le if x>0 tab="+tab[y][x]+" et l'autre ="+tab[y][x-1]+ " et tab survol ="+tabsurvol[y][x]+" a gauche");
-            if (tab[y][x]==Character.toLowerCase(tab[y][x-1]) && tabsurvol[y][x]==1){
+            if (tab[y][x]==Character.toLowerCase(tab[y][x-1]) && tabsurvol[y][x-1]==0){
                 System.out.println("A GAUCHE IL Y A UNE CASE :" + tab[y][x-1]+" aux coordonnées x:"+(x-1)+" y:"+y);
                 tab[y][x-1]=Character.toLowerCase(tempL);
                 tabsurvol[y][x-1]=1;
@@ -227,7 +227,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
 
         if(y>0){
             System.out.println("Dans le if y>0 tab="+tab[y][x]+" et l'autre ="+tab[y-1][x]+ " et tab survol ="+tabsurvol[y][x]+" en haut");
-            if (tab[y][x]==Character.toLowerCase(tab[y-1][x]) && tabsurvol[y][x]==1){
+            if (tab[y][x]==Character.toLowerCase(tab[y-1][x]) && tabsurvol[y-1][x]==0){
                 System.out.println("EN HAUT IL Y A UNE CASE :" + tab[y-1][x]+" aux coordonnées x:"+x+" y:"+(y-1));
                 tab[y-1][x]=Character.toLowerCase(tempL);
                 tabsurvol[y-1][x]=1;
@@ -239,7 +239,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
 
         if(y+1<10){
             System.out.println("Dans le if y<9 tab="+tab[y][x]+" et l'autre ="+tab[y+1][x]+ " et tab survol ="+tabsurvol[y][x]+" en bas");
-            if (tab[y][x]==Character.toLowerCase(tab[y+1][x]) && tabsurvol[y][x]==1){
+            if (tab[y][x]==Character.toLowerCase(tab[y+1][x]) && tabsurvol[y+1][x]==0){
                 System.out.println("EN BAS IL Y A UNE CASE :" + tab[y+1][x]+" aux coordonnées x:"+x+" y:"+(y+1));
                 tab[y+1][x]=Character.toLowerCase(tempL);
                 tabsurvol[y+1][x]=1;
@@ -250,7 +250,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
 
         if(x+1<15){
             System.out.println("Dans le if x<14 tab="+tab[y][x]+" et l'autre ="+tab[y][x+1]+ " et tab survol ="+tabsurvol[y][x]+" a droite");
-            if (tab[y][x]==Character.toLowerCase(tab[y][x+1]) && tabsurvol[y][x]==1){
+            if (tab[y][x]==Character.toLowerCase(tab[y][x+1]) && tabsurvol[y][x+1]==0){
                 System.out.println("A DROITE IL Y A UNE CASE :" + tab[y][x+1]+" aux coordonnées x:"+(x+1)+" y:"+y);
                 tab[y][x+1]=Character.toLowerCase(tempL);
                 tabsurvol[y][x+1]=1;
