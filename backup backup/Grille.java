@@ -19,11 +19,13 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     int tmpx;
     int tmpy;
     char tmplettre;
+    int score=0;
+    int boules=1;
     
     public Grille(){
         super("Grille");
         
-        this.setSize(1125,750);
+        this.setSize(1230,885);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,13 +66,21 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     public void ImageJeu(){
             
             JPanel panel =new JPanel();
+            JPanel panscore = new JPanel();
+            JLabel labscore = new JLabel("score = "+ score);
+
+            JPanel all= new JPanel();
+            all.setLayout(null);
+            panel.setBounds(0, 0, 1221, 815);
+            panscore.setBounds(0,810,1221,40);
+            labscore.setFont(new Font("Sérif",Font.BOLD,15));
+            panscore.setBackground(Color.RED);
             
             panel.setLayout(new GridLayout(10,15));
             
-            
             for (int i=0;i<10;i++){
                 for(int j=0;j<15;j++){
-                    this.add(panel);
+                    // this.add(panel);
                     String lettre=Character.toString(tab[i][j]);
                     
                     if(lettre.equals("R")){
@@ -119,7 +129,15 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                     
                 }
                 //System.out.println("");
+                 BougeGauche();
             }
+
+
+            panscore.add(labscore);
+            all.add(panel);
+            all.add(panscore);
+
+            this.add(all);
             panel.addMouseMotionListener(this);
             panel.addMouseListener(this);
             this.setVisible(true);
@@ -149,6 +167,49 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 }
             }
         }
+
+        public char VerifColonne(int colonnes){
+            for (int i=0; i<9; i++) {
+                if (tab[colonnes][i]!=' ') {
+                    return 'N';
+                    }
+            }
+            return 'O';
+        }
+
+        public void BougeGauche () {
+           
+            for (int k=0; k<10; k++) {
+                for (int j=0; j<14; j++) {
+                    if ((VerifColonne(k)=='O')) {
+                        for (int i=0; i<9; i++) {
+                            tab[i][j]= tab[i][j+1];
+                            tab[i][j+1]=' ';
+                            }
+            }
+            
+        }
+    }
+}
+
+
+
+        public void BougeTab(){
+
+            for (int k=0; k<10; k++) {
+             for (int i=0; i<9; i++) {
+                for (int j=0; j<14; j++) {
+                    if ((tab[i+1][j]==' ') && (tab[i][j]!=' ')) {
+                        tab[i+1][j]= tab[i][j];
+                        tab[i][j]=' ';
+                    }
+                // System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////");
+                }
+            }
+        }
+        ImageJeu();
+        }
+
 
         public void ModifTAb(){ 
             //System.out.println("Dans la fonction ");
@@ -221,6 +282,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tabsurvol[y][x-1]=1;
                 AutourCase((x-1),y);
                 ImageJeu();
+                boules++;
             }      
         }
         
@@ -233,6 +295,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tabsurvol[y-1][x]=1;
                 AutourCase(x, (y-1));
                 ImageJeu();
+                boules++;
+
             }
 
         }
@@ -245,6 +309,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tabsurvol[y+1][x]=1;
                 AutourCase(x, (y+1));
                 ImageJeu();
+                boules++;
+
             }
         }
 
@@ -256,10 +322,11 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tabsurvol[y][x+1]=1;
                 AutourCase(x+1, y);
                 ImageJeu();
+                boules++;
+
             }
         } 
         // System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////");
-
     }
     
 
@@ -294,6 +361,10 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     public void mouseClicked(MouseEvent e)  {
         //System.out.println("TA cliquer");
         changerfond();
+        score+=(boules-2)^2;
+        boules=1;
+        BougeTab();
+
     }
 
     @Override

@@ -78,7 +78,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             
             panel.setLayout(new GridLayout(10,15));
             
-            
             for (int i=0;i<10;i++){
                 for(int j=0;j<15;j++){
                     // this.add(panel);
@@ -130,6 +129,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                     
                 }
                 //System.out.println("");
+                 BougeGauche();
             }
 
 
@@ -167,6 +167,49 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 }
             }
         }
+
+        public char VerifColonne(int colonnes){
+            for (int i=0; i<9; i++) {
+                if (tab[colonnes][i]!=' ') {
+                    return 'N';
+                    }
+            }
+            return 'O';
+        }
+
+        public void BougeGauche () {
+           
+            for (int k=0; k<10; k++) {
+                for (int j=0; j<14; j++) {
+                    if ((VerifColonne(k)=='O')) {
+                        for (int i=0; i<9; i++) {
+                            tab[i][j]= tab[i][j+1];
+                            tab[i][j+1]=' ';
+                            }
+            }
+            
+        }
+    }
+}
+
+
+
+        public void BougeTab(){
+
+            for (int k=0; k<10; k++) {
+             for (int i=0; i<9; i++) {
+                for (int j=0; j<14; j++) {
+                    if ((tab[i+1][j]==' ') && (tab[i][j]!=' ')) {
+                        tab[i+1][j]= tab[i][j];
+                        tab[i][j]=' ';
+                    }
+                // System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////");
+                }
+            }
+        }
+        ImageJeu();
+        }
+
 
         public void ModifTAb(){ 
             //System.out.println("Dans la fonction ");
@@ -320,6 +363,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         changerfond();
         score+=(boules-2)^2;
         boules=1;
+        BougeTab();
+
     }
 
     @Override
