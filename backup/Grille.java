@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class Grille extends JFrame implements MouseMotionListener,MouseListener {
     private char tab[][]=new char[10][15];
+    private int tabsurvol[][]=new int[10][15];
     int x;
     int y;
     int ancienx;
@@ -133,6 +134,21 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             // System.out.println("Dans la fonction "+y);
             return y;
         }
+        public void AfficherTabSurvol(){
+            for(int a=0; a<10;a++){  
+                for(int b=0; b<15;b++){  
+                    System.out.print(tabsurvol[a][b]);
+                }
+                System.out.println("");
+            }
+        }
+        public void ResetTabSurvol(){
+            for(int a=0; a<10;a++){  
+                for(int b=0; b<15;b++){  
+                    tabsurvol[a][b]=0;
+                }
+            }
+        }
 
         public void ModifTAb(){ 
             //System.out.println("Dans la fonction ");
@@ -142,11 +158,12 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             posx=RecupX();
             posy=RecupY();
             //VerifC(posx,posy);
-            AutourCase(posx, posy);
+            
             RefreshTab();
             
             if(tab[posy][posx]=='R'){
                 tab[posy][posx]='r';
+                tabsurvol[posy][posx]=1;
                 tmplettre=tab[tmpy][tmpx];
                 tmplettre=Character.toUpperCase(tmplettre);
                 tab[tmpy][tmpx]=tmplettre;
@@ -156,6 +173,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             }
             if(tab[posy][posx]=='V'){
                 tab[posy][posx]='v';
+                tabsurvol[posy][posx]=1;
                 tmplettre=tab[tmpy][tmpx];
                 tmplettre=Character.toUpperCase(tmplettre);
                 tab[tmpy][tmpx]=tmplettre;
@@ -165,6 +183,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             }
             if(tab[posy][posx]=='B'){
                 tab[posy][posx]='b';
+                tabsurvol[posy][posx]=1;
                 tmplettre=tab[tmpy][tmpx];
                 tmplettre=Character.toUpperCase(tmplettre);
                 tab[tmpy][tmpx]=tmplettre;
@@ -172,208 +191,73 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tmpx=posx;
                 tmpy=posy;
             }
-            
+            AfficherTabSurvol();
+            AutourCase(posx, posy);
+            ResetTabSurvol();
         }
-
-
-    public void VerifC(int x,int y){
-        Gauche(x,y);
-        Droite(x,y);
-        Bas(x,y);
-        Haut(x,y);
-    }
-
-    public void Haut(int x, int y) {
-        char tempL=tab[y][x];
-        boolean tmp=Character.isUpperCase(tempL);
-
-         if(y>0){
-            if (tab[y][x]==tab[y-1][x] /*&& tmp==true*/){
-                System.out.println("EN HAUT IL Y A UNE CASE :" + tab[y-1][x]+" aux coordonnées x:"+x+" y:"+(y-1));
-                // tab[y-1][x]=Character.toLowerCase(tempL);
-                ImageJeu();
-                // VerifC(x, (y-1));
-                AutourCase(x, y-1);
-            }else 
-            System.out.println("/////////////////////////////////////// HAUT ///////////////////////////////////////////////////////////////");
-
-    }
-    
-   }
-
-    public void Bas(int x, int y) {
-        char tempL=tab[y][x];
-        boolean tmp=Character.isUpperCase(tempL);
-
-         if(y>9){
-
-            if (tab[y][x]==tab[y+1][x] /*&& tmp==true*/){
-                System.out.println("EN BAS IL Y A UNE CASE :" + tab[y+1][x]+" aux coordonnées x:"+x+" y:"+(y+1));
-                // tab[y+1][x]=Character.toLowerCase(tempL);
-                ImageJeu();
-                // VerifC(x, (y+1));
-                AutourCase(x, y+1);
-            }else
-            System.out.println("////////////////////////////////////////// BAAAAS ////////////////////////////////////////////////////////////");
-
-
-        }
-        
-    }
-
-    public void Droite(int x, int y) {
-
-        char tempL=tab[y][x];
-         boolean tmp=Character.isUpperCase(tempL);
-
-         if(x<14){
-            if (tab[y][x]==tab[y][x+1] /*&& tmp==true*/){
-                System.out.println("A DROITE IL Y A UNE CASE :" + tab[y][x+1]+" aux coordonnées x:"+(x+1)+" y:"+y);
-                // tab[y][x+1]=Character.toLowerCase(tempL);
-                ImageJeu();
-                // VerifC(x+1, y);
-                AutourCase(x+1, y);
-            }else 
-                 System.out.println("/////////////////////////////////////////// DROIIITE ///////////////////////////////////////////////////////////");
-
-        }
-        
-    }
-
-    public void Gauche(int x, int y) {
-        char tempL=tab[y][x];
-        boolean tmp=Character.isUpperCase(tempL);
-
-        if(x>0){
-            if (tab[y][x]==tab[y][x-1] /*&& tmp==true*/){
-               System.out.println("A GAUCHE IL Y A UNE CASE :" + tab[y][x-1]+" aux coordonnées x:"+(x-1)+" y:"+y);
-               tab[y][x-1]=Character.toLowerCase(tempL);
-               ImageJeu();
-            //    VerifC((x-1),y);
-                AutourCase(x-1, y);
-           } else 
-           System.out.println("////////////////////////////////////////////GAUCHE //////////////////////////////////////////////////////////");
-       }
-       
-    }
 
     public void AutourCase(int x,int y){
+        AfficherTabSurvol();
         char tempL;
         tempL=tab[y][x];
-        boolean tmp;
-        // System.out.println("Case ou je suis : "+tab[y][x]);
-        // System.out.println("Case a droite : "+tab[y][x+1]);
-        // System.out.println("Case a gauche : "+tab[y][x-1]);
-        // System.out.println("Case a en bas : "+tab[y+1][x]);
-        // System.out.println("Case en haut : "+tab[y-1][x]);
 
 
         System.out.println("DANS AUTOURCASE  x: " +x+" y: "+y);
 
         // if((x>=0)&&(x<14)&&(y>=0)&&(y<9)){
 
-        tmp=Character.isLowerCase(tempL);
-
         // for(int i=0;i<10;i++){
         //     for(int j=0;j<15;j++){
             System.out.println(" AUTOUR CASE");
 
-            // if ((x+1>=1)&(y+1>=1)&&(y<10)&&(x<15)){
-            //     System.out.println(" if");
-            //     if ((tab[y][x]==tab[y][x-1]) && (tmp==true) && (tab[y][x]==tab[y-1][x]) && (tab[y][x]==tab[y+1][x]) && (tab[y][x]==tab[y][x+1])){
-            //         System.out.println(" CARRE PARFAIT COMME AU POKER");
-            //         tab[y][x]=Character.toLowerCase(tempL);
-            //         tab[y][x-1]=Character.toLowerCase(tempL);
-            //         tab[y][x+1]=Character.toLowerCase(tempL);
-            //         tab[y+1][x]=Character.toLowerCase(tempL);
-            //         tab[y-1][x-1]=Character.toLowerCase(tempL);
-            //         ImageJeu();
-            //         // AutourCase((x-1),y);
-            //         // AutourCase(x, (y-1));
-            //         // AutourCase(x+1, y);
-            //         // AutourCase(x, y+1);
-
-            //         Gauche(x-1,y);
-            //         Droite(x+1,y);
-            //         Bas(x,y+1);
-            //         Haut(x,y-1);
-            //     }      
-            // }
-
-        //     if ((x>0)&(y>0)&&(y<9)&&(x<14)){
-        //         if (tab[y][x]==tab[y][x-1] && tmp==true && tab[y][x]==tab[y-1][x]){
-        //             System.out.println(" BRELAN HAUT GAUCHE DROTE");
-        //             tab[y][x]=Character.toLowerCase(tempL);
-        //             tab[y][x-1]=Character.toLowerCase(tempL);
-        //             ImageJeu();
-        //             AutourCase((x-1),y);
-        //             AutourCase(x, (y-1));
-        //         }      
-        //     }
-
-
-        // if ((x>0)&(y>0)){
-        //     if (tab[y][x]==tab[y][x-1] && tmp==true && tab[y][x]==tab[y-1][x]){
-        //         System.out.println(" A GAUCHE ET EN HAUT IL Y A UNE CASE DE LA MEME COULEUR");
-        //         tab[y][x-1]=Character.toLowerCase(tempL);
-        //         ImageJeu();
-        //         AutourCase((x-1),y);
-        //         AutourCase(x, (y-1));
-        //     }      
-        // }
-
-        //char lettremaj=tab[y][x];
+            
 
 
         if(x>0){
-            System.out.println("Dans le if x>0 tab="+tab[y][x]+" et l'autre ="+tab[y][x-1] );
-            if (tab[y][x]==tab[y][x-1] /*&& tmp==false*/){
+            System.out.println("Dans le if x>0 tab="+tab[y][x]+" et l'autre ="+tab[y][x-1]+ " et tab survol ="+tabsurvol[y][x]+" a gauche");
+            if (tab[y][x]==Character.toLowerCase(tab[y][x-1]) && tabsurvol[y][x]==1){
                 System.out.println("A GAUCHE IL Y A UNE CASE :" + tab[y][x-1]+" aux coordonnées x:"+(x-1)+" y:"+y);
                 tab[y][x-1]=Character.toLowerCase(tempL);
-                ImageJeu();
+                tabsurvol[y][x-1]=1;
                 AutourCase((x-1),y);
+                ImageJeu();
             }      
         }
         
 
         if(y>0){
-            System.out.println("Dans le if y>0 tab="+tab[y][x]+" et l'autre ="+tab[y-1][x] );
-            if (tab[y][x]==tab[y-1][x] /*&& tmp==false*/){
+            System.out.println("Dans le if y>0 tab="+tab[y][x]+" et l'autre ="+tab[y-1][x]+ " et tab survol ="+tabsurvol[y][x]+" en haut");
+            if (tab[y][x]==Character.toLowerCase(tab[y-1][x]) && tabsurvol[y][x]==1){
                 System.out.println("EN HAUT IL Y A UNE CASE :" + tab[y-1][x]+" aux coordonnées x:"+x+" y:"+(y-1));
                 tab[y-1][x]=Character.toLowerCase(tempL);
-                ImageJeu();
+                tabsurvol[y-1][x]=1;
                 AutourCase(x, (y-1));
+                ImageJeu();
             }
 
         }
 
         if(y+1<10){
-            System.out.println("Dans le if y<9 tab="+tab[y][x]+" et l'autre ="+tab[y+1][x] );
-            if (tab[y][x]==tab[y+1][x] /*&& tmp==false*/){
+            System.out.println("Dans le if y<9 tab="+tab[y][x]+" et l'autre ="+tab[y+1][x]+ " et tab survol ="+tabsurvol[y][x]+" en bas");
+            if (tab[y][x]==Character.toLowerCase(tab[y+1][x]) && tabsurvol[y][x]==1){
                 System.out.println("EN BAS IL Y A UNE CASE :" + tab[y+1][x]+" aux coordonnées x:"+x+" y:"+(y+1));
                 tab[y+1][x]=Character.toLowerCase(tempL);
-                ImageJeu();
+                tabsurvol[y+1][x]=1;
                 AutourCase(x, (y+1));
+                ImageJeu();
             }
         }
 
         if(x+1<15){
-            System.out.println("Dans le if x<14 tab="+tab[y][x]+" et l'autre ="+tab[y][x+1] );
-            if (tab[y][x]==tab[y][x+1] /*&& tmp==false*/){
+            System.out.println("Dans le if x<14 tab="+tab[y][x]+" et l'autre ="+tab[y][x+1]+ " et tab survol ="+tabsurvol[y][x]+" a droite");
+            if (tab[y][x]==Character.toLowerCase(tab[y][x+1]) && tabsurvol[y][x]==1){
                 System.out.println("A DROITE IL Y A UNE CASE :" + tab[y][x+1]+" aux coordonnées x:"+(x+1)+" y:"+y);
                 tab[y][x+1]=Character.toLowerCase(tempL);
-                ImageJeu();
+                tabsurvol[y][x+1]=1;
                 AutourCase(y, y);
+                ImageJeu();
             }
         }
-
-
-
-  
-
-    
-
-
         // System.out.println("//////////////////////////////////////////////////////////////////////////////////////////////////////");
 
     }
