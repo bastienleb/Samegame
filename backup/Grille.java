@@ -180,7 +180,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         public void BougeGauche () {
            
             for (int k=0; k<10; k++) {
-                for (int j=0; j<14; j++) {
+                for (int j=0; j<15; j++) {
                     if ((VerifColonne(k)=='O')) {
                         for (int i=0; i<9; i++) {
                             tab[i][j]= tab[i][j+1];
