@@ -385,10 +385,10 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             
             ModifTAb();
             // AutourCase(x, y);
-            ImageJeu();
             
             // System.out.println(" x: "+x+" y :"+y);
         }
+            ImageJeu();
     }
         
     }
