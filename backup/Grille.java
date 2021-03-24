@@ -129,7 +129,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                     
                 }
                 //System.out.println("");
-                 BougeGauche();
+                 // BougeGauche();
             }
 
 
@@ -168,28 +168,30 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             }
         }
 
-        public char VerifColonne(int colonnes){
-            for (int i=0; i<9; i++) {
-                if (tab[colonnes][i]!=' ') {
-                    return 'N';
-                    }
-            }
-            return 'O';
-        }
+        // public char VerifColonne(int colonnes){
+        //     for (int i=0; i<9; i++) {
+        //         if (tab[colonnes][i]!=' ') {
+        //             return 'N';
+        //             }
+        //     }
+        //     return 'O';
+        // }
 
         public void BougeGauche () {
            
-            for (int k=0; k<10; k++) {
-                for (int j=0; j<15; j++) {
-                    if ((VerifColonne(k)=='O')) {
-                        for (int i=0; i<9; i++) {
-                            tab[i][j]= tab[i][j+1];
-                            tab[i][j+1]=' ';
-                            }
+                for (int j=0; j<14; j++) {
+                    if (tab[9][j]==' ') {
+                         // System.out.println(" tab 9 "+tab[9][j+1]);
+                            for (int i=0; i<9; i++) {
+                                char tmp=tab[i][j];
+                                tab[i][j]= tab[i][j+1];
+                                tab[i][j+1]=tmp;
+                                }
             }
             
         }
-    }
+        
+        BougeTab();
 }
 
 
@@ -364,6 +366,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         score+=(boules-2)^2;
         boules=1;
         BougeTab();
+        BougeGauche();
 
     }
 
