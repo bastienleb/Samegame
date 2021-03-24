@@ -1,6 +1,10 @@
 import java.io.*;
 import java.util.*;
 
+/*
+@author Kévin METRI et Bastien LEBLET
+*/
+
 public class TabChoix {
     char[][] tab=new char[10][15];
     int valider=0;

@@ -2,6 +2,10 @@ import java.io.*;
 import javax.swing.*;
 import javax.swing.filechooser.*;
 
+/*
+@author Kévin METRI et Bastien LEBLET
+*/
+
 public class RecupFichier {
 
     public String recuperation() {
