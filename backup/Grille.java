@@ -1,8 +1,8 @@
 import java.util.*;
 import javax.swing.*;
 import java.awt.event.*;
-
 import java.awt.*;
+
 /*
 @author Kévin METRI et Bastien LEBLET
 */
@@ -10,22 +10,22 @@ import java.awt.*;
 public class Grille extends JFrame implements MouseMotionListener,MouseListener {
     private char tab[][]=new char[10][15];
     private int tabsurvol[][]=new int[10][15];
-    int x;
-    int y;
-    int ancienx;
-    int ancieny;
-    int posx;
-    int posy;
-    int tmpx;
-    int tmpy;
-    char tmplettre;
-    int score=0;
-    int boules=1;
+    private int x;
+    private int y;
+    private int ancienx;
+    private int ancieny;
+    private int posx;
+    private int posy;
+    private int tmpx;
+    private int tmpy;
+    private char tmplettre;
+    private int score=0;
+    private int boules=1;
     
     public Grille(){
         super("Grille");
         
-        this.setSize(1230,885);
+        this.setSize(767,580);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,13 +35,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     public void RecupTabAlea(){
         TabAlea ta = new TabAlea();
         tab=ta.alea();
-
-        // for(int a=0; a<10;a++){  
-        //     for(int b=0; b<15;b++){  
-        //         System.out.print(tab[a][b]);
-        //     }
-        //     System.out.println("");
-        // }
     }
 
     public int RecupTabChoix(){
@@ -52,13 +45,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             this.dispose();
             new Menu();
         }
-
-        // for(int a=0; a<10;a++){  
-        //     for(int b=0; b<15;b++){  
-        //         System.out.print(tab[a][b]);
-        //     }
-        //     System.out.println("");
-        // }
         return validation;
     }
     
@@ -67,14 +53,14 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             
             JPanel panel =new JPanel();
             JPanel panscore = new JPanel();
-            JLabel labscore = new JLabel("score = "+ score);
+            JLabel labscore = new JLabel("SCORE = "+ score);
 
             JPanel all= new JPanel();
             all.setLayout(null);
-            panel.setBounds(0, 0, 1221, 815);
-            panscore.setBounds(0,810,1221,40);
-            labscore.setFont(new Font("Sérif",Font.BOLD,15));
-            panscore.setBackground(Color.RED);
+            panel.setBounds(0, 0, 750, 500);
+            panscore.setBounds(0,500,750,40);
+            labscore.setFont(new Font("Sérif",Font.BOLD,25));
+            panscore.setBackground(Color.WHITE);
             
             panel.setLayout(new GridLayout(10,15));
             
@@ -83,38 +69,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                     // this.add(panel);
                     String lettre=Character.toString(tab[i][j]);
                     
-                    if(lettre.equals("R")){
-                        panel.add(new Image(new ImageIcon("../image/rouge.png").getImage()));
-                        
-
-                    }
-                    
-                    if(lettre.equals("V")){
-                        panel.add(new Image(new ImageIcon("../image/vert.png").getImage()));
-  
-                    }
-                    
-                    if(lettre.equals("B")){
-                        panel.add(new Image(new ImageIcon("../image/bleu.png").getImage()));
-
-                    }
-                    if(lettre.equals("r")){
-                        panel.add(new Image(new ImageIcon("../image/rouge_j.png").getImage()));
-
-                    }
-                    
-                    if(lettre.equals("v")){
-                        panel.add(new Image(new ImageIcon("../image/vert_j.png").getImage()));
-                    }
-                    
-                    if(lettre.equals("b")){
-                        panel.add(new Image(new ImageIcon("../image/bleu_j.png").getImage()));
-
-                    }
-
-                    if(lettre.equals(" ")){
-                        panel.add(new Image(new ImageIcon("../image/fond_b.png").getImage()));
-                    }
+                    new Remplir_Tab(lettre,panel);
                     
                 }
             }
@@ -145,13 +100,13 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
 
        
 
-public int VerifColonne(int colonnes) {
-	for (int i=0; i<10; i++) {
-	    if (tab[i][colonnes]!=' ') {
-		    return 0;
-	    }
-	}
-	return 1;
+    public int VerifColonne(int colonnes) {
+        for (int i=0; i<10; i++) {
+            if (tab[i][colonnes]!=' ') {
+                return 0;
+            }
+        }
+        return 1;
     }
 
 
@@ -162,19 +117,19 @@ public int VerifColonne(int colonnes) {
 		            for (int i=0; i<10; i++) {
                         tab[i][j]= tab[i][j+1];
                         tab[i][j+1]=' ';
-		    }
-		}
-	    }
-	}
-    ImageJeu();
+                    }
+                }
+            }
+        }
+        ImageJeu();
     }
 
 
 
-        public void BougeTab(){
+    public void BougeTab(){
 
-            for (int k=0; k<10; k++) {
-             for (int i=0; i<9; i++) {
+        for (int k=0; k<10; k++) {
+            for (int i=0; i<9; i++) {
                 for (int j=0; j<14; j++) {
                     if ((tab[i+1][j]==' ') && (tab[i][j]!=' ')) {
                         tab[i+1][j]= tab[i][j];
@@ -184,48 +139,47 @@ public int VerifColonne(int colonnes) {
             }
         }
         ImageJeu();
-        }
+    }
 
 
-        public void ModifTAb(){ 
-         
-            posx=RecupX();
-            posy=RecupY();
-            RefreshTab();
-            if(tab[posy][posx]=='R'){
-                tab[posy][posx]='r';
-                tabsurvol[posy][posx]=1;
-                tmplettre=tab[tmpy][tmpx];
-                tmplettre=Character.toUpperCase(tmplettre);
-                tab[tmpy][tmpx]=tmplettre;
-                tmpx=posx;
-                tmpy=posy;
-            }
-            if(tab[posy][posx]=='V'){
-                tab[posy][posx]='v';
-                tabsurvol[posy][posx]=1;
-                tmplettre=tab[tmpy][tmpx];
-                tmplettre=Character.toUpperCase(tmplettre);
-                tab[tmpy][tmpx]=tmplettre;
-                tmpx=posx;
-                tmpy=posy;
-            }
-            if(tab[posy][posx]=='B'){
-                tab[posy][posx]='b';
-                tabsurvol[posy][posx]=1;
-                tmplettre=tab[tmpy][tmpx];
-                tmplettre=Character.toUpperCase(tmplettre);
-                tab[tmpy][tmpx]=tmplettre;
-                tmpx=posx;
-                tmpy=posy;
-            }
-    
-            AutourCase(posx, posy);
-            ResetTabSurvol();
+    public void ModifTAb(){ 
+        
+        posx=RecupX();
+        posy=RecupY();
+        RefreshTab();
+        if(tab[posy][posx]=='R'){
+            tab[posy][posx]='r';
+            tabsurvol[posy][posx]=1;
+            tmplettre=tab[tmpy][tmpx];
+            tmplettre=Character.toUpperCase(tmplettre);
+            tab[tmpy][tmpx]=tmplettre;
+            tmpx=posx;
+            tmpy=posy;
         }
+        if(tab[posy][posx]=='V'){
+            tab[posy][posx]='v';
+            tabsurvol[posy][posx]=1;
+            tmplettre=tab[tmpy][tmpx];
+            tmplettre=Character.toUpperCase(tmplettre);
+            tab[tmpy][tmpx]=tmplettre;
+            tmpx=posx;
+            tmpy=posy;
+        }
+        if(tab[posy][posx]=='B'){
+            tab[posy][posx]='b';
+            tabsurvol[posy][posx]=1;
+            tmplettre=tab[tmpy][tmpx];
+            tmplettre=Character.toUpperCase(tmplettre);
+            tab[tmpy][tmpx]=tmplettre;
+            tmpx=posx;
+            tmpy=posy;
+        }
+
+        AutourCase(posx, posy);
+        ResetTabSurvol();
+    }
 
     public void AutourCase(int x,int y){
-;
         char tempL;
         tempL=tab[y][x];
 
@@ -312,11 +266,11 @@ public int VerifColonne(int colonnes) {
     @Override
     public void mouseMoved(MouseEvent e) {
 
-        if((e.getX()/75>=0)&&(e.getX()/75<15)&&(e.getY()/75>=0)&&(e.getY()/75<10)){
+        if((e.getX()/50>=0)&&(e.getX()/50<15)&&(e.getY()/50>=0)&&(e.getY()/50<10)){
         
         if(x==ancienx && y==ancieny){
-            x=(e.getX()/75);
-            y=(e.getY()/75);
+            x=(e.getX()/50);
+            y=(e.getY()/50);
         } 
         else{  
             ancienx=x;
