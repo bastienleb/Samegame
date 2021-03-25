@@ -263,13 +263,20 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         }
     }
 
+    public void Score(int i,int j){
+        if(tab[j][i]!=' '){
+            score=score+Math.pow(boules-2.0, 2.0);
+        }
+    }
+
     @Override
     public void mouseClicked(MouseEvent e)  {
+        int tabx=(e.getX()/50);
+        int taby=(e.getY()/50);
         changerfond();
-        score=score+Math.pow(boules-2.0, 2.0);
-        
         ChuteBoule();
         BougeGauche();
+        Score(tabx,taby);
         ImageJeu();
     }
 
