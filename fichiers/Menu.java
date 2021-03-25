@@ -17,7 +17,7 @@ public class Menu extends JFrame {
     
     public Menu(){
         super("SameGame");
-        this.setSize(1125,750);
+        this.setSize(750,750);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,6 +33,8 @@ public class Menu extends JFrame {
             this.dispose();
         });
         aleatoire.setFont(new Font("Sérif",Font.BOLD,15));
+        aleatoire.setBackground(new Color(0,128,128));
+        aleatoire.setBorder(BorderFactory.createLineBorder(Color.GRAY,2));
         panneau.add(aleatoire);
 
 
@@ -46,11 +48,15 @@ public class Menu extends JFrame {
             this.dispose();
         });
         bouton2.setFont(new Font("Sérif",Font.BOLD,15));
+        bouton2.setBackground(new Color(0,128,128));
+        bouton2.setBorder(BorderFactory.createLineBorder(Color.GRAY,2));
         panneau.add(bouton2);
         bouton2.addActionListener(m);
 
         JButton bouton3 = new JButton("Quitter");
         bouton3.setFont(new Font("Sérif",Font.BOLD,15));
+        bouton3.setBackground(new Color(0,128,128));
+        bouton3.setBorder(BorderFactory.createLineBorder(Color.GRAY,2));        
         panneau.add(bouton3);
         bouton3.addActionListener(m);
 
