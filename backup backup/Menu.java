@@ -32,9 +32,10 @@ public class Menu extends JFrame {
             grille.ImageJeu();
             this.dispose();
         });
-        aleatoire.setFont(new Font("Sérif",Font.BOLD,15));
-        aleatoire.setBackground(new Color(0,128,128));
-        aleatoire.setBorder(BorderFactory.createLineBorder(Color.GRAY,2));
+        aleatoire.setFont(new Font("Sérif",Font.BOLD,20));
+        aleatoire.setBackground(new Color(186,22,28));
+        aleatoire.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+        aleatoire.setForeground(Color.BLACK);
         panneau.add(aleatoire);
 
 
@@ -47,16 +48,18 @@ public class Menu extends JFrame {
             }
             this.dispose();
         });
-        bouton2.setFont(new Font("Sérif",Font.BOLD,15));
-        bouton2.setBackground(new Color(0,128,128));
-        bouton2.setBorder(BorderFactory.createLineBorder(Color.GRAY,2));
+        bouton2.setFont(new Font("Sérif",Font.BOLD,20));
+        bouton2.setBackground(new Color(0,168,81));
+        bouton2.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+        bouton2.setForeground(Color.BLACK);
         panneau.add(bouton2);
         bouton2.addActionListener(m);
 
         JButton bouton3 = new JButton("Quitter");
-        bouton3.setFont(new Font("Sérif",Font.BOLD,15));
-        bouton3.setBackground(new Color(0,128,128));
-        bouton3.setBorder(BorderFactory.createLineBorder(Color.GRAY,2));        
+        bouton3.setFont(new Font("Sérif",Font.BOLD,20));
+        bouton3.setBackground(new Color(2,176,241));
+        bouton3.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+        bouton3.setForeground(Color.BLACK);        
         panneau.add(bouton3);
         bouton3.addActionListener(m);
 
