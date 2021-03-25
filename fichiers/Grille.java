@@ -128,7 +128,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
 
 
 
-    public void BougeTab(){
+    public void ChuteBoule(){
 
         for (int k=0; k<10; k++) {
             for (int i=0; i<9; i++) {
@@ -146,7 +146,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     public void TailleGroupe(){
         boules=0;
         for (int i=0; i<10; i++) {
-	        for (int j=0; j<14; j++) {
+	        for (int j=0; j<15; j++) {
                 if(tabsurvol[i][j]==1){
                     boules++;
                 }
@@ -196,7 +196,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         tempL=tab[y][x];
 
         if(x>0){
-            if (tab[y][x]==Character.toLowerCase(tab[y][x-1]) && tabsurvol[y][x-1]==0){
+            if (tab[y][x]==Character.toLowerCase(tab[y][x-1]) && tabsurvol[y][x-1]==0 && tab[y][x]!=' '){
                 tab[y][x-1]=Character.toLowerCase(tempL);
                 tabsurvol[y][x-1]=1;
                 AutourCase((x-1),y);
@@ -207,7 +207,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         
 
         if(y>0){
-            if (tab[y][x]==Character.toLowerCase(tab[y-1][x]) && tabsurvol[y-1][x]==0){
+            if (tab[y][x]==Character.toLowerCase(tab[y-1][x]) && tabsurvol[y-1][x]==0 && tab[y][x]!=' '){
                 tab[y-1][x]=Character.toLowerCase(tempL);
                 tabsurvol[y-1][x]=1;
                 AutourCase(x, (y-1));
@@ -219,7 +219,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         }
 
         if(y<9){
-            if (tab[y][x]==Character.toLowerCase(tab[y+1][x]) && tabsurvol[y+1][x]==0){
+            if (tab[y][x]==Character.toLowerCase(tab[y+1][x]) && tabsurvol[y+1][x]==0 && tab[y][x]!=' '){
                 tab[y+1][x]=Character.toLowerCase(tempL);
                 tabsurvol[y+1][x]=1;
                 AutourCase(x, (y+1));
@@ -230,7 +230,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         }
 
         if(x<14){
-            if (tab[y][x]==Character.toLowerCase(tab[y][x+1]) && tabsurvol[y][x+1]==0){
+            if (tab[y][x]==Character.toLowerCase(tab[y][x+1]) && tabsurvol[y][x+1]==0 && tab[y][x]!=' '){
                 tab[y][x+1]=Character.toLowerCase(tempL);
                 tabsurvol[y][x+1]=1;
                 AutourCase(x+1, y);
@@ -238,7 +238,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 ImageJeu();
 
             }
-        } 
+        }
     }
     
 
@@ -262,24 +262,21 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
 
         }
     }
-       
 
     @Override
     public void mouseClicked(MouseEvent e)  {
         changerfond();
         score=score+Math.pow(boules-2.0, 2.0);
         
-        BougeTab();
-        ImageJeu();
+        ChuteBoule();
         BougeGauche();
-
+        ImageJeu();
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
 
         if((e.getX()/50>=0)&&(e.getX()/50<15)&&(e.getY()/50>=0)&&(e.getY()/50<10)){
-        
         if(x==ancienx && y==ancieny){
             x=(e.getX()/50);
             y=(e.getY()/50);
@@ -292,6 +289,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
 
             ModifTAb();
         }
+        ChuteBoule();
+        BougeGauche();
         ImageJeu();
     }
         

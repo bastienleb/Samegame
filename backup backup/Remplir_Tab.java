@@ -22,16 +22,16 @@ public class Remplir_Tab {
 
         }
         if(lettre.equals("r")){
-            panel.add(new Image(new ImageIcon("../image/rouge_j.png").getImage()));
+            panel.add(new Image(new ImageIcon("../image/rouge_select.png").getImage()));
 
         }
         
         if(lettre.equals("v")){
-            panel.add(new Image(new ImageIcon("../image/vert_j.png").getImage()));
+            panel.add(new Image(new ImageIcon("../image/vert_select.png").getImage()));
         }
         
         if(lettre.equals("b")){
-            panel.add(new Image(new ImageIcon("../image/bleu_j.png").getImage()));
+            panel.add(new Image(new ImageIcon("../image/bleu_select.png").getImage()));
 
         }
 

@@ -32,7 +32,7 @@ public class TabChoix {
             
             for(i=0; i<15;i++){  
                 char c = s.charAt(i);  
-                System.out.print(c);
+                //System.out.print(c);
                 tab[j][i]=c;  
             }
             j++;
