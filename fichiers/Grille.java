@@ -274,6 +274,13 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         }
     }
 
+    public void VerifFin(){
+        if(tab[9][0]==' '){
+            this.dispose();
+            new Fin();
+        }
+    }
+
     @Override
     public void mouseClicked(MouseEvent e)  {
         if(tupeutpascliquer!=true){
@@ -283,6 +290,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             TailleGroupe();
             ImageJeu();
             Score(RecupX(), RecupY());
+            VerifFin();
             
         }
     }
