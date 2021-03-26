@@ -22,6 +22,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     private double score=0.0;
     private int intscore=0;
     private int boules=0;
+    private int boulesscore=0;
+    private boolean tupeutpascliquer;
     
     public Grille(){
         super("Grille");
@@ -52,55 +54,56 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         
     public void ImageJeu(){
             
-            JPanel panel =new JPanel();
-            JPanel panscore = new JPanel();
-            intscore=(int)score;
-            JLabel labscore = new JLabel("SCORE = "+ intscore);
+        JPanel panel =new JPanel();
+        JPanel panscore = new JPanel();
+        intscore=(int)score;
+        JLabel labscore = new JLabel("SCORE = "+ intscore);
 
-            JPanel all= new JPanel();
-            all.setLayout(null);
-            panel.setBounds(0, 0, 750, 500);
-            panscore.setBounds(0,500,750,40);
-            labscore.setFont(new Font("Sérif",Font.BOLD,25));
-            panscore.setBackground(Color.WHITE);
-            
-            panel.setLayout(new GridLayout(10,15));
-            
-            for (int i=0;i<10;i++){
-                for(int j=0;j<15;j++){
-                    // this.add(panel);
-                    String lettre=Character.toString(tab[i][j]);
-                    
-                    new Remplir_Tab(lettre,panel);
-                    
-                }
+        JPanel all= new JPanel();
+        all.setLayout(null);
+        panel.setBounds(0, 0, 750, 500);
+        panscore.setBounds(0,500,750,40);
+        labscore.setFont(new Font("Sérif",Font.BOLD,25));
+        panscore.setBackground(Color.WHITE);
+        
+        panel.setLayout(new GridLayout(10,15));
+        
+        for (int i=0;i<10;i++){
+            for(int j=0;j<15;j++){
+                // this.add(panel);
+                String lettre=Character.toString(tab[i][j]);
+                
+                new Remplir_Tab(lettre,panel);
+                
             }
-            panscore.add(labscore);
-            all.add(panel);
-            all.add(panscore);
-            this.add(all);
-            panel.addMouseMotionListener(this);
-            panel.addMouseListener(this);
-            this.setVisible(true);
         }
+        panscore.add(labscore);
+        all.add(panel);
+        all.add(panscore);
+        this.add(all);
+        panel.addMouseMotionListener(this);
+        panel.addMouseListener(this);
+        this.setVisible(true);
+    }
 
-        public int RecupX(){
-            return x;
-        }
+    public int RecupX(){
+        return x;
+    }
 
-        public int RecupY(){
-            return y;
-        }
+    public int RecupY(){
+        return y;
+    }
     
-        public void ResetTabSurvol(){
-            for(int a=0; a<10;a++){  
-                for(int b=0; b<15;b++){  
-                    tabsurvol[a][b]=0;
-                }
+    public void ResetTabSurvol(){
+        for(int a=0; a<10;a++){  
+            for(int b=0; b<15;b++){  
+                tabsurvol[a][b]=0;
             }
         }
-
-       
+        boules=0;
+        
+    }
+      
 
     public int VerifColonne(int colonnes) {
         for (int i=0; i<10; i++) {
@@ -126,8 +129,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         ImageJeu();
     }
 
-
-
     public void ChuteBoule(){
 
         for (int k=0; k<10; k++) {
@@ -144,19 +145,25 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     public void TailleGroupe(){
-        boules=0;
+        
         for (int i=0; i<10; i++) {
-	        for (int j=0; j<15; j++) {
+            for (int j=0; j<15; j++) {
                 if(tabsurvol[i][j]==1){
                     boules++;
+                    boulesscore++;
+                    tupeutpascliquer=false;
                 }
             }
+        }
+        if(boules==1){
+            tab[RecupY()][RecupX()]=Character.toUpperCase(tab[RecupY()][RecupX()]);
+            tabsurvol[RecupY()][RecupX()]=0;
+            tupeutpascliquer=true;
         }
     }
 
 
     public void ModifTAb(){ 
-        
         posx=RecupX();
         posy=RecupY();
         RefreshTab();
@@ -188,6 +195,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             tmpy=posy;
         }
         AutourCase(posx, posy);
+        TailleGroupe();
         ResetTabSurvol();
     }
 
@@ -200,7 +208,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tab[y][x-1]=Character.toLowerCase(tempL);
                 tabsurvol[y][x-1]=1;
                 AutourCase((x-1),y);
-                TailleGroupe();
                 ImageJeu();
             }      
         }
@@ -211,7 +218,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tab[y-1][x]=Character.toLowerCase(tempL);
                 tabsurvol[y-1][x]=1;
                 AutourCase(x, (y-1));
-                TailleGroupe();
                 ImageJeu();
 
             }
@@ -223,7 +229,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tab[y+1][x]=Character.toLowerCase(tempL);
                 tabsurvol[y+1][x]=1;
                 AutourCase(x, (y+1));
-                TailleGroupe();
                 ImageJeu();
 
             }
@@ -234,7 +239,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 tab[y][x+1]=Character.toLowerCase(tempL);
                 tabsurvol[y][x+1]=1;
                 AutourCase(x+1, y);
-                TailleGroupe();
                 ImageJeu();
 
             }
@@ -265,47 +269,48 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
 
     public void Score(int i,int j){
         if(tab[j][i]!=' '){
-            score=score+Math.pow(boules-2.0, 2.0);
+            score=score+Math.pow(boulesscore-2.0, 2.0);
+            boulesscore=0;
         }
     }
 
     @Override
     public void mouseClicked(MouseEvent e)  {
-        int tabx=(e.getX()/50);
-        int taby=(e.getY()/50);
-        changerfond();
-        ChuteBoule();
-        BougeGauche();
-        Score(tabx,taby);
-        ImageJeu();
+        if(tupeutpascliquer!=true){
+            changerfond();
+            ChuteBoule();
+            BougeGauche();
+            TailleGroupe();
+            ImageJeu();
+            Score(RecupX(), RecupY());
+            
+        }
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-
+            
         if((e.getX()/50>=0)&&(e.getX()/50<15)&&(e.getY()/50>=0)&&(e.getY()/50<10)){
-        if(x==ancienx && y==ancieny){
-            x=(e.getX()/50);
-            y=(e.getY()/50);
-        } 
-        else{  
-            ancienx=x;
-            ancieny=y;
-            RecupX();
-            RecupY();
-
-            ModifTAb();
+            if(x==ancienx && y==ancieny){
+                x=(e.getX()/50);
+                y=(e.getY()/50);
+            } 
+            else{  
+                ancienx=x;
+                ancieny=y;
+                RecupX();
+                RecupY();
+                
+                ModifTAb();
+            }
+            ChuteBoule();
+            BougeGauche();
+            ImageJeu();
         }
-        ChuteBoule();
-        BougeGauche();
-        ImageJeu();
     }
-        
-    }
-public void mousePressed(MouseEvent e){}
-public void mouseDragged(MouseEvent e) {}
-public void mouseExited(MouseEvent e) {}
-public void mouseEntered(MouseEvent e){}
-public void mouseReleased(MouseEvent e){}
-
+    public void mousePressed(MouseEvent e){}
+    public void mouseDragged(MouseEvent e) {}
+    public void mouseExited(MouseEvent e) {}
+    public void mouseEntered(MouseEvent e){}
+    public void mouseReleased(MouseEvent e){}
 }
