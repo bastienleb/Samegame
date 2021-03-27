@@ -56,7 +56,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             
         JPanel panel =new JPanel();
         JPanel panscore = new JPanel();
-        intscore=(int)score;
         JLabel labscore = new JLabel("SCORE = "+ intscore);
 
         JPanel all= new JPanel();
@@ -103,8 +102,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         boules=0;
         
     }
-      
-
+    
     public int VerifColonne(int colonnes) {
         for (int i=0; i<10; i++) {
             if (tab[i][colonnes]!=' ') {
@@ -113,7 +111,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         }
         return 1;
     }
-
 
     public void BougeGauche () {
     	for (int k=0; k<10; k++) {
@@ -152,6 +149,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                     boules++;
                     boulesscore++;
                     tupeutpascliquer=false;
+                    
                 }
             }
         }
@@ -160,8 +158,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             tabsurvol[RecupY()][RecupX()]=0;
             tupeutpascliquer=true;
         }
+        Score(RecupX(), RecupY());
     }
-
 
     public void ModifTAb(){ 
         posx=RecupX();
@@ -269,28 +267,37 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
 
     public void Score(int i,int j){
         if(tab[j][i]!=' '){
-            score=score+Math.pow(boulesscore-2.0, 2.0);
+            score=intscore+Math.pow(boulesscore-2.0, 2.0);
+            if(boulesscore==1){
+                score=intscore;
+            }
             boulesscore=0;
         }
+        RecupScore();
     }
 
     public void VerifFin(){
         if(tab[9][0]==' '){
             this.dispose();
-            new Fin();
+            new Fin(intscore);
         }
     }
 
+    public int RecupScore(){
+        int scoreajout=(int)score;
+        return scoreajout;
+    }
     @Override
     public void mouseClicked(MouseEvent e)  {
+        intscore=RecupScore();
         if(tupeutpascliquer!=true){
             changerfond();
             ChuteBoule();
             BougeGauche();
             TailleGroupe();
             ImageJeu();
-            Score(RecupX(), RecupY());
             VerifFin();
+            
             
         }
     }

@@ -16,13 +16,11 @@ public class ActionFin implements ActionListener{
         
   
         if (composant.equals("REJOUER")) {
-            System.out.println(composant);
             f.dispose();
             new Menu();
 
         }
         if (composant.equals("QUITTER")) {
-          System.out.println(composant);
             System.exit(0);
         }
      }

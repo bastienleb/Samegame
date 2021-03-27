@@ -48,12 +48,6 @@ run : Main.class
 	${JVM} ${JVMFLAGS} Main
 
 clean :
-	-rm -f *.class
-
-mrproper : clean Main.class
-
-### BUTS FACTICES ###
-
-.PHONY : run clean mrproper
+	$(RM) *.class
 
 ### FIN ###

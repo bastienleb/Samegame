@@ -25,15 +25,8 @@ public class Actionmenu implements ActionListener {
   
     
     public void actionPerformed(ActionEvent evt) {
-      
       String composant = evt.getActionCommand();
-      
-
-      if (composant.equals("D\u00e9fault")) {
-          System.out.println(composant);
-      }
       if (composant.equals("Quitter")) {
-        System.out.println(composant);
           System.exit(0);
       }
    }

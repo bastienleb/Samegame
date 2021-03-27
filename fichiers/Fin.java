@@ -11,7 +11,8 @@ public class Fin extends JFrame {
     JPanel fond = new JPanel();
     JPanel btn = new JPanel();
     ActionFin af = new ActionFin(this);
-    public Fin(){
+    public Fin(int scorefin){
+        this.score=scorefin;
         this.setSize(750,750);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -34,7 +35,7 @@ public class Fin extends JFrame {
     }
 
     public void RecupScore(){
-        JLabel affiscore = new JLabel("SCORE "+score);
+        JLabel affiscore = new JLabel("SCORE :"+score);
         affiscore.setFont(new Font("Sérif",Font.BOLD,20));
         panscore.add(affiscore);
     }
