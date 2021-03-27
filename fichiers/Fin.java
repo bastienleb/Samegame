@@ -1,7 +1,11 @@
-import java.util.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+
+/**
+*@author Kévin METRI et Bastien LEBLET
+* Cette Class sert a afficher la page de fin 
+*/
 
 public class Fin extends JFrame {
     int score=0;
@@ -23,7 +27,10 @@ public class Fin extends JFrame {
         images();
         this.setVisible(true);
     }
-    
+
+    /**
+     * Cette Methode sert a afficher les image
+    */
     public void images(){
         
         panscore.setBackground(new Color(127,255,0));;
@@ -34,12 +41,18 @@ public class Fin extends JFrame {
         this.add(btn);
     }
 
+    /**
+     * Cette Methode sert a recuperer le score de la class Grille
+    */
     public void RecupScore(){
         JLabel affiscore = new JLabel("SCORE :"+score);
         affiscore.setFont(new Font("Sérif",Font.BOLD,20));
         panscore.add(affiscore);
     }
 
+    /**
+     * Cette Methode sert a ajouter tout les boutons
+    */
     public void btn(){
         JButton rejouer = new JButton("REJOUER");
         JButton quitter = new JButton("QUITTER");

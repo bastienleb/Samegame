@@ -1,5 +1,6 @@
-/*
-@author Kévin METRI et Bastien LEBLET
+/**
+*@author Kévin METRI et Bastien LEBLET
+* Cette Class est le main
 */
 
 public class Main {

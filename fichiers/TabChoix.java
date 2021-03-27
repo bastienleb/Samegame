@@ -1,8 +1,9 @@
 import java.io.*;
 import java.util.*;
 
-/*
-@author Kévin METRI et Bastien LEBLET
+/**
+*@author Kévin METRI et Bastien LEBLET
+* Cette classe sert a lire le fichier et remplir le tableau
 */
 
 public class TabChoix {
@@ -10,7 +11,6 @@ public class TabChoix {
     int valider=0;
 
     public char[][] choix() {
-        // System.out.println("dans TabChoix");
         String chemin;
         RecupFichier t=new RecupFichier();
         chemin=t.recuperation();
@@ -19,24 +19,19 @@ public class TabChoix {
         int j=0;
         try
         {
-        // Le fichier d'entrée
         FileInputStream file = new FileInputStream(chemin);   
         Scanner scanner = new Scanner(file);  
         
         
-        //renvoie true s'il y a une autre ligne à lire
         while(scanner.hasNext())
         {
-            //System.out.println(scanner.next());
             String s=scanner.next();
             
             for(i=0; i<15;i++){  
                 char c = s.charAt(i);  
-                //System.out.print(c);
                 tab[j][i]=c;  
             }
             j++;
-            //System.out.println(" j="+j);
             
         }
         

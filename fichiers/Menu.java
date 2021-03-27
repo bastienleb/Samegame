@@ -3,6 +3,7 @@ import java.awt.*;
 
 /*
 @author Kévin METRI et Bastien LEBLET
+* Cette Class sert a afficher la page du menu 
 */
 
 public class Menu extends JFrame {
@@ -11,8 +12,7 @@ public class Menu extends JFrame {
     JPanel titre = new JPanel();
     JPanel logo = new JPanel();
     JLabel nomjeu = new JLabel("SameGame");
-    Actionmenu m = new Actionmenu(panneau);
-    int validation=0;
+    Actionmenu m = new Actionmenu(panneau,this);
     
     
     public Menu(){
@@ -26,12 +26,7 @@ public class Menu extends JFrame {
         this.setLayout(grillage);
 
         JButton aleatoire = new JButton("Al\u00e9atoire");
-        aleatoire.addActionListener(m -> {
-            Grille grille=new Grille();
-            grille.RecupTabAlea();
-            grille.ImageJeu();
-            this.dispose();
-        });
+        aleatoire.addActionListener(m);
         aleatoire.setFont(new Font("Sérif",Font.BOLD,20));
         aleatoire.setBackground(new Color(186,22,28));
         aleatoire.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
@@ -39,29 +34,21 @@ public class Menu extends JFrame {
         panneau.add(aleatoire);
 
 
-        JButton bouton2 = new JButton("Choix fichier");
-        bouton2.addActionListener(m -> {
-            Grille grille=new Grille();
-            validation = grille.RecupTabChoix();
-            if(validation==0){
-                grille.ImageJeu();
-            }
-            this.dispose();
-        });
-        bouton2.setFont(new Font("Sérif",Font.BOLD,20));
-        bouton2.setBackground(new Color(0,168,81));
-        bouton2.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
-        bouton2.setForeground(Color.BLACK);
-        panneau.add(bouton2);
-        bouton2.addActionListener(m);
+        JButton fichier = new JButton("Choix fichier");
+        fichier.addActionListener(m);
+        fichier.setFont(new Font("Sérif",Font.BOLD,20));
+        fichier.setBackground(new Color(0,168,81));
+        fichier.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+        fichier.setForeground(Color.BLACK);
+        panneau.add(fichier);
 
-        JButton bouton3 = new JButton("Quitter");
-        bouton3.setFont(new Font("Sérif",Font.BOLD,20));
-        bouton3.setBackground(new Color(2,176,241));
-        bouton3.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
-        bouton3.setForeground(Color.BLACK);        
-        panneau.add(bouton3);
-        bouton3.addActionListener(m);
+        JButton quiter = new JButton("Quitter");
+        quiter.addActionListener(m);
+        quiter.setFont(new Font("Sérif",Font.BOLD,20));
+        quiter.setBackground(new Color(2,176,241));
+        quiter.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
+        quiter.setForeground(Color.BLACK);        
+        panneau.add(quiter);
 
         nomjeu.setFont(new Font("Sérif",Font.BOLD,45));
         titre.add(nomjeu);

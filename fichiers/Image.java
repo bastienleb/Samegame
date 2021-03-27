@@ -1,7 +1,8 @@
 import javax.swing.*;
 
-/*
-@author Kévin METRI et Bastien LEBLET
+/**
+*@author Kévin METRI et Bastien LEBLET
+* Cette Class sert a recuperer une image et a la paint 
 */
 public class Image extends JComponent{
   

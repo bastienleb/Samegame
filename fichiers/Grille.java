@@ -1,10 +1,10 @@
-import java.util.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-/*
-@author Kévin METRI et Bastien LEBLET
+/**
+*@author Kévin METRI et Bastien LEBLET
+* Cette Class gere tout la partie jeux
 */
 
 public class Grille extends JFrame implements MouseMotionListener,MouseListener {
@@ -34,11 +34,19 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
+
+    /**
+     * Cette Methode sert a recupérer le tableau si le mode de jeu choisie est Aléatoire
+    */
     
     public void RecupTabAlea(){
         TabAlea ta = new TabAlea();
         tab=ta.alea();
     }
+
+    /**
+     * Cette Methode sert a recupérer le tableau si le mode de jeu choisie est par fichier plus verification que le ficheir est bien un .txt
+    */
 
     public int RecupTabChoix(){
         TabChoix t=new TabChoix();
@@ -51,9 +59,11 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         return validation;
     }
     
-        
+    /**
+     * Cette Methode sert a afficher la page de jeux
+    */  
     public void ImageJeu(){
-            
+
         JPanel panel =new JPanel();
         JPanel panscore = new JPanel();
         JLabel labscore = new JLabel("SCORE = "+ intscore);
@@ -69,7 +79,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         
         for (int i=0;i<10;i++){
             for(int j=0;j<15;j++){
-                // this.add(panel);
                 String lettre=Character.toString(tab[i][j]);
                 
                 new Remplir_Tab(lettre,panel);
@@ -85,14 +94,23 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         this.setVisible(true);
     }
 
+    /**
+     * Cette Methode sert a recupérer les Coordonée X de la souris pour l'utiliser partout dans le fichier 
+    */
     public int RecupX(){
         return x;
     }
 
+    /**
+     * Cette Methode sert a recupérer les Coordonée Y de la souris pour l'utiliser partout dans le fichier 
+    */
     public int RecupY(){
         return y;
     }
     
+    /**
+     * Cette Methode sert a rénitialiser le tableau de survol une fois la forme changer 
+    */
     public void ResetTabSurvol(){
         for(int a=0; a<10;a++){  
             for(int b=0; b<15;b++){  
@@ -102,23 +120,29 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         boules=0;
         
     }
-    
+
+    /**
+     * Cette Methode sert a v"rifier que la colonne est bien vide
+    */
     public int VerifColonne(int colonnes) {
         for (int i=0; i<10; i++) {
-            if (tab[i][colonnes]!=' ') {
+            if (tab[i][colonnes]!='5') {
                 return 0;
             }
         }
         return 1;
     }
 
+    /**
+     * Cette Methode sert a décaler la ligne a gauche si la colonne est vide
+    */
     public void BougeGauche () {
     	for (int k=0; k<10; k++) {
 	        for (int j=0; j<14; j++) {
 		        if (VerifColonne(j)==1) {
 		            for (int i=0; i<10; i++) {
                         tab[i][j]= tab[i][j+1];
-                        tab[i][j+1]=' ';
+                        tab[i][j+1]='5';
                     }
                 }
             }
@@ -126,14 +150,17 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         ImageJeu();
     }
 
+    /**
+     * Cette Methode sert a décaler les pions vert le bas si en desous de lui une zone a été cliquer 
+    */
     public void ChuteBoule(){
 
         for (int k=0; k<10; k++) {
             for (int i=0; i<9; i++) {
                 for (int j=0; j<15; j++) {
-                    if ((tab[i+1][j]==' ') && (tab[i][j]!=' ')) {
+                    if ((tab[i+1][j]=='5') && (tab[i][j]!='5')) {
                         tab[i+1][j]= tab[i][j];
-                        tab[i][j]=' ';
+                        tab[i][j]='5';
                     }
                 }
             }
@@ -141,6 +168,9 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         ImageJeu();
     }
 
+    /**
+     * Cette Methode sert a recuperer la taille du groupe et aussi à verifier que le groupe est >1 
+    */
     public void TailleGroupe(){
         
         for (int i=0; i<10; i++) {
@@ -161,6 +191,9 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         Score(RecupX(), RecupY());
     }
 
+    /**
+     * Cette Methode sert a modifier le tableau lors s'un survol de groupe pour changer l'état et l'affichage de la grille
+    */
     public void ModifTAb(){ 
         posx=RecupX();
         posy=RecupY();
@@ -197,12 +230,15 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         ResetTabSurvol();
     }
 
+    /**
+     * Cette Methode sert a regarder si autour du pion en survol est la même couleur 
+    */
     public void AutourCase(int x,int y){
         char tempL;
         tempL=tab[y][x];
 
         if(x>0){
-            if (tab[y][x]==Character.toLowerCase(tab[y][x-1]) && tabsurvol[y][x-1]==0 && tab[y][x]!=' '){
+            if (tab[y][x]==Character.toLowerCase(tab[y][x-1]) && tabsurvol[y][x-1]==0 && tab[y][x]!='5'){
                 tab[y][x-1]=Character.toLowerCase(tempL);
                 tabsurvol[y][x-1]=1;
                 AutourCase((x-1),y);
@@ -212,7 +248,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         
 
         if(y>0){
-            if (tab[y][x]==Character.toLowerCase(tab[y-1][x]) && tabsurvol[y-1][x]==0 && tab[y][x]!=' '){
+            if (tab[y][x]==Character.toLowerCase(tab[y-1][x]) && tabsurvol[y-1][x]==0 && tab[y][x]!='5'){
                 tab[y-1][x]=Character.toLowerCase(tempL);
                 tabsurvol[y-1][x]=1;
                 AutourCase(x, (y-1));
@@ -223,7 +259,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         }
 
         if(y<9){
-            if (tab[y][x]==Character.toLowerCase(tab[y+1][x]) && tabsurvol[y+1][x]==0 && tab[y][x]!=' '){
+            if (tab[y][x]==Character.toLowerCase(tab[y+1][x]) && tabsurvol[y+1][x]==0 && tab[y][x]!='5'){
                 tab[y+1][x]=Character.toLowerCase(tempL);
                 tabsurvol[y+1][x]=1;
                 AutourCase(x, (y+1));
@@ -233,7 +269,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         }
 
         if(x<14){
-            if (tab[y][x]==Character.toLowerCase(tab[y][x+1]) && tabsurvol[y][x+1]==0 && tab[y][x]!=' '){
+            if (tab[y][x]==Character.toLowerCase(tab[y][x+1]) && tabsurvol[y][x+1]==0 && tab[y][x]!='5'){
                 tab[y][x+1]=Character.toLowerCase(tempL);
                 tabsurvol[y][x+1]=1;
                 AutourCase(x+1, y);
@@ -242,8 +278,10 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             }
         }
     }
-    
 
+    /**
+     * Cette Methode sert a ré-actualiser le tableau lorsqu'un autre groupe est selectionné
+    */
     public void RefreshTab(){
         for (int i=0;i<10;i++){
             for(int j=0;j<15;j++){
@@ -253,11 +291,14 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         }
     }
 
+    /**
+     * Cette Methode sert a vider les cases du groupes lorsque l'on clique dessus 
+    */
     public void changerfond(){
         for(int dx=0; dx<10;dx++){  
             for(int dy=0; dy<15;dy++){
                 if(Character.isLowerCase(tab[dx][dy])){
-                    tab[dx][dy]=' '; 
+                    tab[dx][dy]='5'; 
                     ImageJeu();
                 }
             }
@@ -265,8 +306,11 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         }
     }
 
+    /**
+     * Cette Methode sert a calculer le score 
+    */
     public void Score(int i,int j){
-        if(tab[j][i]!=' '){
+        if(tab[j][i]!='5'){
             score=intscore+Math.pow(boulesscore-2.0, 2.0);
             if(boulesscore==1){
                 score=intscore;
@@ -276,17 +320,26 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         RecupScore();
     }
 
+    /**
+     * Cette Methode sert a REnvoyer le score 
+    */
+    public int RecupScore(){
+        int scoreajout=(int)score;
+        return scoreajout;
+    }
+
+    /**
+     * Cette Methode sert a verifier la fin du jeu 
+    */
     public void VerifFin(){
-        if(tab[9][0]==' '){
+        if(tab[9][0]=='5'){
             this.dispose();
             new Fin(intscore);
         }
     }
 
-    public int RecupScore(){
-        int scoreajout=(int)score;
-        return scoreajout;
-    }
+    
+
     @Override
     public void mouseClicked(MouseEvent e)  {
         intscore=RecupScore();
