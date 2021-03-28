@@ -336,52 +336,52 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         char tempL;
         tempL=tab[y][x];
 
-        // for(int y=0;y<9;y++){
-        //     for(int x=0;x<14;x++){
+        for(int y=0;y<9;y++){
+            for(int x=0;x<14;x++){
 
-        //         if(x>0){
-        //             if (tab[y][x]==Character.toLowerCase(tab[y][x-1]) && tabsurvol[y][x-1]==0 && tab[y][x]!='5'){
-        //                 tab[y][x-1]=Character.toLowerCase(tempL);
-        //                 tabsurvol[y][x-1]=1;
-        //                 AutourCase((x-1),y);
-        //                 ImageJeu();
-        //             }      
-        //         }
+                if(x>0){
+                    if (tab[y][x]==Character.toLowerCase(tab[y][x-1]) && tabsurvol[y][x-1]==0 && tab[y][x]!='5'){
+                        tab[y][x-1]=Character.toLowerCase(tempL);
+                        tabsurvol[y][x-1]=1;
+                        AutourCase((x-1),y);
+                        ImageJeu();
+                    }      
+                }
                 
         
-        //         if(y>0){
-        //             if (tab[y][x]==Character.toLowerCase(tab[y-1][x]) && tabsurvol[y-1][x]==0 && tab[y][x]!='5'){
-        //                 tab[y-1][x]=Character.toLowerCase(tempL);
-        //                 tabsurvol[y-1][x]=1;
-        //                 AutourCase(x, (y-1));
-        //                 ImageJeu();
+                if(y>0){
+                    if (tab[y][x]==Character.toLowerCase(tab[y-1][x]) && tabsurvol[y-1][x]==0 && tab[y][x]!='5'){
+                        tab[y-1][x]=Character.toLowerCase(tempL);
+                        tabsurvol[y-1][x]=1;
+                        AutourCase(x, (y-1));
+                        ImageJeu();
         
-        //             }
+                    }
         
-        //         }
+                }
         
-        //         if(y<9){
-        //             if (tab[y][x]==Character.toLowerCase(tab[y+1][x]) && tabsurvol[y+1][x]==0 && tab[y][x]!='5'){
-        //                 tab[y+1][x]=Character.toLowerCase(tempL);
-        //                 tabsurvol[y+1][x]=1;
-        //                 AutourCase(x, (y+1));
-        //                 ImageJeu();
+                if(y<9){
+                    if (tab[y][x]==Character.toLowerCase(tab[y+1][x]) && tabsurvol[y+1][x]==0 && tab[y][x]!='5'){
+                        tab[y+1][x]=Character.toLowerCase(tempL);
+                        tabsurvol[y+1][x]=1;
+                        AutourCase(x, (y+1));
+                        ImageJeu();
         
-        //             }
-        //         }
+                    }
+                }
         
-        //         if(x<14){
-        //             if (tab[y][x]==Character.toLowerCase(tab[y][x+1]) && tabsurvol[y][x+1]==0 && tab[y][x]!='5'){
-        //                 tab[y][x+1]=Character.toLowerCase(tempL);
-        //                 tabsurvol[y][x+1]=1;
-        //                 AutourCase(x+1, y);
-        //                 ImageJeu();
+                if(x<14){
+                    if (tab[y][x]==Character.toLowerCase(tab[y][x+1]) && tabsurvol[y][x+1]==0 && tab[y][x]!='5'){
+                        tab[y][x+1]=Character.toLowerCase(tempL);
+                        tabsurvol[y][x+1]=1;
+                        AutourCase(x+1, y);
+                        ImageJeu();
         
-        //             }
-        //         }
+                    }
+                }
 
-        //     }
-        // }
+            }
+        }
 
         if(tab[9][0]=='5'){
             this.dispose();
