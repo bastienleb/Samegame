@@ -334,48 +334,52 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
     /**
      * Cette Methode sert a verifier la fin du jeu 
     */
-    public void VerifFin(int x,int y){
+    public void VerifFin(){
         
         int fin=1;
         System.out.println("FIn début : "+fin);
 
-        char tempL;
-        tempL=tab[y][x];
+
+         for (int y=9;y>1;y--){
+            for(int x=0;x<14;x++){
+
+                char tempL;
+                tempL=tab[y][x];
 
 
                 if(x>0){
-                    if (tab[y][x]==(tab[y][x-1]) ){
+                    if (tab[y][x]==tab[y][x-1] &&tab[y][x]!='5'){
                        fin=0;
                         System.out.println("fin vaut : "+fin+"  ON est en case x: "+x+" y: "+y+" la boule est : "+tab[y][x]+" et la boule à gauche est :  "+tab[y][x-1]);
-                        System.out.println("//////////////////////////////////////////////////////////////");
-                        VerifFin((x-1),y);
+                        //System.out.println("//////////////////////////////////////////////////////////////");
+                       // VerifFin((x-1),y);
                         
                     }      
                     
-                    Fin(fin);    
+                   
                 }
                 
         
                 if(y>0){
-                    if (tab[y][x]==(tab[y-1][x])){
+                    if (tab[y][x]==tab[y-1][x] &&tab[y][x]!='5'){
                         fin=0;
                         System.out.println("fin vaut : "+fin+"  ON est en case x: "+x+" y: "+y+" la boule est : "+tab[y][x]+" et la boule en bas est :  "+tab[y-1][x]);
-                        System.out.println("//////////////////////////////////////////////////////////////");
-                        VerifFin(x, (y-1));
+                       // System.out.println("//////////////////////////////////////////////////////////////");
+                       // VerifFin(x, (y-1));
                         
                         
                     }
                     
-                    Fin(fin);
+                    
                         
                 }
         
-                if(y>9){
-                    if (tab[y][x]==(tab[y+1][x])){
+                if(y<9){
+                    if (tab[y][x]==tab[y+1][x] &&tab[y][x]!='5' ){
                         fin=0;
                         System.out.println("fin vaut : "+fin+"  ON est en case x: "+x+" y: "+y+" la boule est : "+tab[y][x]+" et la boule à en haut est :  "+tab[y+1][x]);
-                        System.out.println("//////////////////////////////////////////////////////////////");
-                        VerifFin(x, (y+1));
+                        ///System.out.println("//////////////////////////////////////////////////////////////");
+                        //VerifFin(x, (y+1));
                         
                         
                     }
@@ -383,20 +387,24 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
                         
                 }
         
-                if(x>14){
-                    if (tab[y][x]==(tab[y][x+1]) ){
+                if(x<14){
+                    if (tab[y][x]==tab[y][x+1] &&tab[y][x]!='5') {
                         fin=0;
                         System.out.println("fin vaut : "+fin+"  ON est en case x: "+x+" y: "+y+" la boule est : "+tab[y][x]+" et la boule à a droite est :  "+tab[y][x+1]);
-                        System.out.println("//////////////////////////////////////////////////////////////");
-                        VerifFin(x+1, y);
+                       // System.out.println("//////////////////////////////////////////////////////////////");
+                        //VerifFin(x+1, y);
 
 
                     }
-                    Fin(fin);
                 }
-                
-            
+
+            }
+
+        }
             System.out.println("FIN1 : "+fin);
+                
+                    Fin(fin);
+            
             // Fin(fin);
             
             
@@ -419,8 +427,9 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
         System.out.println("Dans fin et il vaut : "+fin);
 
         if(fin==1){
-            this.dispose();
              new Fin(intscore);
+            this.dispose();
+            //VerifFin();
 
         }
     }
@@ -436,10 +445,10 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
             BougeGauche();
             TailleGroupe();
             ImageJeu();
-            VerifFin(0,9);
             
             
         }
+            VerifFin();
     }
 
     @Override
@@ -459,18 +468,15 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
                 ModifTAb();
             }
             ChuteBoule();
-            BougeGauche();
             ImageJeu();
+            BougeGauche();
         }
     }
     public void mousePressed(MouseEvent e){}
     public void mouseDragged(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
     public void mouseEntered(MouseEvent e){}
-    public void mouseReleased(MouseEvent e){
-        // VerifFin();
-
-    }
+    public void mouseReleased(MouseEvent e){}
 
     @Override
     public void actionPerformed(ActionEvent e) {

@@ -1,13 +1,14 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import javax.swing.Timer.*;
 
 /**
 *@author Kévin METRI et Bastien LEBLET
 * Cette Class gere tout la partie jeux
 */
 
-public class Grille extends JFrame implements MouseMotionListener,MouseListener {
+public class Grille extends JFrame implements MouseMotionListener,MouseListener, ActionListener {
     private char tab[][]=new char[10][15];
     private int tabsurvol[][]=new int[10][15];
     private int x;
@@ -24,6 +25,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     private int boules=0;
     private int boulesscore=0;
     private boolean tupeutpascliquer;
+
     
     public Grille(){
         super("Grille");
@@ -166,6 +168,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             }
         }
         ImageJeu();
+        
     }
 
     /**
@@ -332,9 +335,102 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
      * Cette Methode sert a verifier la fin du jeu 
     */
     public void VerifFin(){
-        if(tab[9][0]=='5'){
+        
+        int fin=1;
+        System.out.println("FIn début : "+fin);
+
+
+         for (int y=9;y>1;y--){
+            for(int x=0;x<14;x++){
+
+                char tempL;
+                tempL=tab[y][x];
+
+
+                if(x>0){
+                    if (tab[y][x]==tab[y][x-1] &&tab[y][x]!='5'){
+                       fin=0;
+                        System.out.println("fin vaut : "+fin+"  ON est en case x: "+x+" y: "+y+" la boule est : "+tab[y][x]+" et la boule à gauche est :  "+tab[y][x-1]);
+                        //System.out.println("//////////////////////////////////////////////////////////////");
+                       // VerifFin((x-1),y);
+                        
+                    }      
+                    
+                   
+                }
+                
+        
+                if(y>0){
+                    if (tab[y][x]==tab[y-1][x] &&tab[y][x]!='5'){
+                        fin=0;
+                        System.out.println("fin vaut : "+fin+"  ON est en case x: "+x+" y: "+y+" la boule est : "+tab[y][x]+" et la boule en bas est :  "+tab[y-1][x]);
+                       // System.out.println("//////////////////////////////////////////////////////////////");
+                       // VerifFin(x, (y-1));
+                        
+                        
+                    }
+                    
+                    
+                        
+                }
+        
+                if(y<9){
+                    if (tab[y][x]==tab[y+1][x] &&tab[y][x]!='5' ){
+                        fin=0;
+                        System.out.println("fin vaut : "+fin+"  ON est en case x: "+x+" y: "+y+" la boule est : "+tab[y][x]+" et la boule à en haut est :  "+tab[y+1][x]);
+                        ///System.out.println("//////////////////////////////////////////////////////////////");
+                        //VerifFin(x, (y+1));
+                        
+                        
+                    }
+                    
+                        
+                }
+        
+                if(x<14){
+                    if (tab[y][x]==tab[y][x+1] &&tab[y][x]!='5') {
+                        fin=0;
+                        System.out.println("fin vaut : "+fin+"  ON est en case x: "+x+" y: "+y+" la boule est : "+tab[y][x]+" et la boule à a droite est :  "+tab[y][x+1]);
+                       // System.out.println("//////////////////////////////////////////////////////////////");
+                        //VerifFin(x+1, y);
+
+
+                    }
+                }
+
+            }
+
+        }
+            System.out.println("FIN1 : "+fin);
+                
+                    Fin(fin);
+            
+            // Fin(fin);
+            
+            
+        
+
+        // if(tab[9][0]=='5'){
+        //     this.dispose();
+        //     new Fin(intscore);
+        // }
+        System.out.println("//////////////////////////////////////////////////////////////");
+        System.out.println("//////////////////////////////////////////////////////////////");
+        System.out.println("//////////////////////////////////////////////////////////////");
+
+
+      
+    }
+
+    public void Fin(int fin){
+
+        System.out.println("Dans fin et il vaut : "+fin);
+
+        if(fin==1){
+             new Fin(intscore);
             this.dispose();
-            new Fin(intscore);
+            //VerifFin();
+
         }
     }
 
@@ -349,10 +445,10 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
             BougeGauche();
             TailleGroupe();
             ImageJeu();
-            VerifFin();
             
             
         }
+            VerifFin();
     }
 
     @Override
@@ -372,8 +468,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
                 ModifTAb();
             }
             ChuteBoule();
-            BougeGauche();
             ImageJeu();
+            BougeGauche();
         }
     }
     public void mousePressed(MouseEvent e){}
@@ -381,4 +477,10 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     public void mouseExited(MouseEvent e) {}
     public void mouseEntered(MouseEvent e){}
     public void mouseReleased(MouseEvent e){}
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
 }
