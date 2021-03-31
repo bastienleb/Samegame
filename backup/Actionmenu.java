@@ -24,17 +24,18 @@ public class Actionmenu implements ActionListener {
   }
   
   public void actionPerformed(ActionEvent evt) {
+    Grille grille=new Grille();
     String composant = evt.getActionCommand();
     
     if (composant.equals("Al\u00e9atoire")) {
-      Grille grille=new Grille();
+      // Grille grille=new Grille();
       grille.RecupTabAlea();
       grille.ImageJeu();
       framemenu.dispose();
     }
     
     if (composant.equals("Choix fichier")) {
-      Grille grille=new Grille();
+      // Grille grille=new Grille();
       validation = grille.RecupTabChoix();
       if(validation==0){
           grille.ImageJeu();
