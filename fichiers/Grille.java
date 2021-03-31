@@ -167,7 +167,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
                 }
             }
         }
-        ImageJeu();
+        //ImageJeu();
         
     }
 
@@ -245,7 +245,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
                 tab[y][x-1]=Character.toLowerCase(tempL);
                 tabsurvol[y][x-1]=1;
                 AutourCase((x-1),y);
-                ImageJeu();
             }      
         }
         
@@ -255,7 +254,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
                 tab[y-1][x]=Character.toLowerCase(tempL);
                 tabsurvol[y-1][x]=1;
                 AutourCase(x, (y-1));
-                ImageJeu();
 
             }
 
@@ -266,7 +264,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
                 tab[y+1][x]=Character.toLowerCase(tempL);
                 tabsurvol[y+1][x]=1;
                 AutourCase(x, (y+1));
-                ImageJeu();
 
             }
         }
@@ -276,7 +273,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
                 tab[y][x+1]=Character.toLowerCase(tempL);
                 tabsurvol[y][x+1]=1;
                 AutourCase(x+1, y);
-                ImageJeu();
 
             }
         }
@@ -302,7 +298,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
             for(int dy=0; dy<15;dy++){
                 if(Character.isLowerCase(tab[dx][dy])){
                     tab[dx][dy]='5'; 
-                    ImageJeu();
                 }
             }
 
@@ -337,7 +332,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
     public void VerifFin(){
         
         int fin=1;
-        System.out.println("FIn début : "+fin);
 
 
          for (int y=9;y>1;y--){
@@ -350,87 +344,38 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
                 if(x>0){
                     if (tab[y][x]==tab[y][x-1] &&tab[y][x]!='5'){
                        fin=0;
-                        System.out.println("fin vaut : "+fin+"  ON est en case x: "+x+" y: "+y+" la boule est : "+tab[y][x]+" et la boule à gauche est :  "+tab[y][x-1]);
-                        //System.out.println("//////////////////////////////////////////////////////////////");
-                       // VerifFin((x-1),y);
-                        
-                    }      
-                    
-                   
+                    }     
                 }
                 
         
                 if(y>0){
                     if (tab[y][x]==tab[y-1][x] &&tab[y][x]!='5'){
-                        fin=0;
-                        System.out.println("fin vaut : "+fin+"  ON est en case x: "+x+" y: "+y+" la boule est : "+tab[y][x]+" et la boule en bas est :  "+tab[y-1][x]);
-                       // System.out.println("//////////////////////////////////////////////////////////////");
-                       // VerifFin(x, (y-1));
-                        
-                        
-                    }
-                    
-                    
-                        
+                        fin=0;                       
+                    }   
                 }
         
                 if(y<9){
                     if (tab[y][x]==tab[y+1][x] &&tab[y][x]!='5' ){
                         fin=0;
-                        System.out.println("fin vaut : "+fin+"  ON est en case x: "+x+" y: "+y+" la boule est : "+tab[y][x]+" et la boule à en haut est :  "+tab[y+1][x]);
-                        ///System.out.println("//////////////////////////////////////////////////////////////");
-                        //VerifFin(x, (y+1));
-                        
-                        
-                    }
-                    
-                        
+                    }  
                 }
         
                 if(x<14){
                     if (tab[y][x]==tab[y][x+1] &&tab[y][x]!='5') {
                         fin=0;
-                        System.out.println("fin vaut : "+fin+"  ON est en case x: "+x+" y: "+y+" la boule est : "+tab[y][x]+" et la boule à a droite est :  "+tab[y][x+1]);
-                       // System.out.println("//////////////////////////////////////////////////////////////");
-                        //VerifFin(x+1, y);
-
-
                     }
                 }
-
             }
-
         }
-            System.out.println("FIN1 : "+fin);
                 
-                    Fin(fin);
-            
-            // Fin(fin);
-            
-            
-        
-
-        // if(tab[9][0]=='5'){
-        //     this.dispose();
-        //     new Fin(intscore);
-        // }
-        System.out.println("//////////////////////////////////////////////////////////////");
-        System.out.println("//////////////////////////////////////////////////////////////");
-        System.out.println("//////////////////////////////////////////////////////////////");
-
-
-      
+        Fin(fin);      
     }
 
     public void Fin(int fin){
 
-        System.out.println("Dans fin et il vaut : "+fin);
-
         if(fin==1){
-             new Fin(intscore);
+            new Fin(intscore);
             this.dispose();
-            //VerifFin();
-
         }
     }
 
@@ -444,11 +389,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
             ChuteBoule();
             BougeGauche();
             TailleGroupe();
-            ImageJeu();
-            
-            
         }
-            VerifFin();
+        VerifFin();
     }
 
     @Override
@@ -467,20 +409,16 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
                 
                 ModifTAb();
             }
-            ChuteBoule();
             ImageJeu();
-            BougeGauche();
         }
     }
     public void mousePressed(MouseEvent e){}
     public void mouseDragged(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
     public void mouseEntered(MouseEvent e){}
-    public void mouseReleased(MouseEvent e){}
-
     @Override
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
+    public void mouseReleased(MouseEvent e){
+        AutourCase(RecupX(), RecupY());
     }
+    public void actionPerformed(ActionEvent e) {}
 }
