@@ -30,7 +30,7 @@ public class Remplir_Tab {
             panel.add(new Image(new ImageIcon("../image/bleu_select.png").getImage()));
         }
 
-        if(lettre.equals("5")){
+        if(lettre.equals(" ")){
             panel.add(new Image(new ImageIcon("../image/fond_b.png").getImage()));
         }
     }

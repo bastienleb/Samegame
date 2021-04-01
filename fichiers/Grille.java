@@ -75,7 +75,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
         panel.setBounds(0, 0, 750, 500);
         panscore.setBounds(0,500,750,40);
         labscore.setFont(new Font("Sérif",Font.BOLD,25));
-        panscore.setBackground(Color.WHITE);
+        panscore.setBackground(new Color(124,175,219));
+        labscore.setForeground(new Color(0,84,166));
         
         panel.setLayout(new GridLayout(10,15));
         
@@ -128,7 +129,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
     */
     public int VerifColonne(int colonnes) {
         for (int i=0; i<10; i++) {
-            if (tab[i][colonnes]!='5') {
+            if (tab[i][colonnes]!=' ') {
                 return 0;
             }
         }
@@ -144,7 +145,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
 		        if (VerifColonne(j)==1) {
 		            for (int i=0; i<10; i++) {
                         tab[i][j]= tab[i][j+1];
-                        tab[i][j+1]='5';
+                        tab[i][j+1]=' ';
                     }
                 }
             }
@@ -160,9 +161,9 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
         for (int k=0; k<10; k++) {
             for (int i=0; i<9; i++) {
                 for (int j=0; j<15; j++) {
-                    if ((tab[i+1][j]=='5') && (tab[i][j]!='5')) {
+                    if ((tab[i+1][j]==' ') && (tab[i][j]!=' ')) {
                         tab[i+1][j]= tab[i][j];
-                        tab[i][j]='5';
+                        tab[i][j]=' ';
                     }
                 }
             }
@@ -241,7 +242,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
         tempL=tab[y][x];
 
         if(x>0){
-            if (tab[y][x]==Character.toLowerCase(tab[y][x-1]) && tabsurvol[y][x-1]==0 && tab[y][x]!='5'){
+            if (tab[y][x]==Character.toLowerCase(tab[y][x-1]) && tabsurvol[y][x-1]==0 && tab[y][x]!=' '){
                 tab[y][x-1]=Character.toLowerCase(tempL);
                 tabsurvol[y][x-1]=1;
                 AutourCase((x-1),y);
@@ -250,7 +251,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
         
 
         if(y>0){
-            if (tab[y][x]==Character.toLowerCase(tab[y-1][x]) && tabsurvol[y-1][x]==0 && tab[y][x]!='5'){
+            if (tab[y][x]==Character.toLowerCase(tab[y-1][x]) && tabsurvol[y-1][x]==0 && tab[y][x]!=' '){
                 tab[y-1][x]=Character.toLowerCase(tempL);
                 tabsurvol[y-1][x]=1;
                 AutourCase(x, (y-1));
@@ -260,7 +261,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
         }
 
         if(y<9){
-            if (tab[y][x]==Character.toLowerCase(tab[y+1][x]) && tabsurvol[y+1][x]==0 && tab[y][x]!='5'){
+            if (tab[y][x]==Character.toLowerCase(tab[y+1][x]) && tabsurvol[y+1][x]==0 && tab[y][x]!=' '){
                 tab[y+1][x]=Character.toLowerCase(tempL);
                 tabsurvol[y+1][x]=1;
                 AutourCase(x, (y+1));
@@ -269,7 +270,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
         }
 
         if(x<14){
-            if (tab[y][x]==Character.toLowerCase(tab[y][x+1]) && tabsurvol[y][x+1]==0 && tab[y][x]!='5'){
+            if (tab[y][x]==Character.toLowerCase(tab[y][x+1]) && tabsurvol[y][x+1]==0 && tab[y][x]!=' '){
                 tab[y][x+1]=Character.toLowerCase(tempL);
                 tabsurvol[y][x+1]=1;
                 AutourCase(x+1, y);
@@ -297,7 +298,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
         for(int dx=0; dx<10;dx++){  
             for(int dy=0; dy<15;dy++){
                 if(Character.isLowerCase(tab[dx][dy])){
-                    tab[dx][dy]='5'; 
+                    tab[dx][dy]=' '; 
                 }
             }
 
@@ -308,7 +309,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
      * Cette Methode sert a calculer le score 
     */
     public void Score(int i,int j){
-        if(tab[j][i]!='5'){
+        if(tab[j][i]!=' '){
             score=intscore+Math.pow(boulesscore-2.0, 2.0);
             if(boulesscore==1){
                 score=intscore;
@@ -342,26 +343,26 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
 
 
                 if(x>0){
-                    if (tab[y][x]==tab[y][x-1] &&tab[y][x]!='5'){
+                    if (tab[y][x]==tab[y][x-1] &&tab[y][x]!=' '){
                        fin=0;
                     }     
                 }
                 
         
                 if(y>0){
-                    if (tab[y][x]==tab[y-1][x] &&tab[y][x]!='5'){
+                    if (tab[y][x]==tab[y-1][x] &&tab[y][x]!=' '){
                         fin=0;                       
                     }   
                 }
         
                 if(y<9){
-                    if (tab[y][x]==tab[y+1][x] &&tab[y][x]!='5' ){
+                    if (tab[y][x]==tab[y+1][x] &&tab[y][x]!=' ' ){
                         fin=0;
                     }  
                 }
         
                 if(x<14){
-                    if (tab[y][x]==tab[y][x+1] &&tab[y][x]!='5') {
+                    if (tab[y][x]==tab[y][x+1] &&tab[y][x]!=' ') {
                         fin=0;
                     }
                 }
