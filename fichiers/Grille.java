@@ -416,9 +416,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
     public void mouseDragged(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
     public void mouseEntered(MouseEvent e){}
-    @Override
-    public void mouseReleased(MouseEvent e){
-        // AutourCase(RecupX(), RecupY());
-    }
+    public void mouseReleased(MouseEvent e){}
     public void actionPerformed(ActionEvent e) {}
 }

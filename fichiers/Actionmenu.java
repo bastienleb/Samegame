@@ -6,8 +6,7 @@ import java.awt.event.*;
 * Cette Class sert a la detection des action de la page du menu
 */
 
-
-public class Actionmenu implements ActionListener {
+public class Actionmenu implements MouseListener {
   
   JPanel pagemenu;
   JFrame framemenu;
@@ -19,23 +18,11 @@ public class Actionmenu implements ActionListener {
     this.framemenu=frame;
   }
   
-  public Actionmenu(char tab[][]){
-    this.tab=tab;
-  }
   
-  public void actionPerformed(ActionEvent evt) {
-    Grille grille=new Grille();
-    String composant = evt.getActionCommand();
-    
-    if (composant.equals("Al\u00e9atoire")) {
-      // Grille grille=new Grille();
-      grille.RecupTabAlea();
-      grille.ImageJeu();
-      framemenu.dispose();
-    }
-    
-    if (composant.equals("Choix fichier")) {
-      // Grille grille=new Grille();
+  @Override
+  public void mouseClicked(MouseEvent e){
+    if((e.getX()>120 && e.getX()<337) &&(e.getY()>500 && e.getY()<600)){
+      Grille grille=new Grille();
       validation = grille.RecupTabChoix();
       if(validation==0){
           grille.ImageJeu();
@@ -43,8 +30,20 @@ public class Actionmenu implements ActionListener {
       framemenu.dispose();
     }
 
-    if (composant.equals("Quitter")) {
-      System.exit(0);
+    if((e.getX()>415 && e.getX()<625) &&(e.getY()>490 && e.getY()<600)){
+      Grille grille=new Grille();
+      grille.RecupTabAlea();
+      grille.ImageJeu();
+      framemenu.dispose();
     }
-  } 
+    if((e.getX()>720 && e.getX()<935) &&(e.getY()>490 && e.getY()<600)){
+      framemenu.dispose();
+    }
+
+  }
+
+  public void mousePressed(MouseEvent e){}
+  public void mouseExited(MouseEvent e) {}
+  public void mouseEntered(MouseEvent e){}
+  public void mouseReleased(MouseEvent e){}
 }
