@@ -16,12 +16,12 @@ public class ActionFin implements MouseListener{
     @Override
     public void mouseClicked(MouseEvent e){
 
-        if((e.getX()>260 && e.getX()<475) &&(e.getY()>455 && e.getY()<555)){
+        if((e.getX()>260 && e.getX()<475) &&(e.getY()>455 && e.getY()<555)){ // ZONE REJOUER
             f.dispose();
             new Menu();
         }
 
-        if((e.getX()>520 && e.getX()<740) &&(e.getY()>455 && e.getY()<555)){
+        if((e.getX()>520 && e.getX()<740) &&(e.getY()>455 && e.getY()<555)){ // ZONE QUITTER
            f.dispose();
         }
     }

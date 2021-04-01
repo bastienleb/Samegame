@@ -8,35 +8,32 @@ JVMFLAGS =
 
 ### REGLES ESSENTIELLES ###
 
-Main.class : Main.java Menu.class Actionmenu.class Grille.class Image.class TabAlea.class RecupFichier.class TabChoix.class Remplir_Tab.class Fin.class ActionFin.class
+Main.class : Main.java Menu.class
 	${JC} ${JCFLAGS} Main.java
 
-Menu.class : Menu.java Actionmenu.class TabAlea.class
+Menu.class : Menu.java Actionmenu.class
 	${JC} ${JCFLAGS} Menu.java
 
-Actionmenu.class : Actionmenu.java
+Actionmenu.class : Actionmenu.java Grille.class
 	${JC} ${JCFLAGS} Actionmenu.java
+
+Grille.class : Grille.java TabAlea.class TabChoix.class Remplir_Tab.class Fin.class
+	${JC} ${JCFLAGS} Grille.java
 
 TabAlea.class : TabAlea.java
 	${JC} ${JCFLAGS} TabAlea.java
 
-Grille.class : Grille.java Actionmenu.class Remplir_Tab.class
-	${JC} ${JCFLAGS} Grille.java
-
-Image.class : Image.java
-	${JC} ${JCFLAGS} Image.java
-
-RecupFichier.class : RecupFichier.java
-	${JC} ${JCFLAGS} RecupFichier.java
-
-TabChoix.class : TabChoix.java
+TabChoix.class : TabChoix.java RecupFichier.class
 	${JC} ${JCFLAGS} TabChoix.java
 
 Remplir_Tab.class : Remplir_Tab.java
 	${JC} ${JCFLAGS} Remplir_Tab.java
 
-Fin.class : Fin.java
+Fin.class : Fin.java ActionFin.class
 	${JC} ${JCFLAGS} Fin.java
+
+RecupFichier.class : RecupFichier.java
+	${JC} ${JCFLAGS} RecupFichier.java
 
 ActionFin.class : ActionFin.java
 	${JC} ${JCFLAGS} ActionFin.java

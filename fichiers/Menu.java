@@ -24,9 +24,7 @@ public class Menu extends JFrame {
         panneau.add(images);
         panneau.addMouseListener(m);
         
-        //this.add(titre);
         this.add(panneau);
-        //this.add(logo);
         this.setVisible(true);
     }   
 }

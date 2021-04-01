@@ -8,7 +8,7 @@ import javax.swing.Timer.*;
 * Cette Class gere tout la partie jeux
 */
 
-public class Grille extends JFrame implements MouseMotionListener,MouseListener, ActionListener {
+public class Grille extends JFrame implements MouseMotionListener,MouseListener {
     private char tab[][]=new char[10][15];
     private int tabsurvol[][]=new int[10][15];
     private int x;
@@ -28,8 +28,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
 
     
     public Grille(){
-        super("Grille");
-        
+        super("SameGame");
         this.setSize(767,580);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -168,7 +167,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
                 }
             }
         }
-        //ImageJeu();
         
     }
 
@@ -320,7 +318,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
     }
 
     /**
-     * Cette Methode sert a REnvoyer le score 
+     * Cette Methode sert a Renvoyer le score 
     */
     public int RecupScore(){
         int scoreajout=(int)score;
@@ -390,6 +388,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
             ChuteBoule();
             BougeGauche();
             TailleGroupe();
+            score=score+0;
         }
         VerifFin();
     }
@@ -418,5 +417,4 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener,
     public void mouseExited(MouseEvent e) {}
     public void mouseEntered(MouseEvent e){}
     public void mouseReleased(MouseEvent e){}
-    public void actionPerformed(ActionEvent e) {}
 }

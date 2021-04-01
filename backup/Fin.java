@@ -17,6 +17,7 @@ public class Fin extends JFrame {
     JPanel all= new JPanel();
 
     public Fin(int scorefin){
+        super("SameGame");
         this.score=scorefin;
         this.setSize(1024,768);
         this.setLocationRelativeTo(null);
@@ -31,12 +32,12 @@ public class Fin extends JFrame {
         all.add(panscore);
         all.add(fond);
         this.add(all);
-        this.setVisible(true);
+        this.setVisible(true); 
     }
+
     /**
     * Cette Methode sert a recuperer le score de la class Grille
     */
-    
     public void RecupScore(){
         JLabel affiscore = new JLabel("SCORE :"+score);
         affiscore.setFont(new Font("Sérif",Font.BOLD,40));

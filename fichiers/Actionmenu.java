@@ -8,38 +8,39 @@ import java.awt.event.*;
 
 public class Actionmenu implements MouseListener {
   
-  JPanel pagemenu;
   JFrame framemenu;
   public char tab[][]=new char[10][15];
   int validation=0;
   
   public Actionmenu(JPanel panel,JFrame frame){
-    this.pagemenu=panel; 
     this.framemenu=frame;
   }
   
   
   @Override
   public void mouseClicked(MouseEvent e){
-    if((e.getX()>120 && e.getX()<337) &&(e.getY()>500 && e.getY()<600)){
+    if((e.getX()>120 && e.getX()<337) &&(e.getY()>500 && e.getY()<600)){  // ZONE FICHIER
       Grille grille=new Grille();
+      grille.setVisible(false);
       validation = grille.RecupTabChoix();
       if(validation==0){
-          grille.ImageJeu();
+        grille.setVisible(true);
+        grille.ImageJeu();
       }
       framemenu.dispose();
     }
 
-    if((e.getX()>415 && e.getX()<625) &&(e.getY()>490 && e.getY()<600)){
+    if((e.getX()>415 && e.getX()<625) &&(e.getY()>490 && e.getY()<600)){  // ZONE ALEATOIRE
       Grille grille=new Grille();
       grille.RecupTabAlea();
       grille.ImageJeu();
       framemenu.dispose();
     }
-    if((e.getX()>720 && e.getX()<935) &&(e.getY()>490 && e.getY()<600)){
+
+    if((e.getX()>720 && e.getX()<935) &&(e.getY()>490 && e.getY()<600)){ // ZONE QUITTER
       framemenu.dispose();
     }
-
+    
   }
 
   public void mousePressed(MouseEvent e){}
