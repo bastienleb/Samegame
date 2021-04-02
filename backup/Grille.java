@@ -96,9 +96,6 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         this.setVisible(true);
     }
 
-    /**
-     * Cette Methode sert a recupérer les Coordonée X de la souris pour l'utiliser partout dans le fichier 
-    */
     public int RecupX(){
         return x;
     }
@@ -124,7 +121,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     /**
-     * Cette Methode sert a v"rifier que la colonne est bien vide
+     * Cette Methode sert a verifier que la colonne est bien vide
     */
     public int VerifColonne(int colonnes) {
         for (int i=0; i<10; i++) {
@@ -153,7 +150,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     /**
-     * Cette Methode sert a décaler les pions vert le bas si en desous de lui une zone a été cliquer 
+     * Cette Methode sert a décaler les pions vers le bas si en desous de lui une zone a été cliquer 
     */
     public void ChuteBoule(){
 

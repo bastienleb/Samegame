@@ -12,7 +12,7 @@ public class Actionmenu implements MouseListener {
   public char tab[][]=new char[10][15];
   int validation=0;
   
-  public Actionmenu(JPanel panel,JFrame frame){
+  public Actionmenu(JFrame frame){
     this.framemenu=frame;
   }
   
