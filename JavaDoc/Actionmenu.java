@@ -8,7 +8,7 @@ import java.awt.event.*;
 
 public class Actionmenu implements MouseListener {
     /**
-    * Composante qui s'execute apres un un clique sur la souris.
+    * Composante qui s'execute apres un clique sur la souris.
     */
     public void mouseClicked(MouseEvent e){
 

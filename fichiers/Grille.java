@@ -307,8 +307,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     /**
      * Cette Methode sert a calculer le score 
     */
-    public void Score(int i,int j){
-        if(tab[j][i]!=' '){
+    public void Score(int x,int y){
+        if(tab[y][x]!=' '){
             score=intscore+Math.pow(boulesscore-2.0, 2.0);
             if(boulesscore==1){
                 score=intscore;

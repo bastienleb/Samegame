@@ -33,7 +33,7 @@ public class Grille implements MouseMotionListener,MouseListener {
     * @return la positon x de la souris
     */
     public int RecupX(){
-        return x;
+        return Grille.x;
     }
 
     /**
@@ -42,7 +42,7 @@ public class Grille implements MouseMotionListener,MouseListener {
     * @return la positon y de la souris
     */
     public int RecupY(){
-        return y;
+        return Grille.y;
     }
 
     /**
@@ -111,5 +111,50 @@ public class Grille implements MouseMotionListener,MouseListener {
     */  
     public void changerfond(){
     }
+    
+    /**
+    * Composante qui calcul le score
+    *
+    *@param x l'abcisse (entre 0 et 14)
+    *@param y l'ordonn\u00e9e (entre 0 et 9)
+    */  
+    public void Score(int x,int y){
+    }
 
+    /**
+    * Composante qui renvoie le score
+    *
+    *@return le score en jeu 
+    */  
+    public int RecupScore(){
+        return Grille.scoreajout;
+    }
+
+    /**
+    * Composante qui verifie si c'est la fin du jeu 
+    */  
+    public void VerifFin(){
+    }
+
+    /**
+    * Composante qui affiche la page de fin et renvoie le score \u00e0 celle-ci
+    *
+    *@param fin une variable fin (1 ou 0)
+    */  
+    public void Fin(int fin){
+    }
+
+    /**
+    * Composante qui s'execute apres un  clique sur la souris.
+    */
+    public void mouseClicked(MouseEvent e){
+
+    }
+
+    /**
+    * Composante qui s'execute apres un deplacement de la souris.
+    */
+    public void mouseMoved(MouseEvent e) {
+
+    }
 }
