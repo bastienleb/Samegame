@@ -38,13 +38,23 @@ RecupFichier.class : RecupFichier.java
 ActionFin.class : ActionFin.java
 	${JC} ${JCFLAGS} ActionFin.java
 
-
 ### REGLES OPTIONNELLES ###
 
 run : Main.class
 	${JVM} ${JVMFLAGS} Main
+javadoc : ActionFin.class Actionmenu.class Fin.class Grille.class Main.class Menu.class RecupFichier.class Remplir_Tab.class TabAlea.class TabChoix.class
+	javadoc ActionFin.java Actionmenu.java Fin.java Grille.java Main.java Menu.java RecupFichier.java Remplir_Tab.java TabAlea.java TabChoix.java
 
 clean :
 	$(RM) *.class
+	$(RM) *.js
+	$(RM) *.css
+	$(RM) *.html
+	$(RM) element-list
+	$(RM) -r resources
+	$(RM) -r script-dir
+	$(RM) *.zip
+	$(RM) -r jquery
+
 
 ### FIN ###
