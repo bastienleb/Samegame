@@ -2,21 +2,39 @@ import javax.swing.*;
 import java.awt.event.*;
 
 /**
-*@author Kévin METRI et Bastien LEBLET
-* Cette Class sert a la detection des action de la page du menu
+* La classe <b><code>Actionmenu</code></b> sert \u00e0 gerer les action sur la page du menu.
+*  
+* @version 1.1
+* @author Kévin METRI et Bastien LEBLET
 */
 
 public class Actionmenu implements MouseListener {
   
   JFrame framemenu;
+  /**
+  * Composante d'un tableau muldimentionnel (R,V,B,r,v,b,' ').
+  */
   public char tab[][]=new char[10][15];
-  int validation=0;
+  /**
+  * Composante de verification (0 ou 1).
+  */
+  public int validation=0;
   
+
+  /**
+  * Constructeur qui recupere le fenetre du menu.
+  *
+  *@param frame fenetre de la page menu
+  */
+
   public Actionmenu(JFrame frame){
     this.framemenu=frame;
   }
   
   
+  /**
+  * Methode qui s'execute apres un clique sur la souris.
+  */
   @Override
   public void mouseClicked(MouseEvent e){
     if((e.getX()>120 && e.getX()<337) &&(e.getY()>500 && e.getY()<600)){  // ZONE FICHIER

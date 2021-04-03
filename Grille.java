@@ -1,31 +1,98 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-
 /**
-*@author Kévin METRI et Bastien LEBLET
-* Cette Class gere tout la partie jeux
+* La classe <b><code>Grille</code></b> sert \u00e0 gerer les action sur la page du menu.
+*  
+* @version 1.1
+* @author Kévin METRI et Bastien LEBLET
 */
 
 public class Grille extends JFrame implements MouseMotionListener,MouseListener {
-    private char tab[][]=new char[10][15];
-    private int tabsurvol[][]=new int[10][15];
-    private int x;
-    private int y;
-    private int ancienx;
-    private int ancieny;
-    private int posx;
-    private int posy;
-    private int tmpx;
-    private int tmpy;
-    private char tmplettre;
-    private double score=0.0;
-    private int intscore=0;
-    private int boules=0;
-    private int boulesscore=0;
-    private boolean tupeutpascliquer;
+    /**
+    * Composante d'un tableau muldimentionnel (R,V,B,r,v,b,' ').
+    */
+    public char tab[][]=new char[10][15];
 
+    /**
+    * Composante d'un tableau au survol d'un groupe (0 ou 1).
+    */
+    public int tabsurvol[][]=new int[10][15];
     
+    /**
+    * Composante qui prend l'abcisse.
+    */
+    public int x;
+
+    /**
+    * Composante qui prend l'ordonn\u00e9e.
+    */
+    public int y;
+
+    /**
+    * Composante qui prend l'ancien abcisse.
+    */
+    public int ancienx;
+
+    /**
+    * Composante qui prend l'ancien ordonn\u00e9e.
+    */
+    public int ancieny;
+
+    /**
+    * Composante recupere les coordonn\u00e9e x de la souris.
+    */
+    public int posx;
+
+    /**
+    * Composante recupere les coordonn\u00e9e y de la souris.
+    */
+    public int posy;
+
+    /**
+    * Composante recupere temporairement les coordonn\u00e9e x de la souris.
+    */
+    public int tmpx;
+
+    /**
+    * Composante recupere temporairement les coordonn\u00e9e y de la souris.
+    */
+    public int tmpy;
+
+    /**
+    * Composante recupere temporairement la lettre dans le tableau de char.
+    */
+    public char tmplettre;
+
+    /**
+    * Composante recupere le score.
+    */
+    public double score=0.0;
+
+    /**
+    * Composante recupere le score en int.
+    */
+    public int intscore=0;
+
+    /**
+    * Composante recupere la taille du groupe.
+    */
+    public int boules=0;
+
+    /**
+    * Composante recupere la taille du groupe pour l'envoyer au calcul de score.
+    */
+    public int boulesscore=0;
+
+    /**
+    * Composante qui verifit si le groupe est de 1.
+    */
+    public boolean tupeutpascliquer;
+    
+
+    /**
+    * Constructeur qui affiche la fenetre de jeu
+    */
     public Grille(){
         super("SameGame");
         this.setSize(767,580);
@@ -36,18 +103,18 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     /**
-     * Cette Methode sert a recupérer le tableau si le mode de jeu choisie est Aléatoire
-    */
-    
+    * Methode qui sert \u00e0 recup\u00e9rer le tableau si le mode de jeu choisie est Al\u00e9atoire.
+    */    
     public void RecupTabAlea(){
         TabAlea ta = new TabAlea();
         tab=ta.alea();
     }
 
     /**
-     * Cette Methode sert a recupérer le tableau si le mode de jeu choisie est par fichier plus verification que le ficheir est bien un .txt
+    * Methode qui sert \u00e0 recup\u00e9rer le tableau si le mode de jeu choisie est par fichier.
+    *
+    *@return si le fichier est correct (1 ou 0)
     */
-
     public int RecupTabChoix(){
         TabChoix t=new TabChoix();
         tab=t.choix();
@@ -60,7 +127,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
     
     /**
-     * Cette Methode sert a afficher la page de jeux
+    * Methode qui affiche la page de jeux.
     */  
     public void ImageJeu(){
 
@@ -95,20 +162,27 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         this.setVisible(true);
     }
 
+    /**
+    * Methode qui recup\u00e9re les Coordon\u00e9 x.
+    *
+    * @return la positon x de la souris
+    */
     public int RecupX(){
         return x;
     }
 
     /**
-     * Cette Methode sert a recupérer les Coordonée Y de la souris pour l'utiliser partout dans le fichier 
+    * Methode qui recup\u00e9re les Coordon\u00e9 y.
+    *
+    * @return la positon y de la souris
     */
     public int RecupY(){
         return y;
     }
     
     /**
-     * Cette Methode sert a rénitialiser le tableau de survol une fois la forme changer 
-    */
+    * Methode qui rafraichit le tableau de survol.
+    */ 
     public void ResetTabSurvol(){
         for(int a=0; a<10;a++){  
             for(int b=0; b<15;b++){  
@@ -120,8 +194,11 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     /**
-     * Cette Methode sert a verifier que la colonne est bien vide
-    */
+    * Methode qui verifie que la colonne est bien vide.
+    *
+    *@param colonnes position de la colonne (entre 0 et 14)
+    *@return 1 si la colonne est vide et 0 si la colonne n'est pas vide 
+    */ 
     public int VerifColonne(int colonnes) {
         for (int i=0; i<10; i++) {
             if (tab[i][colonnes]!=' ') {
@@ -132,8 +209,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     /**
-     * Cette Methode sert a décaler la ligne a gauche si la colonne est vide
-    */
+    * Methode qui decale la colonne \u00e0 gauche si celle-ci est vide. 
+    */  
     public void BougeGauche () {
     	for (int k=0; k<10; k++) {
 	        for (int j=0; j<14; j++) {
@@ -149,8 +226,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     /**
-     * Cette Methode sert a décaler les pions vers le bas si en desous de lui une zone a été cliquer 
-    */
+    * Methode qui decale le pion vers le bas si le pion a \u00e9t\u00e9 cliqu\u00e9.
+    */  
     public void ChuteBoule(){
 
         for (int k=0; k<10; k++) {
@@ -167,8 +244,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     /**
-     * Cette Methode sert a recuperer la taille du groupe et aussi à verifier que le groupe est >1 
-    */
+    * Methode qui recupere la taille du groupe et verifie qu'il soit superieure \u00e0 1.
+    */  
     public void TailleGroupe(){
         
         for (int i=0; i<10; i++) {
@@ -190,8 +267,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     /**
-     * Cette Methode sert a modifier le tableau lors s'un survol de groupe pour changer l'état et l'affichage de la grille
-    */
+    * Methode qui modifie le tableau lors du survol et change l'\u00e9tat et l'affichage de la grille
+    */ 
     public void ModifTAb(){ 
         posx=RecupX();
         posy=RecupY();
@@ -229,8 +306,11 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     /**
-     * Cette Methode sert a regarder si autour du pion en survol est la même couleur 
-    */
+    * Methode r\u00e9cursive qui regarde si les pions autour de lui dont de la m\u00eame couleur.
+    *
+    *@param x l'abcisse (entre 0 et 14)
+    *@param y l'ordonn\u00e9e (entre 0 et 9)
+    */  
     public void AutourCase(int x,int y){
         char tempL;
         tempL=tab[y][x];
@@ -278,7 +358,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     /**
-     * Cette Methode sert a ré-actualiser le tableau lorsqu'un autre groupe est selectionné
+    * Methode qui rafraichit le tableau de pion.
     */
     public void RefreshTab(){
         for (int i=0;i<10;i++){
@@ -290,8 +370,8 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     /**
-     * Cette Methode sert a vider les cases du groupes lorsque l'on clique dessus 
-    */
+    * Methode qui vide le tableau une fois cliquer 
+    */  
     public void changerfond(){
         for(int dx=0; dx<10;dx++){  
             for(int dy=0; dy<15;dy++){
@@ -304,7 +384,10 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     /**
-     * Cette Methode sert a calculer le score 
+    * Methode qui calcul le score
+    *
+    *@param x l'abcisse (entre 0 et 14)
+    *@param y l'ordonn\u00e9e (entre 0 et 9)
     */
     public void Score(int x,int y){
         if(tab[y][x]!=' '){
@@ -318,16 +401,18 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     /**
-     * Cette Methode sert a Renvoyer le score 
-    */
+    * Methode qui renvoie le score
+    *
+    *@return le score en jeu 
+    */ 
     public int RecupScore(){
         int scoreajout=(int)score;
         return scoreajout;
     }
 
     /**
-     * Cette Methode sert a verifier la fin du jeu 
-    */
+    * Methode qui verifie si c'est la fin du jeu 
+    */ 
     public void VerifFin(){
         
         int fin=1;
@@ -369,6 +454,11 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         Fin(fin);      
     }
 
+    /**
+    * Methode qui affiche la page de fin et renvoie le score \u00e0 celle-ci
+    *
+    *@param fin une variable fin (1 ou 0)
+    */ 
     public void Fin(int fin){
 
         if(fin==1){
@@ -378,7 +468,9 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     }
 
     
-
+    /**
+    * Methode qui s'execute apres un  clique sur la souris.
+    */
     @Override
     public void mouseClicked(MouseEvent e)  {
         intscore=RecupScore();
@@ -393,6 +485,10 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
         ModifTAb();
     }
 
+
+    /**
+    * Methode qui s'execute apres un deplacement de la souris.
+    */
     @Override
     public void mouseMoved(MouseEvent e) {
             

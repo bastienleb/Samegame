@@ -2,17 +2,40 @@ import java.io.*;
 import java.util.*;
 
 /**
-*@author Kévin METRI et Bastien LEBLET
-* Cette classe sert a lire le fichier et remplir le tableau
+* La classe <b><code>TabChoix</code></b> sert \u00e0 remplir un tableau a l'aide d'un fichier.
+*  
+* @version 1.1
+* @author Kévin METRI et Bastien LEBLET
 */
 
-public class TabChoix {
-    char[][] tab=new char[10][15];
-    int valider=0;
-    int ligne=0;
-    int colonne=0;
-    boolean lignes=true;
 
+public class TabChoix {
+
+    /**
+    * Composante d'un tableau muldimentionnel (R,V,B,r,v,b,' ').
+    */
+    char[][] tab=new char[10][15];
+
+    /**
+    * Composante pour savoir si le choix du fichier est bien fait.
+    */
+    int valider=0;
+
+    /**
+    * Composante pour savoir si le nombre de ligne est bien.
+    */
+    int ligne=0;
+
+    /**
+    * Composante pour savoir si le nombre de colonne est bien.
+    */
+    int colonne=0;
+
+    /**
+    * Methode qui remplie un tableau.
+    *
+    *@return le tableau apr\u00e8s l'avoir remplie avec un fichier
+    */
     public char[][] choix() {
         String chemin;
         RecupFichier t=new RecupFichier();
@@ -40,9 +63,6 @@ public class TabChoix {
                 ligne=1;
             }
             colonne++;
-            if(colonne == 10){
-                lignes=false;
-            }
         }
         if(ligne==1){
             System.err.println("Fichier mal écrit, il doit etre de 15 par 10 ! ");            
@@ -59,6 +79,12 @@ public class TabChoix {
         return tab;
     }
 
+
+    /**
+    * Methode qui retourne un validation.
+    *
+    *@return valider (0 ou 1)
+    */
     public int verif(){
         return valider;
     }

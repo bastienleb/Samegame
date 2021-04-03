@@ -3,21 +3,54 @@ import java.awt.event.*;
 import java.awt.*;
 
 /**
-*@author Kévin METRI et Bastien LEBLET
-* Cette Class sert a afficher la page de fin 
+* La classe <b><code>Fin</code></b> affiche la page de fin avec le score
+*  
+* @version 1.1
+* @author Kévin METRI et Bastien LEBLET
 */
 
 public class Fin extends JFrame {
-    int score=0;
-    ImageIcon icone = new ImageIcon("../image/image de fin.jpg");
-    JLabel images = new JLabel(icone);
-    JPanel fond = new JPanel();
-    JPanel panscore= new JPanel();
-    ActionFin af = new ActionFin(this);
-    JPanel all= new JPanel();
+    /**
+    * Composante qui gere le score. 
+    */
+    public int score=0;
+    
+    /**
+    * Composante qui recupere l'image de fond.
+    */
+    public ImageIcon icone = new ImageIcon("./image/image de fin.jpg");
+    
+    /**
+    * Composante pour l'image.
+    */
+    public JLabel images = new JLabel(icone);
 
+    /**
+    * Composante pour afficher l'image.
+    */
+    public JPanel fond = new JPanel();
+
+    /**
+    * Composante pour afficher le score.
+    */
+    public JPanel panscore= new JPanel();
+    
+    /**
+    * Composante pour tout afficher.
+    */
+    public JPanel all= new JPanel();
+    
+    
+    
+    /**
+     * Constructeur qui affiche la page de fin.
+     *
+     *@param scorefin le score a la fin de la partie 
+     */
+    
     public Fin(int scorefin){
         super("SameGame");
+        ActionFin af = new ActionFin(this);
         this.score=scorefin;
         this.setSize(1024,768);
         this.setLocationRelativeTo(null);
@@ -36,7 +69,7 @@ public class Fin extends JFrame {
     }
 
     /**
-    * Cette Methode sert a recuperer le score de la class Grille
+    * Constante qui sert a recuperer le score de la class Grille
     */
     public void RecupScore(){
         JLabel affiscore = new JLabel("SCORE :"+score);

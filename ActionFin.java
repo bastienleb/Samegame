@@ -1,18 +1,29 @@
 import javax.swing.*;
 import java.awt.event.*;
-
 /**
-*@author Kévin METRI et Bastien LEBLET
-* Cette Class sert a la detection des action de la page de fin
+* La classe <b><code>ActionFin</code></b> gere les actions de la page de fin
+*  
+* @version 1.1
+* @author Kévin METRI et Bastien LEBLET
 */
 
 public class ActionFin implements MouseListener{
     JFrame f = new JFrame();
 
+    /**
+    * Constructeur qui gere les actions de la page de fin
+    *
+    *@param frame Fenetre de fin
+    */
     public ActionFin(JFrame frame){
         this.f=frame; 
     }
 
+
+    /**
+    * Methode qui gere les cliques de la page
+    *
+    */
     @Override
     public void mouseClicked(MouseEvent e){
 
