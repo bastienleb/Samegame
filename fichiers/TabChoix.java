@@ -9,6 +9,9 @@ import java.util.*;
 public class TabChoix {
     char[][] tab=new char[10][15];
     int valider=0;
+    int ligne=0;
+    int colonne=0;
+    boolean lignes=true;
 
     public char[][] choix() {
         String chemin;
@@ -21,18 +24,29 @@ public class TabChoix {
         {
         FileInputStream file = new FileInputStream(chemin);   
         Scanner scanner = new Scanner(file);  
+    
         
-        
-        while(scanner.hasNext())
-        {
+        while(colonne!=10){
             String s=scanner.next();
             
-            for(i=0; i<15;i++){  
-                char c = s.charAt(i);  
-                tab[j][i]=c;  
+            if(s.length()==15){
+                for(i=0; i<15;i++){  
+                    char c = s.charAt(i);  
+                    tab[j][i]=c;  
+                }
+                j++;
             }
-            j++;
-            
+            else{
+                ligne=1;
+            }
+            colonne++;
+            if(colonne == 10){
+                lignes=false;
+            }
+        }
+        if(ligne==1){
+            System.err.println("Fichier mal écrit, il doit etre de 15 par 10 ! ");            
+            valider=1;
         }
         
         scanner.close();    

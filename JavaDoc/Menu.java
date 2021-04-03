@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.*;
 
 /**
 * La classe <b><code>Menu</code></b> affiche le menu.
@@ -8,6 +10,7 @@
 
 
 public class Menu {
+    
     /**
      * Affiche l'image du jeu. 
      */
@@ -18,6 +21,5 @@ public class Menu {
      * Constructeur uniquement destin\u00e9 \u00e0  ajouter l'image \u00e0 afficher.
      */
     public Menu() {
-        ajout_image();
     }
 }

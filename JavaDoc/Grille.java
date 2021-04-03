@@ -1,12 +1,21 @@
+import javax.swing.*;
 import java.awt.event.*;
+import java.awt.*;
 /**
-* La classe <b><code>Grille</code></b> sert a gerer les action sur la page du menu.
+* La classe <b><code>Grille</code></b> sert \u00e0 gerer les action sur la page du menu.
 *  
 * @version 1.1
 * @author Kévin METRI et Bastien LEBLET
 */
 
 public class Grille implements MouseMotionListener,MouseListener {
+    /**
+    * Composante qui affiche la fenetre de jeu
+    */
+    
+    public Grille(){
+    }
+    
     /**
     * Composante qui sert a recup\u00e9rer le tableau si le mode de jeu choisie est Al\u00e9atoire.
     */

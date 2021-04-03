@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
-import javax.swing.Timer.*;
 
 /**
 *@author Kévin METRI et Bastien LEBLET
@@ -337,8 +336,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
          for (int y=9;y>1;y--){
             for(int x=0;x<14;x++){
 
-                char tempL;
-                tempL=tab[y][x];
+                
 
 
                 if(x>0){
