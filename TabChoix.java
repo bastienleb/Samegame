@@ -22,12 +22,12 @@ public class TabChoix {
     int valider=0;
 
     /**
-    * Composante pour savoir si le nombre de ligne est bien.
+    * Composante pour savoir si le nombre de ligne est bon.
     */
     int ligne=0;
 
     /**
-    * Composante pour savoir si le nombre de colonne est bien.
+    * Composante pour savoir si le nombre de colonne est bon.
     */
     int colonne=0;
 
@@ -81,7 +81,7 @@ public class TabChoix {
 
 
     /**
-    * Methode qui retourne un validation.
+    * Methode qui retourne une validation.
     *
     *@return valider (0 ou 1)
     */

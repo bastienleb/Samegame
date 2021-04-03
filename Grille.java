@@ -20,7 +20,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     public int tabsurvol[][]=new int[10][15];
     
     /**
-    * Composante qui prend l'abcisse.
+    * Composante qui prend l'abscisse.
     */
     public int x;
 
@@ -30,7 +30,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     public int y;
 
     /**
-    * Composante qui prend l'ancien abcisse.
+    * Composante qui prend l'ancien abscisse.
     */
     public int ancienx;
 
@@ -85,7 +85,7 @@ public class Grille extends JFrame implements MouseMotionListener,MouseListener 
     public int boulesscore=0;
 
     /**
-    * Composante qui verifit si le groupe est de 1.
+    * Composante qui verifie si le groupe est de 1.
     */
     public boolean tupeutpascliquer;
     

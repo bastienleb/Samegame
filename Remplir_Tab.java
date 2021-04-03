@@ -43,27 +43,27 @@ public class Remplir_Tab {
     public ImageIcon fond = new ImageIcon("./image/fond_b.png");
 
     /**
-    * Composante pour afficher le pion rouge.
+    * Composante pour afficher la boule rouge.
     */
     public JLabel labrouge = new JLabel(rouge);
 
     /**
-    * Composante pour afficher le pion bleu.
+    * Composante pour afficher la boule bleu.
     */
     public JLabel labbleu = new JLabel(bleu);
 
     /**
-    * Composante pour afficher le pion vert.
+    * Composante pour afficher la boule vert.
     */
     public JLabel labvert = new JLabel(vert);
 
     /**
-    * Composante pour afficher le pion rouge au survol.
+    * Composante pour afficher la boule rouge au survol.
     */
     public JLabel labrouge_survol = new JLabel(rouge_survol);
 
     /**
-    * Composante pour afficher le pion bleu au survol.
+    * Composante pour afficher la boule bleu au survol.
     */
     public JLabel labbleu_survol = new JLabel(bleu_survol);
 
