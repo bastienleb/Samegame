@@ -45,7 +45,7 @@ public class Menu extends JFrame {
     /**
      * Affiche l'image du jeu. 
      */
-    private void ajout_image(){
+    public void ajout_image(){
         Actionmenu m = new Actionmenu(this);
         panneau.add(images);
         panneau.addMouseListener(m);
