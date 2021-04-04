@@ -5,6 +5,7 @@ JCFLAGS = -encoding UTF-8 -implicit:none
 
 JVM = java
 JVMFLAGS = 
+JVDC = javadoc
 
 ### REGLES ESSENTIELLES ###
 
@@ -42,8 +43,9 @@ ActionFin.class : ActionFin.java
 
 run : Main.class
 	${JVM} ${JVMFLAGS} Main
+	
 javadoc : ActionFin.class Actionmenu.class Fin.class Grille.class Main.class Menu.class RecupFichier.class Remplir_Tab.class TabAlea.class TabChoix.class
-	javadoc ActionFin.java Actionmenu.java Fin.java Grille.java Main.java Menu.java RecupFichier.java Remplir_Tab.java TabAlea.java TabChoix.java
+	${JVDC} ActionFin.java Actionmenu.java Fin.java Grille.java Main.java Menu.java RecupFichier.java Remplir_Tab.java TabAlea.java TabChoix.java
 
 clean :
 	$(RM) *.class
